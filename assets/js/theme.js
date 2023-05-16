@@ -805,7 +805,7 @@
             if ($backToTop.length > 0) {
                 $backToTop.on('click', function (event) {
                     event.preventDefault();
-                    $('html,body').animate({scrollTop: '0px'}, 800);
+                    $('html,body').animate({scrollTop: '0px'}, 0);
                 });
                 $window.on('scroll', function (event) {
                     var scrollPosition = $window.scrollTop(),

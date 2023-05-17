@@ -1,0 +1,152 @@
+<mat-drawer-container class="flex h-[100vh] w-full" autosize>
+  <mat-drawer #drawer class="h-full w-1/4" opened mode="side">
+    <div class="flex p-2">
+      <input type="text" class="w-full px-3 py-2 border border-gray-200 rounded" [placeholder]="'Tìm kiếm bài viết'"
+        (input)="applyFilter($event)" />
+    </div>
+    <mat-tree [dataSource]="dataSource1" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <div class="flex items-center justify-between space-x-4 cursor-pointer w-full px-3 py-1 group">
+          <div class="flex items-center space-x-2" *ngIf="!node.Theme">
+            <span class="material-icons text-yellow-500"> collections_bookmark </span>
+            <span class="">{{ node.Title }}</span>
+          </div>
+          <div class="flex items-center space-x-2" *ngIf="node.Theme"
+            routerLink="{{node.Theme === 1 ?'theme1' : node.Theme === 2 ? 'theme2': node.Theme === 3 ? 'theme3': node.Theme === 4 ? 'themetintuc':  'totnghiep-phunxam' }}/{{node.Slug}}">
+            <span title="Xoá" class="material-icons
+                        cursor-pointer text-yellow-500" (click)="updateBaiviet(node)"> {{node.Trangthai == 0
+              ? 'star' : 'star_border'}}
+            </span>
+            <div [innerHTML]="node.Title " class="text-justify"></div>
+          </div>
+
+          <div class="hidden group-hover:flex items-center space-x-2" *ngIf="!node.Theme">
+
+            <span class="material-icons cursor-pointer text-blue-500" (click)="openDialog(node,ChonTheme)"
+              title="Tạo danh mục con">
+              note_add
+            </span>
+
+          </div>
+          <div class="hidden group-hover:flex items-center space-x-2" *ngIf="node.Theme">
+
+
+            <span class="material-icons text-blue-500" title="Chỉnh sửa" (click)="openDialog(node,SuaBaiviet)">
+              edit
+            </span>
+
+            <span class="material-icons cursor-pointer text-red-500" title="Xoá" (click)="openDialog(node,XoaBaiviet)">
+              delete
+            </span>
+          </div>
+        </div>
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.Title">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{
+            treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'
+            }}
+          </mat-icon>
+        </button>
+        <div
+          class="flex items-center space-x-4 justify-between cursor-pointer w-full group hover:bg-gray-200 px-3 py-1 rounded">
+          <div class="flex items-center space-x-2">
+            <span class="material-icons text-yellow-500"> collections_bookmark </span>
+            <span class="">{{ node.Title }} </span>
+          </div>
+          <div class="items-center space-x-2 hidden group-hover:flex">
+
+            <span class="material-icons cursor-pointer text-blue-500" (click)="openDialog(node,ChonTheme)"
+              title="Tạo bài viết" matTooltip="Tạo bài viết">
+              note_add
+            </span>
+          </div>
+        </div>
+      </mat-tree-node>
+    </mat-tree>
+    <!-- <p (click)="clickupdate()">button</p> -->
+  </mat-drawer>
+  <div class="relative flex flex-col border border-blue-50 h-full overflow-auto">
+    <div (click)="drawer.toggle()">ABC</div>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
+
+
+<ng-template #ChonTheme>
+  <div></div>
+  <mat-dialog-content class="min-w-[400px]">
+    <h2 matDialogTitle>Chọn Theme</h2>
+    <form>
+      <div>
+        <mat-form-field appearance="outline" class="flex w-full">
+          <mat-label>Slug</mat-label>
+          <input matInput type="text" placeholder="Slug" [(ngModel)]="Slug" [ngModelOptions]="{standalone: true}" />
+
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="flex w-full" [(ngModel)]="iTheme"
+          [ngModelOptions]="{standalone: true}">
+          <mat-label>Theme</mat-label>
+          <mat-select>
+            <!-- [compareWith]="compareFn" -->
+            <!-- (selectionChange)="openDialog($event.value)" -->
+            <mat-option value="4">Tin tức sự kiện</mat-option>
+            <!--<mat-option value="1">Khoá triệt lông</mat-option>
+                <mat-option value="2">Combo chủ spa</mat-option>
+                <mat-option value="3">Khoá chăm sóc và điều trị da</mat-option>
+
+                <mat-option value="5">Lễ tốt nghiệp và phun xăm</mat-option>-->
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose class="bg-green-500 text-white" (click)="onSave()">
+      Xác nhận
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #SuaBaiviet>
+  <mat-dialog-content>
+    <form>
+
+      <div>
+        <mat-form-field appearance="outline" class="flex w-full" [(ngModel)]="idDanhmuc"
+          [ngModelOptions]="{standalone: true}">
+          <mat-label>Danh mục</mat-label>
+          <mat-select>
+            <!-- [compareWith]="compareFn" -->
+            <!-- (selectionChange)="openDialog($event.value)" -->
+            <mat-option *ngFor="let item of danhmuc" value="{{item.id}}">{{item.Title}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button matDialogClose class="bg-green-500 text-white" (click)="onUpdate()">
+      Xác nhận
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+<ng-template #XoaBaiviet>
+  <h2 matDialogTitle>Bạn có chắc xoá bài viết:</h2>
+  <div [innerHTML]="dataTemp.Title" class="font-bold">
+
+  </div>
+  <mat-dialog-actions align="center">
+    <button mat-button matDialogClose class="bg-blue-500 text-white">
+      Huỷ bỏ
+    </button>
+    <button mat-button matDialogClose class="bg-red-500 text-white" (click)="deleteBaiviet()">
+      Xác nhận
+    </button>
+  </mat-dialog-actions>
+</ng-template>

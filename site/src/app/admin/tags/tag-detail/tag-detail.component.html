@@ -1,0 +1,35 @@
+<form class="w-full pt-10" >
+    <div class="space-y-5 px-5">
+        <div class="">
+            <mat-form-field appearance="outline" class="flex w-full">
+                <mat-label> Tiêu đề</mat-label>
+                <input matInput type="text" class="w-full text-xs" placeholder="Tẩy trang" [(ngModel)]="tag.Tieude" [ngModelOptions]="{standalone: true}"/>
+            </mat-form-field>
+            <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+        </div>
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Loại Tags</mat-label>
+            <mat-select [(ngModel)]="tag.Loaitag" [ngModelOptions]="{standalone: true}">
+                <mat-option value=0>Tình trạng da</mat-option>
+                <mat-option value=1>Loại sản phẩm</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="">
+            <mat-form-field appearance="outline" class="flex w-full">
+                <mat-label> Ordering</mat-label>
+                <input matInput type="text" class="w-full text-xs" placeholder="Ordering"
+                [(ngModel)]="tag.Ordering" [ngModelOptions]="{standalone: true}" />
+            </mat-form-field>
+        </div>
+        <div class=" ">
+                <label for="">Hình Thumbnail</label>
+                <input (change)="onFileBrowse($event)" type="file" accept="image/*">
+                <img src="https://drive.google.com/uc?id={{tag.Image}}" alt="">
+        </div>
+    
+        <div class="flex items-center">
+            <span class="px-3 py-1 text-white rounded bg-green-500 cursor-pointer" *ngIf="!id" (click)="onSubmit()">Tạo mới</span>
+            <span class="px-3 py-1 text-white rounded bg-blue-500 cursor-pointer" *ngIf="id" (click)="updateTag()">Cập nhật</span>
+        </div>
+    </div>
+</form>

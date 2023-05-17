@@ -1,0 +1,10 @@
+<div class="flex w-full justify-center items-center p-4">
+  <div class="grid grid-cols-2 gap-4">
+      <div *ngFor="let item of MenuDashboard" routerLink="{{item.Link}}" class="w-80 h-80 rounded-md shadow p-4 bg-white">
+        <div class="flex flex-row justify-between">
+         <span class="text-xl">{{item.Tieude}}</span>
+          <span class="material-icons text-4xl">{{item.Icon}}</span>
+        </div>
+      </div>
+  </div>
+</div>

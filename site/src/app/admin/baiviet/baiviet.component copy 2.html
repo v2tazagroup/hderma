@@ -1,0 +1,265 @@
+<div *ngIf="baiviet.length > 0">
+    <form>
+    
+        <div class="container mx-auto space-y-10">
+            <div class="rounded-2xl bg-indigo-900 px-10 py-5 relative space-y-5">
+                <div class="flex justify-center relative pb-3">
+                    <h3 class="text-3xl text-yellow-500 font-bold uppercase" (click)="getValue(data.Title, 99)">
+                        {{data.Title}} </h3>
+                    <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                </div>
+                <div [innerHTML]="data.Mota" class="text-white text-lg text-justify relative" (click)="getValue(data.Mota, 98)">
+                </div>
+            </div>
+            <div class="flex items-center justify-center flex-col space-y-5 mb-10">
+                <span class="text-white rounded-3xl bg-indigo-900 text-lg px-5 py-2 font-bold cursor-pointer"
+                    (click)="i = !i">Xem Nhanh Nội Dung
+                </span>
+                <ul class="space-y-3 overflow-hidden  {{
+                i ? 'border border-gray-200 p-3 rounded-xl' : ''
+              }} xemnhanh" [ngClass]="{ 'xemnhanh-active': i }">
+                    <li class="relative pb-1">
+                        <p class="text-indigo-900 uppercase text-center">
+                            GIỚI THIỆU CHUNG VỀ KHÓA TRIỆT LÔNG
+                        </p>
+                        <span class="w-40 bg-yellow-500 h-[2px] rounded absolute left-1/2 bottom-0 centerX-img"></span>
+                    </li>
+                    <li class="relative pb-1">
+                        <p class="text-indigo-900 uppercase text-center">
+                            KỸ NĂNG CÓ ĐƯỢC SAU KHÓA HỌC
+                        </p>
+                        <span class="w-40 bg-yellow-500 h-[2px] rounded absolute left-1/2 bottom-0 centerX-img"></span>
+                    </li>
+                    <li class="relative pb-1">
+                        <p class="text-indigo-900 uppercase text-center">
+                            TẠI SAO BẠN NÊN HỌC KHÓA TRIỆT LÔNG CÔNG NGHỆ CAO TẠI TIMONA ACADEMY
+                        </p>
+                        <span class="w-40 bg-yellow-500 h-[2px] rounded absolute left-1/2 bottom-0 centerX-img"></span>
+                    </li>
+                    <li class="relative pb-1">
+                        <p class="text-indigo-900 uppercase text-center">
+                            HỌC VIÊN ĐÁNH GIÁ VỀ TIMONA ACADEMY
+                        </p>
+                        <span class="w-40 bg-yellow-500 h-[2px] rounded absolute left-1/2 bottom-0 centerX-img"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="space-y-10">
+                <div class="flex justify-center relative pb-3">
+                    <h3 class="text-3xl text-indigo-900 font-bold uppercase">
+                        {{baiviet[0].Title}}
+                    </h3>
+                    <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                </div>
+                <div class="grid grid-cols-3 gap-10">
+                    <div class="rounded-3xl w-full bg-white shadow-lg">
+                        <img src="https://drive.google.com/uc?id={{baiviet[1].Image}}
+                        " class="w-full rounded-3xl" alt="width:690px; height:432px" />
+                        <div class="p-5 space-y-3">
+                            <div class="relative pb-1">
+                                <h3 class="text-indigo-900 uppercase text-lg font-bold h-16">
+                                    {{baiviet[1].Title}}
+                                </h3>
+                                <span class="absolute h-[2px] rounded w-2/5 bottom-0 left-0 bg-yellow-500"></span>
+                            </div>
+                            <p class="text-justify ml-0 h-48 overflow-auto scroll pr-3">
+                                {{baiviet[1].Des}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl w-full bg-white shadow-lg">
+                        <img src="https://drive.google.com/uc?id={{baiviet[2].Image}}
+                        " class="w-full rounded-3xl" alt="width:690px; height:432px" />
+                        <div class="p-5 space-y-3">
+                            <div class="relative pb-1">
+                                <h3 class="text-indigo-900 uppercase text-lg font-bold h-16">
+                                    {{baiviet[2].Title}}
+                                </h3>
+                                <span class="absolute h-[2px] rounded w-2/5 bottom-0 left-0 bg-yellow-500"></span>
+                            </div>
+                            <p class="text-justify ml-0 h-48 overflow-auto scroll pr-3">
+                                {{baiviet[2].Des}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rounded-3xl w-full bg-white shadow-lg">
+                        <img src="https://drive.google.com/uc?id={{baiviet[3].Image}}
+                        " class="w-full rounded-3xl" alt="width:690px; height:432px" />
+                        <div class="p-5 space-y-3">
+                            <div class="relative pb-1">
+                                <h3 class="text-indigo-900 uppercase text-lg font-bold h-16">
+                                    {{baiviet[3].Title}}
+                                </h3>
+                                <span class="absolute h-[2px] rounded w-2/5 bottom-0 left-0 bg-yellow-500"></span>
+                            </div>
+                            <p class="text-justify ml-0 h-48 overflow-auto scroll pr-3">
+                                {{baiviet[3].Des}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="relative theme1">
+            <div class="absolute left-0 top-0 h-full w-full">
+                <img src="/assets/homepage/BG-1.png" class="h-full w-full bg-yellow-500 opacity-10" alt="" />
+            </div>
+            <div class="container mx-auto">
+                <div class="mt-5 flex space-x-5 gioithieu-giangvien">
+                    <div class="w-2/3 overflow-auto relative space-y-10 h-[2000px] pr-3 scroll">
+                        <div class="bg-white rounded-3xl p-5 relative space-y-3">
+                            <div class="flex justify-center relative pb-3">
+                                <div class="text-3xl text-indigo-900 font-bold uppercase text-center" [innerHTML]="
+                                baiviet[4].Title
+                                ">
+                                </div>
+                                <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                            </div>
+                            <div [innerHTML]="baiviet[4].Des" class="noidung text-justify">
+    
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <div
+                                class="bg-white px-10 py-2 text-lg text-indigo-900 border-2  font-bold cursor-pointer border-indigo-900 rounded-3xl">
+                                <span class="">Đăng ký tư vấn ngay</span>
+                            </div>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="flex justify-center relative pb-3">
+                                <div class="text-3xl text-indigo-900 font-bold uppercase text-center" [innerHTML]="
+                                baiviet[5].Title
+                                ">
+                                </div>
+                                <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                            </div>
+                            <div [innerHTML]="
+                            baiviet[5].Des
+                            " class="kynang w-full space-y-5 text-justify">
+    
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <div
+                                    class="bg-white p-2 text-lg text-indigo-900 border-2 shadow-2xl font-bold cursor-pointer border-indigo-900 rounded-3xl">
+                                    <span class="">Liên hệ nhận lịch khai giảng</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-5">
+                            <div class="flex justify-center relative pb-3">
+                                <div class="text-3xl text-indigo-900 font-bold uppercase text-center" [innerHTML]="
+                                baiviet[6].Title
+                                ">
+                                </div>
+                                <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                            </div>
+    
+                            <div [innerHTML]="baiviet[6].Des" class="w-full text-lg text-justify text-indigo-900">
+                                
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl relative px-5 py-5 pb-40">
+                            <div class="grid grid-cols-3 gap-10 cohoi">
+                                <div class="flex flex-col relative space-y-3 pb-3" *ngFor="let item of taisaoIcon">
+                                    <img src="https://drive.google.com/uc?id={{ item.Image }}"
+                                        class="h-12 w-12 object-contain" alt="64*64" />
+                                    <p class="text-yellow-500">
+                                        {{ item.Des }}
+                                    </p>
+                                    <div class="h-[2px] rounded w-36 bg-yellow-500 absolute bottom-0 left-0"></div>
+                                </div>
+                            </div>
+                            <div class="left-32 centerX-img  absolute bottom-[-100px]  ">
+                                <div
+                                    class="w-44 h-44 taisao-circle rounded-full px-3 py-5 bg-white border border-indigo-900 flex flex-col items-center relative group">
+                                    <img src="https://drive.google.com/uc?id=1eq8wktVVBZYT8ahKCIQQBZBzr4MGYtJg"
+                                        class="w-12 h-12 svg-image" alt="48*48" />
+                                    <span class="uppercase text-xs font-medium my-1 span-1">thạo nghề chỉ sau</span>
+                                    <span class="uppercase  text-lg font-bold span-2">2-3 tháng</span>
+                                    <div
+                                        class=" border border-dashed rounded-full  w-48 h-48 taisao-dashed  left-1/2 top-1/2 mt-0 center-img absolute">
+                                    </div>
+                                </div>
+    
+                            </div>
+                            <div class="left-1/2 centerX-img absolute bottom-[-100px]  ">
+                                <div
+                                    class="w-44 h-44 taisao-circle rounded-full px-3 py-5 bg-white border border-indigo-900 flex flex-col items-center relative group">
+                                    <img src="https://drive.google.com/uc?id=1C5h9P_j86fas-nREjRYVY6cy_-1bHwXI"
+                                        class="w-12 h-12 svg-image" alt="48*48" />
+                                    <span class="uppercase text-xs font-medium my-1 span-1">Cam kết 100%</span>
+                                    <span class="uppercase  text-lg font-bold span-2">Hỗ trợ việc làm</span>
+                                    <div
+                                        class=" border border-dashed rounded-full  w-48 h-48 taisao-dashed  left-1/2 top-1/2 mt-0 center-img absolute">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-32  absolute bottom-[-100px]  " style="transform: translateX(50%);">
+                                <div
+                                    class="w-44 h-44 taisao-circle rounded-full px-3 py-5 bg-white border border-indigo-900 flex flex-col items-center relative group">
+                                    <img src="https://drive.google.com/uc?id=1QmEQ9JK1s2snObuvn9wqKvf2JVgfyIEG"
+                                        class="w-12 h-12 svg-image" alt="48*48" />
+                                    <span class="uppercase text-xs font-medium my-1 span-1">thu nhập</span>
+                                    <span class="uppercase  text-lg font-bold span-2">10-20TR/THÁNG</span>
+                                    <div
+                                        class=" border border-dashed rounded-full  w-48 h-48 taisao-dashed  left-1/2 top-1/2 mt-0 center-img absolute">
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="space-y-5 pt-28">
+                            <div class="flex justify-center relative pb-3">
+                                <h3 class="text-3xl text-indigo-900 font-bold uppercase">
+                                    học viên đánh giá về timona Academy
+                                </h3>
+                                <span class="absolute left-1/2 bottom-0 centerX-img h-1 bg-yellow-500 w-40 rounded-2xl"></span>
+                            </div>
+    
+                            <div class="w-full video-container rounded-2xl">
+                                <iframe width="1440" height="821" src="https://www.youtube.com/embed/xwKb7eMvx0w"
+                                    title="Nam giới có nên học ngành phun xăm thẩm mỹ?| TIMONA ACADEMY" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="relative rounded-2xl h-48 space-y-5 p-7 flex flex-col justify-center items-center">
+                                <div class="absolute left-0 top-0 w-full h-full z-0">
+                                    <img src="/assets/homepage/BG-CTA-(2850x1190).png" class="rounded-3xl w-full h-full"
+                                        alt="" />
+                                </div>
+                                <p class="text-white uppercase text-center font-bold z-10">
+                                    NẾU BẠN NGHĨ RẰNG TẤT CẢ CÁC CÔNG NGHỆ TRIỆT LÔNG LÀ NHƯ NHAU THÌ
+                                    HÃY SUY NGHĨ LẠI!
+                                </p>
+                                <p class="text-xl uppercase text-white text-center font-bold z-10">
+                                    SAU KHI THAM GIA KHÓA ĐÀO TẠO NÀY BẠN SẼ NHẬN RA ĐÂU LÀ
+                                    <strong class="text-yellow-500">PHƯƠNG PHÁP TRIỆT LÔNG</strong>
+                                    TỐT NHẤT & TỐI ƯU NHẤT HIỆN NAY
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/3 space-y-7 pl-5">
+                        <tazagroup-sidenav-khoahoc></tazagroup-sidenav-khoahoc>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed top-10 right-10">
+            <span class="px-3 py-1 bg-green-500 text-white rounded text-xl cursor-pointer" *ngIf="baiviet.length == 0"
+                (click)="onSave()">Tạo mới</span>
+            <span class="px-3 py-1 bg-blue-500 text-white rounded text-xl cursor-pointer" *ngIf="baiviet.length > 0"
+                (click)="onUpdate()">Cập nhật</span>
+        </div>
+        <div class="fixed  h-1/3 bottom-0 w-full z-10">
+         
+            <editor [apiKey]="APITINYMCE"
+            (keyup.enter)="updateValue()"
+            [(ngModel)]="temp" [ngModelOptions]="{standalone: true}"
+            [init]="{ plugins: 'lists link image table code help wordcount', toolbar:
+      'undo redo | casechange blocks | bold italic backcolor | \
+      alignleft aligncenter alignright alignjustify | \
+      bullist numlist checklist outdent indent | removeformat | a11ycheck code table help' }"></editor>
+        </div>
+    </form>
+</div>

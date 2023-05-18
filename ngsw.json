@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1684400751167,
+  "timestamp": 1684402042616,
   "index": "https://v2tazagroup.github.io/hderma/index.html",
   "assetGroups": [
     {
@@ -25,7 +25,7 @@
         "https://v2tazagroup.github.io/hderma/common.c40a5449008d38cd.js",
         "https://v2tazagroup.github.io/hderma/favicon.ico",
         "https://v2tazagroup.github.io/hderma/index.html",
-        "https://v2tazagroup.github.io/hderma/main.1db2d1641ed6cac9.js",
+        "https://v2tazagroup.github.io/hderma/main.86e46f40edcfc378.js",
         "https://v2tazagroup.github.io/hderma/manifest.webmanifest",
         "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js",
         "https://v2tazagroup.github.io/hderma/runtime.88e07241a4fffff6.js",
@@ -1453,9 +1453,9 @@
     "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.js": "9a6d6f08c13257b1e3344e219593274bc75d3583",
     "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.min.js": "bd089debff0c77413ce637ce6e2fcf9faf95e7b3",
     "https://v2tazagroup.github.io/hderma/common.c40a5449008d38cd.js": "e9534ef86880568a4d6867188315cbbcbbaaf60e",
-    "https://v2tazagroup.github.io/hderma/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://v2tazagroup.github.io/hderma/index.html": "0e5c133a6c4d6152784b20223b55494b33743536",
-    "https://v2tazagroup.github.io/hderma/main.1db2d1641ed6cac9.js": "51d87bb4bb084e00e6f3374ea8a06625faf28d2d",
+    "https://v2tazagroup.github.io/hderma/favicon.ico": "ad9ab36b31a9ad2a4ab2935267ef52118a42f514",
+    "https://v2tazagroup.github.io/hderma/index.html": "8087ec0eaa77ac573453e9f59ee31fe83b8290d7",
+    "https://v2tazagroup.github.io/hderma/main.86e46f40edcfc378.js": "065b32c0bd68194a507480ab1fb25d7b45a3167e",
     "https://v2tazagroup.github.io/hderma/manifest.webmanifest": "88e80919f53920e327810743f0770dacb04c542a",
     "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js": "e6d94c48d9bd2572f6afc050605883b5624efd13",
     "https://v2tazagroup.github.io/hderma/runtime.88e07241a4fffff6.js": "96bd060cc743b459aa7c7eb5f84a747966054b14",

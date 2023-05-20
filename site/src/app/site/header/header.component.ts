@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(history.state.navigationId!=1){this.LoadPage()}
   }
   LoadPage()
   {

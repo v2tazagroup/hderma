@@ -21,7 +21,7 @@ import { LinkService } from '../product/link.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { TTDonhang } from '@tazagroup/shared/datatype';
+import { TTDonhang } from 'src/app/shared/datatype'
 import { NotifierService } from 'angular-notifier';
 import { TichdiemService } from '../tichdiem/tichdiem.service';
 @Component({

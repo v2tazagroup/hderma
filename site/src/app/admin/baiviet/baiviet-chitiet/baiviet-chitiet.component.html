@@ -82,7 +82,7 @@
                             <div class="font-bold text-center">Hình Thumbnail</div>
                             <ng-container *ngIf="data.Image; else elseTemplate">
                               <div class="relative">
-                                <img src="{{data.Image | checkimage}}">
+                                <img src="{{data.Image}}">
                                 <span class="material-icons absolute right-[-10px] top-[-10px] cursor-pointer"
                                 (click)="removeSimpleImage('Image')">
                                 cancel
@@ -185,7 +185,7 @@
                                                 </path>
                                             </svg></a></div>
                                 </div>
-                                <div [innerHTML]="data.Baiviet | safe:'html'"
+                                <div [innerHTML]="data.Baiviet"
                                     class="space-y-3 lg:text-base text-sm text-justify"
                                     (click)="getValue(data.Baiviet,0,0);drawer.open()">
                                 </div>

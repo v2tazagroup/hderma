@@ -10,6 +10,6 @@ export class VechungtoiComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(history.state.navigationId!=1){location.reload()}
   }
-
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-import { SwiperComponent } from 'swiper/angular';
-import { environment } from '@tazagroup/shared/environments';
+import { environment } from 'src/app/environment';
 import { DanhmucService } from '../danhmuc/danhmuc.service';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
@@ -18,7 +17,6 @@ import { BaivietService } from './baiviet.service';
   styleUrls: ['./baiviet.component.scss'],
 })
 export class BaivietComponent implements OnInit {
-  @ViewChild(SwiperComponent) swiper!: SwiperComponent;
   i = false
   baivietTintuc: any[] = baiviet
   APITINYMCE!: string

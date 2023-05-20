@@ -17,38 +17,38 @@
               <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
                 <div class="mx-auto flex-shrink-0 px-10 py-6 my-1">
                   <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center"> <a
-                      class="navbar-brand mx-auto d-inline-block py-0" href="index.html"> <img src="assets/images/logo.svg"
+                      class="navbar-brand mx-auto d-inline-block py-0" href="#"> <img src="assets/images/logo.svg"
                         alt="Glowing" style="width: 200px"></a></div>
                 </div>
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-home dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap spac p-0" href="index.html">
+                  <a class="nav-link text-nowrap spac p-0" href="#">
                     TRANG CHỦ
                   </a>
                 </li>
 
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-shop dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'san-pham'" [queryParams]="{ type: 'listsanpham' }">
+                  <a class="nav-link text-nowrap p-0" [routerLink]="'san-pham'">
                     SẢN PHẨM
                   </a>
                 </li>
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-pages dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/ve-chung-toi'" [queryParams]="{ type: 'vechungtoi' }">
+                  <a class="nav-link text-nowrap p-0" [routerLink]="'ve-chung-toi'">
                     VỀ h.DERMA
                   </a>
                 </li>
 
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-blog dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/bai-viet'" [queryParams]="{ type: 'listblog' }">
+                  <a class="nav-link text-nowrap p-0" [routerLink]="'bai-viet'">
                     GÓC CHIA SẺ
                   </a>
                 </li>
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-docs dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/lien-he'" [queryParams]="{ type: 'lienhe' }">
+                  <a class="nav-link text-nowrap p-0" [routerLink]="'lien-he'">
                     LIÊN HỆ
                   </a>
                 </li>

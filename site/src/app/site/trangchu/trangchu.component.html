@@ -1,4 +1,3 @@
-<main id="content">
   <section class="mx-0 slick-slider slick-dots-light dots-inner-center slider"
     data-slick-options='{"slidesToShow": 1,"infinite":true,"autoplay":true,"dots":true,"arrows":false,"fade":true,"cssEase":"ease-in-out","speed":600}'>
     <div class="box px-0">
@@ -10,7 +9,7 @@
                 <h1 class="card-title mb-4 fs-36 fs-md-48 lh-116 pr-lg-8">CHIỀU DA HẾT Ý </h1>
                 <p class="card-text fs-18 lh-166 mb-5 pr-lg-7" style="max-width: 454px">H.Derma cung cấp giải pháp điều
                   trị và phục hồi chuyên sâu cho từng tình trạng da ở mức độ cấp tế bào.</p>
-                <a href="shop-page-04.html" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO
+                <a [routerLink]="['/san-pham']" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO
                   CỬA HÀNG</a>
               </div>
             </div>
@@ -27,7 +26,7 @@
                 <h1 class="card-title mb-4 fs-36 fs-md-48 lh-116 pr-lg-8">CHIỀU DA HẾT Ý </h1>
                 <p class="card-text fs-18 lh-166 mb-5 pr-lg-7" style="max-width: 454px">H.Derma cung cấp giải pháp điều
                   trị và phục hồi chuyên sâu cho từng tình trạng da ở mức độ cấp tế bào.</p>
-                <a href="shop-page-04.html" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO
+                <a [routerLink]="['/san-pham']" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO
                   CỬA HÀNG</a>
               </div>
             </div>
@@ -136,8 +135,9 @@
                 <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let item of Soluong(Sanphams,0,4)">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="https://drive.google.com/uc?id={{ item.Image }}"/>
-                      <div class="card-img-overlay d-flex p-3">
+                                            <img *ngIf="item.Hinhanh.ContentImage" src="{{(Base+item.Hinhanh.ContentImage.spath)||''}}" alt="">
+                      <!-- <img src="https://drive.google.com/uc?id={{ item.Image }}"/> -->
+                      <!-- <div class="card-img-overlay d-flex p-3">
                         <div class="my-auto w-100 content-change-vertical">
                           <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
                             class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
@@ -166,14 +166,14 @@
                             </svg>
                           </a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
                       <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                        <!-- <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span> -->
-                        <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
+                        <span class="fs-13 font-weight-500 text text-decoration-line-through text-body pr-1" *ngIf="item.GiaSale!=item.Gia">{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
+                        <span>{{(item.GiaSale | number:'1.0-0')||'0'}}đ</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a (click)="LoadPage()" [routerLink]="[item.Slug]" [queryParams]="{ type: 'chitiet' }">{{item.Tieude}}</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['san-pham/'+item.Slug]">{{item.Tieude}}</a>
                       </h2>
                     </div>
                   </div>
@@ -185,7 +185,8 @@
                 <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let item of Soluong(Sanphams,4,8)">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="https://drive.google.com/uc?id={{ item.Image }}"/>
+                      <img *ngIf="item.Hinhanh.ContentImage" src="{{(Base+item.Hinhanh.ContentImage.spath)||''}}" alt="">
+                      <!-- <img src="https://drive.google.com/uc?id={{ item.Image }}"/> -->
                       <div class="card-img-overlay d-flex p-3">
                         <div class="my-auto w-100 content-change-vertical">
                           <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
@@ -222,7 +223,7 @@
                         <!-- <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span> -->
                         <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a (click)="LoadPage()" [routerLink]="[item.Slug]" [queryParams]="{ type: 'chitiet' }">{{item.Tieude}}</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['san-pham/'+item.Slug]">{{item.Tieude}}</a>
                       </h2>
                     </div>
                   </div>
@@ -234,7 +235,8 @@
                 <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let item of Soluong(Sanphams,8,12)">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="https://drive.google.com/uc?id={{ item.Image }}"/>
+                  <img *ngIf="item.Hinhanh.ContentImage" src="{{(Base+item.Hinhanh.ContentImage.spath)||''}}" alt="">
+                      <!-- <img src="https://drive.google.com/uc?id={{ item.Image }}"/> -->
                       <div class="card-img-overlay d-flex p-3">
                         <div class="my-auto w-100 content-change-vertical">
                           <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
@@ -271,7 +273,7 @@
                         <!-- <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span> -->
                         <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a (click)="LoadPage()" [routerLink]="[item.Slug]" [queryParams]="{ type: 'chitiet' }">{{item.Tieude}}</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['san-pham/'+item.Slug]">{{item.Tieude}}</a>
                       </h2>
                     </div>
                   </div>
@@ -283,7 +285,8 @@
                 <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let item of Soluong(Sanphams,12,16)">
                   <div class="card border-0 product">
                     <div class="position-relative">
-                      <img src="https://drive.google.com/uc?id={{ item.Image }}"/>
+                                            <img *ngIf="item.Hinhanh.ContentImage" src="{{(Base+item.Hinhanh.ContentImage.spath)||''}}" alt="">
+                      <!-- <img src="https://drive.google.com/uc?id={{ item.Image }}"/> -->
                       <div class="card-img-overlay d-flex p-3">
                         <div class="my-auto w-100 content-change-vertical">
                           <a href="#" data-toggle="tooltip" data-placement="left" title="View products"
@@ -320,7 +323,7 @@
                         <!-- <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">$39.00</span> -->
                         <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
                       </p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a (click)="LoadPage()" [routerLink]="[item.Slug]" [queryParams]="{ type: 'chitiet' }">{{item.Tieude}}</a>
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['san-pham/'+item.Slug]">{{item.Tieude}}</a>
                       </h2>
                     </div>
                   </div>
@@ -468,9 +471,10 @@
                 <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let item of Soluong(Sanphams,0,4)">
                   <div class="card border-0 product">
                     <div class="position-relative"> 
-                      <img src="https://drive.google.com/uc?id={{ item.Image }}"/>
+                                            <img *ngIf="item.Hinhanh.ContentImage" src="{{(Base+item.Hinhanh.ContentImage.spath)||''}}" alt="">
+                      <!-- <img src="https://drive.google.com/uc?id={{ item.Image }}"/> -->
                       <div class="card-img-overlay d-flex p-3">
-                        <div class="my-auto w-100 content-change-vertical"> <a href="#" data-toggle="tooltip"
+                        <!-- <div class="my-auto w-100 content-change-vertical"> <a href="#" data-toggle="tooltip"
                             data-placement="left" title="View products"
                             class="add-to-cart ml-auto d-flex align-items-center justify-content-center text-secondary bg-white hover-white bg-hover-secondary w-48px h-48px rounded-circle mb-2">
                             <svg class="icon icon-shopping-bag-open-light fs-24">
@@ -492,7 +496,7 @@
                             <svg class="icon icon-arrows-left-right-light fs-24">
                               <use xlink:href="#icon-arrows-left-right-light"></use>
                             </svg>
-                          </a></div>
+                          </a></div> -->
                       </div>
                     </div>
                     <div class="card-body px-0 pt-4 text-center">
@@ -500,7 +504,7 @@
                         <!-- <span
                           class="fs-13 font-weight-500 text-decoration-through text-body pr-1">{{(item.Gia | number:'1.0-0')||'0'}}đ</span> -->
                         <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span></p>
-                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['/'+item.Slug]" [queryParams]="{ type: 'chitiet' }">
+                      <h2 class="card-title fs-15 font-weight-500 mb-2"><a [routerLink]="['san-pham/'+item.Slug]">
                         {{item.Tieude}}
                         </a></h2>
                     </div>
@@ -1691,7 +1695,7 @@
             <h1 class="card-title mb-4 fs-36 fs-md-48 lh-116 pr-lg-8">CHIỀU DA HẾT Ý </h1>
             <p class="card-text fs-18 lh-166 mb-5 pr-lg-7" style="max-width: 454px">H.Derma cung cấp giải pháp điều trị
               và phục hồi chuyên sâu cho từng tình trạng da ở mức độ cấp tế bào.</p>
-            <a [routerLink]="''" [queryParams]="{ type: 'listsanpham' }" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO CỬA
+            <a [routerLink]="'san-pham'" class="btn btn-secondary rounded bg-hover-primary border-0 card-link">VÀO CỬA
               HÀNG</a>
           </div>
         </div>
@@ -1706,7 +1710,7 @@
         </div>
       </div>
       <div class="row">
-        <a (click)="LoadPage()" [routerLink]="'/san-pham'" [queryParams]="{ type: 'listsanpham' }" class="col-md-4 mb-6 mb-md-0">
+        <a [routerLink]="'san-pham'" class="col-md-4 mb-6 mb-md-0">
           <div class="card border-0 text-center hover-shine">
             <div class="d-block hover-shine hover-zoom-in">
               <img src="assets/images/image-box-21.jpg" alt="Find a Store">
@@ -1718,7 +1722,7 @@
             </div>
           </div>
         </a>
-        <a (click)="LoadPage()" [routerLink]="'/bai-viet'" [queryParams]="{ type: 'listblog' }" class="col-md-4 mb-6 mb-md-0">
+        <a [routerLink]="'bai-viet'" class="col-md-4 mb-6 mb-md-0">
           <div class="card border-0 text-center hover-shine">
             <div class="d-block hover-shine hover-zoom-in">
               <img src="assets/images/image-box-13.jpg" alt="From Our Blog">
@@ -1730,7 +1734,7 @@
             </div>
           </div>
         </a>
-        <div (click)="LoadPage()" [routerLink]="'/bietvietchitiet'" [queryParams]="{ type: 'blogchitiet' }" class="col-md-4 mb-6 mb-md-0">
+        <div [routerLink]="'ve-chung-toi'" class="col-md-4 mb-6 mb-md-0">
           <div class="card border-0 text-center hover-shine">
             <a href="about-us-01.html" class="d-block hover-shine hover-zoom-in">
               <img src="assets/images/image-box-14.jpg" alt="Our Story">
@@ -1745,4 +1749,3 @@
       </div>
     </div>
   </section>
-</main>

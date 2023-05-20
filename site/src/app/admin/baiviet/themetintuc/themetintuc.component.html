@@ -108,7 +108,7 @@
             <div class="w-1/2">
                 <label for="">Hình Thumbnail</label>
                 <input (change)="onFileBrowse($event, 99)" type="file" accept="image/*">
-                <img src="{{data.Image | checkimage}}" alt="">
+                <img src="{{data.Image}}" alt="">
             </div>
             <div class="w-1/2">
                 <label for="">Hình Nổi bật</label>
@@ -146,7 +146,7 @@
                                 </path>
                             </svg></a></div>
                 </div>
-                <div [innerHTML]="data.Baiviet | safe:'html'" class="space-y-3 lg:text-base text-sm text-justify"
+                <div [innerHTML]="data.Baiviet" class="space-y-3 lg:text-base text-sm text-justify"
                     (click)="getValue(data.Baiviet,0,0)">
                 </div>
             </div>

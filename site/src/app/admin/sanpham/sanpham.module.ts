@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@tazagroup/shared';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { SwiperModule } from 'swiper/angular';
 import { SanphamComponent } from './sanpham.component';
 import { DetailsanphamComponent } from './detailsanpham/detailsanpham.component';
 import { DetaildanhmucComponent } from './detaildanhmuc/detaildanhmuc.component';
+import { MaterialModule } from 'src/app/shared/material.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +15,6 @@ import { DetaildanhmucComponent } from './detaildanhmuc/detaildanhmuc.component'
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    SwiperModule,
     EditorModule,
     RouterModule.forChild([
       {

@@ -1,17 +1,16 @@
 <app-header></app-header>
 <main id="content">
-<app-trangchu *ngIf="type=='trangchu'"></app-trangchu>
+  <router-outlet></router-outlet>
+  
+<!-- <app-trangchu *ngIf="type=='trangchu'"></app-trangchu>
 <app-sanphamchitiet *ngIf="type=='chitiet'"></app-sanphamchitiet>
 <app-listsanpham *ngIf="type=='listsanpham'"></app-listsanpham>
 <app-bloglist *ngIf="type=='listblog'"></app-bloglist>
 <app-blogchitiet *ngIf="type=='blogchitiet'"></app-blogchitiet>
 <app-vechungtoi *ngIf="type=='vechungtoi'"></app-vechungtoi>
-<app-lienhe *ngIf="type=='lienhe'"></app-lienhe>
+<app-lienhe *ngIf="type=='lienhe'"></app-lienhe> -->
 </main>
 <app-footer></app-footer>
-
-
-
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -931,22 +930,22 @@
           </a>
         </li>
         <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-          <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'san-pham'" [queryParams]="{ type: 'listsanpham' }">
+          <a class="nav-link text-nowrap p-0" [routerLink]="'san-pham'">
             SẢN PHẨM
           </a>
         </li>
         <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-          <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/ve-chung-toi'" [queryParams]="{ type: 'vechungtoi' }">
+          <a class="nav-link text-nowrap p-0" [routerLink]="'ve-chung-toi'">
             VỀ h.DERMA
           </a>
         </li>
         <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-          <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/bai-viet'" [queryParams]="{ type: 'listblog' }">
+          <a class="nav-link text-nowrap p-0" [routerLink]="'bai-viet'">
             GÓC CHIA SẺ
           </a>
         </li>
         <li aria-haspopup="true" aria-expanded="false" class="nav-item dropdown py-1 px-0">
-          <a class="nav-link text-nowrap p-0" (click)="LoadPage()" [routerLink]="'/lien-he'" [queryParams]="{ type: 'lienhe' }">
+          <a class="nav-link text-nowrap p-0" [routerLink]="'lien-he'">
             LIÊN HỆ
           </a>
         </li>

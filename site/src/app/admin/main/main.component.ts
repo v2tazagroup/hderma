@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
-import { AuthService } from 'libs/shared/src/lib/auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'tazagroup-main',
   templateUrl: './main.component.html',

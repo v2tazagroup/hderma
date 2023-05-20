@@ -4,7 +4,7 @@ import { CauhinhComponent } from './cauhinh.component';
 import { ChiendichComponent } from './chiendich/chiendich.component';
 import { HoahongComponent } from './hoahong/hoahong.component';
 import { NhiemvuComponent } from './nhiemvu/nhiemvu.component';
-import { MaterialModule } from '@tazagroup/shared';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';

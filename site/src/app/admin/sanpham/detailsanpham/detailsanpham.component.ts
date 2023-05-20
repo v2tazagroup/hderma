@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '@tazagroup/shared/environments';
+import { environment } from 'src/app/environment';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { NotifierService } from 'angular-notifier';
 import { DanhmucProductService } from '../../danhmuc-product/danhmuc-product.service';

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { BaivietService } from '../baiviet.service';
-import { environment } from '@tazagroup/shared/environments';
+import { environment } from 'src/app/environment';
 import { BaivietThemeTintucsukien } from '../dataTheme';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -95,7 +95,7 @@ export class ThemetintucComponent implements OnInit {
     },
     entity_encoding: 'raw',
     file_picker_types: 'image media',
-    file_picker_callback: function (cb, value, meta: any) {
+    file_picker_callback: function (cb:any, value:any, meta: any) {
       if (meta.filetype == 'media') {
         const input: any = document.createElement('input');
         input.setAttribute('type', 'file');
@@ -150,7 +150,7 @@ export class ThemetintucComponent implements OnInit {
         input.click();
       }
     },
-    init_instance_callback: function (editor) {},
+    init_instance_callback: function (editor:any) {},
   };
   constructor(
     private _baivietService: BaivietService,

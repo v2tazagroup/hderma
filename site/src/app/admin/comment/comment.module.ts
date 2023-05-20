@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@tazagroup/shared';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { SwiperModule } from 'swiper/angular';
 import { CommentComponent } from './comment.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { CommentComponent } from './comment.component';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    SwiperModule,
     EditorModule,
     RouterModule.forChild([
       {

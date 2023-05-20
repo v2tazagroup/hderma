@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@tazagroup/shared';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { BaivietComponent } from './baiviet.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { SwiperModule } from 'swiper/angular';
 import { ThemetintucComponent } from './themetintuc/themetintuc.component';
-import { SharedpipeModule } from '@tazagroup/shared/utils';
 import { BaivietChitietComponent } from './baiviet-chitiet/baiviet-chitiet.component';
 import { BaivietDanhmucComponent } from './baiviet-danhmuc/baiviet-danhmuc.component';
 
@@ -19,8 +17,6 @@ import { BaivietDanhmucComponent } from './baiviet-danhmuc/baiviet-danhmuc.compo
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SwiperModule,
-    SharedpipeModule,
     EditorModule,
     RouterModule.forChild([
       {

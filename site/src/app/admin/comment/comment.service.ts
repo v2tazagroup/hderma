@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '@tazagroup/shared/environments';
+import { environment } from 'src/app/environment';
 import { BehaviorSubject, map, Observable, switchMap, take } from 'rxjs';
 
 

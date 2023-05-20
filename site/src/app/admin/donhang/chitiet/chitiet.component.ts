@@ -6,13 +6,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
-import { TTDonhang } from '@tazagroup/shared/datatype';
 import { NotifierService } from 'angular-notifier';
 import { LinkService } from '../../product/link.service';
 import { ProductService } from '../../product/product.service';
 import { TichdiemService } from '../../tichdiem/tichdiem.service';
 import { DonhangService } from '../donhang.service';
 import { ActivatedRoute } from '@angular/router';
+import { TTDonhang } from 'src/app/shared/datatype';
 
 @Component({
   selector: 'tazagroup-chitiet',

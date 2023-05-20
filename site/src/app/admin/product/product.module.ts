@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@tazagroup/shared';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { SwiperModule } from 'swiper/angular';
 import { ProductComponent } from './product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
@@ -16,7 +15,6 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    SwiperModule,
     EditorModule,
     RouterModule.forChild([
       {

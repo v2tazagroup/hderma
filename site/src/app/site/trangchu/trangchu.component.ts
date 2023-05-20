@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TrangchuService } from './trangchu.service';
 import { Location } from '@angular/common';
-import { BaivietService } from '../service/baiviet.service';
+import { BaivietService } from 'src/app/shared/service/baiviet.service';
+import { environment } from 'src/app/environment';
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
@@ -13,13 +14,19 @@ export class TrangchuComponent implements OnInit {
     private _BaivietService:BaivietService,
     private location: Location
     ) { }
+  Base = environment.BaseUrl;
   Sanphams:any[]=[]
   Baiviets:any[]=[]
   ngOnInit() {
     if(history.state.navigationId!=1){this.LoadPage()}
     this._TrangchuService.getProduct().subscribe((data)=>
     {
-        if(data){this.Sanphams = data}
+        if(data){
+          this.Sanphams = data
+          console.log(data);
+          
+        }
+
     })
     this._BaivietService.getBaiviets().subscribe((data)=>
     {

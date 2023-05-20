@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BaivietService } from 'src/app/shared/service/baiviet.service';
 
 @Component({
   selector: 'app-blogchitiet',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogchitietComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private _BaivietService:BaivietService,
+    private _ActivatedRoute:ActivatedRoute,
+    ) {}
+  Baiviet:any
+  Bailienquan:any
   ngOnInit() {
+    if(history.state.navigationId!=1){location.reload()}
+    this._ActivatedRoute.params.subscribe((paramsId) => {
+      this._BaivietService.getBaivietDetail(paramsId['slug']).subscribe((data)=>{this.Baiviet = data
+      console.log(data);
+      });
+    })
+    this._BaivietService.getBaiviets().subscribe((data)=>{this.Bailienquan = data.slice(0,3)
+      console.log(data);
+      });
   }
 
 }

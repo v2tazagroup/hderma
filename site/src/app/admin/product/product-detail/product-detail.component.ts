@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from '@tazagroup/shared/environments';
+import { environment } from 'src/app/environment';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import tinymce from 'tinymce';
 import { DanhmucProductService } from '../../danhmuc-product/danhmuc-product.service';

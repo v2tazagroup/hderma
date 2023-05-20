@@ -10,6 +10,7 @@ export class LienheComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(history.state.navigationId!=1){location.reload()}
   }
 
 }

@@ -1533,5 +1533,9 @@
         APP.countdown.init();
         APP.canvas.init();
         APP.shopSingle.init();
+        $('.shop-btn').click(function(event) {
+            event.stopPropagation(); // Prevent the click event from bubbling up to the parent
+            // Your code to handle the click on the child element goes here
+          });
     });
 })(jQuery);

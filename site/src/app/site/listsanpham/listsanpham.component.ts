@@ -27,12 +27,12 @@ export class ListsanphamComponent implements OnInit {
   currentPage = 1;
   totalItems = 1;
   Base = environment.BaseUrl;
+  TypeView:boolean=false
   ngOnInit() {
-    if (history.state.navigationId != 1) { this.LoadPage() }
     this._TrangchuService.getProduct().subscribe((data) => {
       if (data) {
-        this.Sanphams = data
-        this.PagiSanphams = this.Sanphams.slice(0, 12)
+        this.Sanphams = data.filter((v:any)=>v.Trangthai==0)
+        this.PagiSanphams = this.Sanphams.slice(0, this.itemsPerPage)
         this.totalItems = data.length
       }
     })
@@ -43,7 +43,6 @@ export class ListsanphamComponent implements OnInit {
         this.TagsLoai = data.filter((v: any) => v.Loaitag == 1)
       }
     })
-    if (history.state.navigationId != 1) { this.LoadPage() }
   }
   GetImage(img: any) {
     return environment.BaseUrl + img;
@@ -83,11 +82,6 @@ export class ListsanphamComponent implements OnInit {
   }
   setPage(page: number) {
     this.currentPage = page;
-  }
-  LoadPage() {
-    setTimeout(() => {
-      location.reload();
-    }, 0);
   }
 
 }

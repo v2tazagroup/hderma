@@ -19,13 +19,6 @@ export class MainComponent implements OnInit {
     this.type = params['type'] || 'trangchu'
     localStorage.setItem('type',JSON.stringify(this.type));
     });
-    if(history.state.navigationId!=1){this.LoadPage()}
-  }
-  LoadPage()
-  {
-    setTimeout(() => {
-      location.reload();
-    }, 0);
   }
   
 }

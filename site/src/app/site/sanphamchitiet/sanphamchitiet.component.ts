@@ -35,7 +35,7 @@ export class SanphamchitietComponent implements OnInit {
       this._SanphamService.getProductDetail(paramsId['slug']).subscribe((data:any)=>{this.Sanpham = data
         console.log(data);
         this._SanphamService.getProduct().subscribe((data1)=>{
-          this.SPTuongtu = data1.filter((v:any)=>{return v.Danhmuc.id == data.Danhmuc.id})
+          this.SPTuongtu = data1.filter((v:any)=>{return v.Danhmuc.id == data.Danhmuc.id}).slice(0,4)
           console.log(this.SPTuongtu);
           
         })

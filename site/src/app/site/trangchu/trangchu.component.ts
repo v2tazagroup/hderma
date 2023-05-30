@@ -18,29 +18,21 @@ export class TrangchuComponent implements OnInit {
   Sanphams:any[]=[]
   Baiviets:any[]=[]
   ngOnInit() {
-    if(history.state.navigationId!=1){this.LoadPage()}
+    if(history.state.navigationId!=1){location.reload()}
     this._TrangchuService.getProduct().subscribe((data)=>
     {
         if(data){
-          this.Sanphams = data
-          console.log(data);
-          
+          this.Sanphams = data.filter((v:any)=>v.Trangthai==0)
         }
 
     })
     this._BaivietService.getBaiviets().subscribe((data)=>
     {
-      if(data){this.Baiviets = data}
+      if(data){this.Baiviets = data.filter((v:any)=>v.Trangthai==0)}
     })   
   }
   Soluong(data:any,begin:any,end:any)
   {
     return data.slice(begin, end)
-  }
-  LoadPage()
-  {
-    setTimeout(() => {
-      location.reload();
-    }, 0);
   }
 }

@@ -3,17 +3,17 @@
     <h2 class="text-center mt-9 mb-8">H.DERMA VÌ VẺ ĐẸP LÀ SỰ PHÙ HỢP</h2>
     <div class="d-flex justify-content-between align-items-center flex-wrap">
       <p class="fs-18 font-weight-500 my-lg-0 my-2" style="color: #696969;">Có <strong
-          class="font-weight-bold text-secondary">{{Sanphams.length}}</strong>
+          class="font-weight-bold text-secondary">{{PagiSanphams.length}}</strong>
         sản phẩm dành riêng cho bạn</p>
       <div class="d-flex align-items-center">
         <div class="switch-layout d-lg-flex align-items-center d-none">
           <span class="pr-5">Cách hiển thị</span>
-          <a href="#" class="active pr-5" title="Grid View">
+          <a (click)="TypeView=!TypeView" class="pr-5" title="Grid View">
             <svg class="icon icon-squares-four fs-32 hover-secondary">
               <use xlink:href="#icon-squares-four"></use>
             </svg>
           </a>
-          <a href="shop-page-05.html" title="List View">
+          <a (click)="TypeView=!TypeView" title="List View">
             <svg class="icon icon-list fs-32 hover-secondary">
               <use xlink:href="#icon-list"></use>
             </svg>
@@ -51,8 +51,7 @@
                     class="text-uppercase fs-14 letter-spacing-005 font-weight-600 text-body hover-secondary text-decoration-none">TÌNH
                     TRẠNG DA</a>
                   <ul class="list-unstyled ml-5 mt-2 mb-5">
-                    <li class="my-2" *ngFor="let item of TagsTinhtrang;let i = index"
-                      (click)="checkboxTags(item,i)">
+                    <li class="my-2" *ngFor="let item of TagsTinhtrang;let i = index" (click)="checkboxTags(item,i)">
                       <span class="text-body hover-secondary">
                         <span class="material-icons text-primary" *ngIf="item.checked">
                           done
@@ -66,8 +65,7 @@
                     class="text-uppercase fs-14 letter-spacing-005 font-weight-600 text-body hover-secondary text-decoration-none">LOẠI
                     SẢN PHẨM</a>
                   <ul class="list-unstyled ml-5 mt-2 mb-5">
-                    <li class="my-2" *ngFor="let item of TagsLoai;let i = index"
-                      (click)="checkTagsLoai(item,i);">
+                    <li class="my-2" *ngFor="let item of TagsLoai;let i = index" (click)="checkTagsLoai(item,i);">
                       <span class="text-body hover-secondary">
                         <span class="material-icons  text-primary" *ngIf="item.checked">
                           done
@@ -80,25 +78,76 @@
           </div>
         </div>
       </div>
+      <!-- table view -->
       <div class="col-lg-9">
-        <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of PagiSanphams">
-            <a [routerLink]="[item.Slug]" class="card border-0 product mb-6">
-              <div class="position-relative">
+        <div class="row" *ngIf="TypeView">
+          <div class="media flex-column flex-md-row mb-7" *ngFor="let item of PagiSanphams">
+            <a [routerLink]="[item.Slug]" class="position-relative mw-md-258">
+              <ng-container *ngIf="item.Hinhanh.Image; else elseTemplate">
                 <img *ngIf="item.Hinhanh.Image" src="{{(Base+item.Hinhanh.Image.spath)||''}}" alt="">
+              </ng-container>
+              <ng-template #elseTemplate>
                 <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+              </ng-template>
+              <div class="card-img-overlay p-3">
+                <span class="badge badge-primary">-20%</span>
+              </div>
+            </a>
+            <div class="media-body ml-md-6 mt-4">
+              <a [routerLink]="[item.Slug]" class="card-body pt-4 text-left px-0">
+                <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
+                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
+                  <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
+                </p>
+                <h2 class="card-title fs-15 font-weight-500 mb-2"><span>{{item.Tieude}}</span></h2>
+              </a>
+                <div class="d-flex align-items-center flex-wrap">
+                  <ul class="list-inline mb-0 lh-1">
+                    <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>
+                    <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>
+                    <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>
+                    <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>
+                    <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>
+                  </ul>
+                  <span class="card-text fs-14 font-weight-400 pl-2 lh-1">2947 reviews</span>
+                </div>
+              <p class="mb-7 py-2 mr-xl-8" [innerHTML]="item.Mota"></p>
+              <div class="d-flex align-items-center flex-row">
+                <div class="mr-sm-4">
+                  <a href="#" class="btn btn-secondary bg-hover-primary border-hover-primary px-sm-7 px-3"><span
+                    class="material-icons">
+                    shopping_cart
+                  </span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="!TypeView">
+          
+          <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let item of PagiSanphams">
+            <div class="card border-0 product mb-6">
+              <div class="position-relative">
+                <a [routerLink]="[item.Slug]">
+                  <ng-container *ngIf="item.Hinhanh.Image; else elseTemplate">
+                    <img *ngIf="item.Hinhanh.Image" src="{{(Base+item.Hinhanh.Image.spath)||''}}" alt="">
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+                  </ng-template>
+              </a>
                 <div class="card-img-overlay d-flex p-3 flex-column">
                   <div class="mb-auto d-flex justify-content-center">
                   </div>
                   <div class="text-center">
-                    <a href="#" class="btn btn-secondary bg-hover-primary border-hover-primary lh-12"><span
+                    <a href="#" class="shop-btn btn btn-secondary bg-hover-primary border-hover-primary lh-12"><span
                         class="material-icons">
                         shopping_cart
                       </span></a>
                   </div>
                 </div>
               </div>
-              <div class="card-body pt-4 text-center px-0">
+              <a [routerLink]="[item.Slug]" class="card-body pt-4 text-center px-0">
                 <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
                   <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
                   <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
@@ -114,48 +163,17 @@
                   </ul>
                   <!-- <span class="card-text fs-14 font-weight-400 pl-2 lh-1">2947 reviews</span> -->
                 </div>
-              </div>
             </a>
+            </div>
           </div>
         </div>
         <div class="row justify-content-center">
-          <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [nextText]="'>>'"
-            [previousText]="'<<'" [lastText]="''" [maxSize]="5" [(ngModel)]="currentPage" name="currentPage"
+          <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [nextText]="'>>'" [previousText]="'<<'"
+            [lastText]="''" [maxSize]="5" [(ngModel)]="currentPage" name="currentPage"
             (pageChanged)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)"></pagination>
         </div>
-
-        <!-- <nav class="pt-3">
-            <ul class="pagination justify-content-center align-items-center mb-0 fs-16 font-weight-600">
-              <li class="page-item fs-18 d-none d-sm-block">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#" tabindex="-1"><i class="far fa-angle-double-left"></i></a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">1</a>
-              </li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">3</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">4</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">5</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">...</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#">16</a>
-              </li>
-              <li class="page-item fs-18 d-none d-sm-block">
-                <a class="page-link rounded-circle w-40px h-40 p-0 justify-content-center align-items-center d-flex" href="#"><i class="far fa-angle-double-right"></i></a>
-              </li>
-            </ul>
-          </nav> -->
       </div>
+
     </div>
   </div>
 </section>

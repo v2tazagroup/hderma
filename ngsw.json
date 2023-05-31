@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1685508655597,
+  "timestamp": 1685508986173,
   "index": "https://v2tazagroup.github.io/hderma/index.html",
   "assetGroups": [
     {
@@ -1234,9 +1234,9 @@
     "https://v2tazagroup.github.io/hderma/assets/trangchu/hderma.jpg": "7332a1402f1cb39871f51d4faf4840d9395f1795",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/hethongcuahang.jpg": "d0d07f5485627ff0fe102877350295c8620bba30",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1.jpg": "d659a81b51a4c9404701a6ec73a11c4f5aae0409",
-    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1_mobile.jpg": "0378724dbc54268209620b1dff7928221b95ae54",
+    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1_mobile.jpg": "19b06d546a60f5f92fd4602a20b8831a547f8db2",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2.jpg": "e1cf8dd4be149167671fee78e54fea5641961875",
-    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2_mobile.jpg": "c1f6b00a7c3c9029913b70154d8b3d4d2bee601e",
+    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2_mobile.jpg": "30b15b3ff3c4a7f368913e00d73e52dfa0c9cb26",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu3.jpg": "0d507c8e08341e66792e10bdef4fdd68a7f4e812",
     "https://v2tazagroup.github.io/hderma/assets/vendors/anchor/anchor.min.js": "9d2427812aa3b42254d2937e255f313aff2d35dd",
     "https://v2tazagroup.github.io/hderma/assets/vendors/animate.css": "773d406c486bf652ea9c7ca499917de82e6b81f4",

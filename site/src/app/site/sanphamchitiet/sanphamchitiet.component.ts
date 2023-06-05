@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { environment } from 'src/app/environment';
 import { SanphamService } from 'src/app/shared/sanpham.service';
+import { GetImage } from 'src/app/shared/shared.utils';
 import { TagsService } from 'src/app/shared/tags.service';
 
 @Component({
@@ -50,35 +51,48 @@ export class SanphamchitietComponent implements OnInit {
     //   });
   GetImage(img:any)
     {
-      return environment.BaseUrl+img;
+     return GetImage(img);
     }
-  //  Dangnhap(user: any) {
-  //     if (user.SDT == undefined || user.SDT == '') {
-  //       this._notifierService.show({
-  //         message: 'Vui lòng nhập số điện thoại',
-  //         type: 'error',
-  //       });
-  //     } else if (user.password == undefined || user.password == '') {
-  //       this._notifierService.show({
-  //         message: 'Vui lòng nhập Mật Khẩu',
-  //         type: 'error',
-  //       });
-  //     } else {
-  //       this._authService.Dangnhap(user).subscribe(data => {
-  //         console.log(data);
-  //         if (!data[0]) {
-  //           this._notifierService.show({
-  //             message: data[1],
-  //             type: 'error',
-  //           });
-  //         }
-  //         else
-  //         {
-  //           const redirectURL = this._ActivatedRoute.snapshot.queryParamMap.get('redirectURL') || '/';
-  //           this._router.navigateByUrl(redirectURL);
-  //         }
-  //       });
-  //     }
-  //   }
-  
+    slideConfig = {
+      "slidesToShow": 4, 
+      "slidesToScroll": 2,
+      "dots": true,
+      "autoplay": true,
+      "autoplaySpeed": 2000,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    };
+    addSlide() {
+    }
+    removeSlide() {
+    }
+    
+    slickInit(e:any) {
+    }
+    
+    breakpoint(e:any) {
+    }
+    afterChange(e:any) {
+    }
+    
+    beforeChange(e:any) {
+    }
 }

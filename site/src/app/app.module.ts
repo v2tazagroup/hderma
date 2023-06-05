@@ -27,6 +27,8 @@ import { ThongtinComponent } from './site/thongtin/thongtin.component';
 import { DonhangComponent } from './admin/donhang/donhang.component';
 import { ThanhtoanComponent } from './site/thanhtoan/thanhtoan.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NotifierModule } from 'angular-notifier';
+import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +41,52 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     VechungtoiComponent,
     LienheComponent,
     MainComponent,
-    TrangchuComponent
+    TrangchuComponent,
+    Giohang_miniComponent,
+    GiohangComponent
   ],
   imports: [
+    NotifierModule,
+    NotifierModule.withConfig( {
+      position: {
+        horizontal: {
+          position: 'right',
+          distance: 12,
+        },
+        vertical: {
+          position: 'top',
+          distance: 12,
+          gap: 10,
+        },
+      },
+      theme: 'material',
+      behaviour: {
+        autoHide: 5000,
+        onClick: 'hide',
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: true,
+        stacking: 4,
+      },
+      animations: {
+        enabled: true,
+        show: {
+          preset: 'slide',
+          speed: 300,
+          easing: 'ease',
+        },
+        hide: {
+          preset: 'fade',
+          speed: 300,
+          easing: 'ease',
+          offset: 50,
+        },
+        shift: {
+          speed: 300,
+          easing: 'ease',
+        },
+        overlap: 150,
+      },
+    }),
     BrowserModule,
     MaterialModule,
     HttpClientModule,
@@ -73,12 +118,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
               { path: 'thong-tin', component: ThongtinComponent },
               { path: 'don-hang', component: DonhangComponent },
             ]
-            // { path: ':id', component: MainComponent, data: { type: 'chitiet' }},
-            // { path: ':id', component: MainComponent, data: { type: 'listsanpham' }},
-            // { path: ':id', component: MainComponent, data: { type: 'listblog' }},
-            // { path: ':id', component: MainComponent, data: { type: 'blogchitiet' }},
-            // { path: ':id', component: MainComponent, data: { type: 'vechungtoi' }},
-            // { path: ':id', component: MainComponent, data: { type: 'lienhe' }}, 
           },
           {
             path: 'admin',

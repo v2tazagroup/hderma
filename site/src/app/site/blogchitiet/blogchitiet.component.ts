@@ -47,5 +47,46 @@ export class BlogchitietComponent implements OnInit {
   {   
     return data?false:true;
   }
-
+  slideConfig = {
+    "slidesToShow": 4, 
+    "slidesToScroll": 2,
+    "dots": true,
+    "autoplay": true,
+    "autoplaySpeed": 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
+  addSlide() {
+  }
+  removeSlide() {
+  }
+  
+  slickInit(e:any) {
+  }
+  
+  breakpoint(e:any) {
+  }
+  afterChange(e:any) {
+  }
+  
+  beforeChange(e:any) {
+  }
 }

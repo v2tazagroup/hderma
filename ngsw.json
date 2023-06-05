@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1685900240833,
+  "timestamp": 1685958428919,
   "index": "https://v2tazagroup.github.io/hderma/index.html",
   "assetGroups": [
     {
@@ -11,9 +11,9 @@
         "ignoreVary": true
       },
       "urls": [
+        "https://v2tazagroup.github.io/hderma/115.f3f6a839fd06e107.js",
         "https://v2tazagroup.github.io/hderma/189.a579ac19b772a9a9.js",
-        "https://v2tazagroup.github.io/hderma/239.6e64725d8ee9b44a.js",
-        "https://v2tazagroup.github.io/hderma/307.29bd521f1df4f391.js",
+        "https://v2tazagroup.github.io/hderma/239.8cdcff51c54b791e.js",
         "https://v2tazagroup.github.io/hderma/465.15484109cd7e5b71.js",
         "https://v2tazagroup.github.io/hderma/505.8840bece2c30d2fa.js",
         "https://v2tazagroup.github.io/hderma/519.5d07ef30684a43b2.js",
@@ -21,14 +21,15 @@
         "https://v2tazagroup.github.io/hderma/888.ff2b5f8cff41eb17.js",
         "https://v2tazagroup.github.io/hderma/946.8f782a3220f3a7e2.js",
         "https://v2tazagroup.github.io/hderma/959.55c0916e53c0a7f4.js",
-        "https://v2tazagroup.github.io/hderma/common.c40a5449008d38cd.js",
+        "https://v2tazagroup.github.io/hderma/common.dc54f132615e4306.js",
         "https://v2tazagroup.github.io/hderma/favicon.ico",
         "https://v2tazagroup.github.io/hderma/index.html",
-        "https://v2tazagroup.github.io/hderma/main.d6e991ae78607412.js",
+        "https://v2tazagroup.github.io/hderma/main.dfc71dc279c30041.js",
         "https://v2tazagroup.github.io/hderma/manifest.webmanifest",
         "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js",
-        "https://v2tazagroup.github.io/hderma/runtime.e7e8c9ec0689df18.js",
-        "https://v2tazagroup.github.io/hderma/styles.9e1d1d89fb901e4b.css"
+        "https://v2tazagroup.github.io/hderma/runtime.a5a29c200afbdca4.js",
+        "https://v2tazagroup.github.io/hderma/scripts.83d6fee10773d5b4.js",
+        "https://v2tazagroup.github.io/hderma/styles.86184e02b7b59500.css"
       ],
       "patterns": []
     },
@@ -40,6 +41,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "https://v2tazagroup.github.io/hderma/ajax-loader.0b80f665935ef7de.gif",
         "https://v2tazagroup.github.io/hderma/assets/css/docs.css",
         "https://v2tazagroup.github.io/hderma/assets/css/docs.css.map",
         "https://v2tazagroup.github.io/hderma/assets/css/docs.min.css",
@@ -754,16 +756,19 @@
         "https://v2tazagroup.github.io/hderma/assets/vendors/slick/slick.min.css",
         "https://v2tazagroup.github.io/hderma/assets/vendors/slick/slick.min.js",
         "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.js",
-        "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.min.js"
+        "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.min.js",
+        "https://v2tazagroup.github.io/hderma/slick.653a4cbba6e1a2b3.woff",
+        "https://v2tazagroup.github.io/hderma/slick.6aa1ee46202fac6e.ttf",
+        "https://v2tazagroup.github.io/hderma/slick.f895cfdf693e6229.svg"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
+    "https://v2tazagroup.github.io/hderma/115.f3f6a839fd06e107.js": "02ae4a7d5c03110049130b5df3d190f970d8595a",
     "https://v2tazagroup.github.io/hderma/189.a579ac19b772a9a9.js": "b3832bdade72550722db6c1cca1ea91b1a38c71c",
-    "https://v2tazagroup.github.io/hderma/239.6e64725d8ee9b44a.js": "d3aff295d92e9172c842050d7b3aaf5f154fc51a",
-    "https://v2tazagroup.github.io/hderma/307.29bd521f1df4f391.js": "bfdc176ce13a5b426408d161c3e983d1bd387bdc",
+    "https://v2tazagroup.github.io/hderma/239.8cdcff51c54b791e.js": "6524210398670f3eb45ac0f5e30326cf17a1198c",
     "https://v2tazagroup.github.io/hderma/465.15484109cd7e5b71.js": "343e91412c5afdecb0b2b588ab400d1f3fc6a1b7",
     "https://v2tazagroup.github.io/hderma/505.8840bece2c30d2fa.js": "3613cb725631a8d4aa7306eb38b0e923239a5e37",
     "https://v2tazagroup.github.io/hderma/519.5d07ef30684a43b2.js": "216f24eb776cbef8c8bacec98d46f117872cadd8",
@@ -771,11 +776,12 @@
     "https://v2tazagroup.github.io/hderma/888.ff2b5f8cff41eb17.js": "9592e10e909eaa2ea2fd114a2ad34e92de982c6a",
     "https://v2tazagroup.github.io/hderma/946.8f782a3220f3a7e2.js": "e85e572459fba41b35a4ea6cbea9bd318a2b6c4a",
     "https://v2tazagroup.github.io/hderma/959.55c0916e53c0a7f4.js": "d63e9161e448f65b175b090b0f1f71193b45f4fb",
+    "https://v2tazagroup.github.io/hderma/ajax-loader.0b80f665935ef7de.gif": "7a1aa43614396382bb15e5fde574d9cdcd21698f",
     "https://v2tazagroup.github.io/hderma/assets/css/docs.css": "d2b544b3875a6404db48c16ff67e1f98de32e999",
     "https://v2tazagroup.github.io/hderma/assets/css/docs.css.map": "15e2f224a586e84af4d6c5c88178489c4e51ce4a",
     "https://v2tazagroup.github.io/hderma/assets/css/docs.min.css": "184bfa9672ab4c331bd1af0558ea8b0f5677eea2",
     "https://v2tazagroup.github.io/hderma/assets/css/docs.min.css.map": "f4cc235d9c2673dac36e7104272b544c20847f0e",
-    "https://v2tazagroup.github.io/hderma/assets/css/themes.css": "1752351578cd55ea83c9fb51779393be3f878e91",
+    "https://v2tazagroup.github.io/hderma/assets/css/themes.css": "091abdcbb64b6f01b31647773dfc21947c88b0f1",
     "https://v2tazagroup.github.io/hderma/assets/css/themes.css.map": "a96397bb9186eb0b91f428d1671b4b72a0acb1dd",
     "https://v2tazagroup.github.io/hderma/assets/css/themes.min.css": "48cb31d1bfaee4a1b5390b4aa33f681df8085249",
     "https://v2tazagroup.github.io/hderma/assets/css/themes.min.css.map": "e8d29987cc3f5d2a97a055a0eb1de1ee854ffa90",
@@ -1230,7 +1236,7 @@
     "https://v2tazagroup.github.io/hderma/assets/images/video-03.jpg": "8638be111021478054fe1431b0e5ad8d0664d042",
     "https://v2tazagroup.github.io/hderma/assets/js/doc.js": "8fa21c5cf6bcc986fc7863337027467b69a6aedc",
     "https://v2tazagroup.github.io/hderma/assets/js/doc.min.js": "392f4ceb9007ea4a721bfbe25f8b3759a3f31238",
-    "https://v2tazagroup.github.io/hderma/assets/js/theme.js": "fa773e64e1be5b31519cd8ecddf85035867a8a51",
+    "https://v2tazagroup.github.io/hderma/assets/js/theme.js": "8384b94ef799e976eea7613afbeea65dbf9b1fdc",
     "https://v2tazagroup.github.io/hderma/assets/js/theme.min.js": "13f851b30140da4f195eb9b513082f9326b84e8b",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/chiase.jpg": "b8adcef067b8f0e3e6005779fd63edf47282e0d8",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/gioithieu-0.jpg": "acee04de988fb81b6c7d7abe768fe29e007eb4a2",
@@ -1245,17 +1251,17 @@
     "https://v2tazagroup.github.io/hderma/assets/trangchu/instagram-05.jpg": "560a66fa0799a339cb5edc624f7e4b4e3fec6901",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/instagram-06.jpg": "40464cc0083f68e2c7f8a9ae26828e1376d19ead",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/sidebar-blog-01.jpg": "6e88eb1e36d376088a382b2a8ffc1f023ec8d171",
-    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1.jpg": "d659a81b51a4c9404701a6ec73a11c4f5aae0409",
+    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1.jpg": "c3cf8966931414626081646c0faa05f6711fc0a4",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu1_mobile.jpg": "19b06d546a60f5f92fd4602a20b8831a547f8db2",
-    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2.jpg": "e1cf8dd4be149167671fee78e54fea5641961875",
-    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2_mobile.jpg": "30b15b3ff3c4a7f368913e00d73e52dfa0c9cb26",
+    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2.jpg": "0363e7edf44deff0aa04dee0cadf42ef91cef40f",
+    "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu2_mobile.jpg": "383a5cc45d1007add2cca4a650757cdfab67f02a",
     "https://v2tazagroup.github.io/hderma/assets/trangchu/trangchu3.jpg": "0d507c8e08341e66792e10bdef4fdd68a7f4e812",
     "https://v2tazagroup.github.io/hderma/assets/vendors/anchor/anchor.min.js": "9d2427812aa3b42254d2937e255f313aff2d35dd",
     "https://v2tazagroup.github.io/hderma/assets/vendors/animate.css": "773d406c486bf652ea9c7ca499917de82e6b81f4",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/css/bootstrap-select.css": "807bb1fa98cea9714f0025ee09be90fec243f013",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/css/bootstrap-select.css.map": "f3a22430786e51819ba1ae2a8c7ba8d8daaeb9f8",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/css/bootstrap-select.min.css": "aefc4756004cdae1903f6aaceb5ef20f76b277e4",
-    "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/js/bootstrap-select.js": "a15ac58f640857e0cebcdb252fd5837d523e682a",
+    "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/js/bootstrap-select.js": "61067d455f999e6b015ea5f46f2956ba9c6ebdef",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/js/bootstrap-select.js.map": "7910cff5eaaffc3215ecd51d9fff187166d7d028",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/js/bootstrap-select.min.js": "a4bee70d156f9bfd8291e09776dd2e5c1028c276",
     "https://v2tazagroup.github.io/hderma/assets/vendors/bootstrap-select/js/bootstrap-select.min.js.map": "dc08ce8d21448696b40140587e58eee34e846ad3",
@@ -1486,14 +1492,18 @@
     "https://v2tazagroup.github.io/hderma/assets/vendors/slick/slick.min.js": "9a94038ccae90e6d2a0f9cb61f79ae7c70320287",
     "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.js": "9a6d6f08c13257b1e3344e219593274bc75d3583",
     "https://v2tazagroup.github.io/hderma/assets/vendors/waypoints/jquery.waypoints.min.js": "bd089debff0c77413ce637ce6e2fcf9faf95e7b3",
-    "https://v2tazagroup.github.io/hderma/common.c40a5449008d38cd.js": "e9534ef86880568a4d6867188315cbbcbbaaf60e",
+    "https://v2tazagroup.github.io/hderma/common.dc54f132615e4306.js": "c734c6d1fbfa2b2a6487b59b307f2e6effce33f5",
     "https://v2tazagroup.github.io/hderma/favicon.ico": "ad9ab36b31a9ad2a4ab2935267ef52118a42f514",
-    "https://v2tazagroup.github.io/hderma/index.html": "cfbd698f5b4180280bc48bc875a869abf7e80e51",
-    "https://v2tazagroup.github.io/hderma/main.d6e991ae78607412.js": "75d8114652d06adf75662ce849f9390a5c01e93c",
-    "https://v2tazagroup.github.io/hderma/manifest.webmanifest": "88e80919f53920e327810743f0770dacb04c542a",
+    "https://v2tazagroup.github.io/hderma/index.html": "2119caf3874ce3108a109c6b4829131eda6a84ed",
+    "https://v2tazagroup.github.io/hderma/main.dfc71dc279c30041.js": "a2a1bc5b5999d83daaf9dba1c8008c51343a9bc3",
+    "https://v2tazagroup.github.io/hderma/manifest.webmanifest": "ebd23c7b62a8da9bfa8330749b4ec5daf75feb2f",
     "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js": "e6d94c48d9bd2572f6afc050605883b5624efd13",
-    "https://v2tazagroup.github.io/hderma/runtime.e7e8c9ec0689df18.js": "d75636f14cbe24c5a9ddc47b9af068d55d68f5bc",
-    "https://v2tazagroup.github.io/hderma/styles.9e1d1d89fb901e4b.css": "a81fd34bef8f52fb48c9da519d801f78b4a2222c"
+    "https://v2tazagroup.github.io/hderma/runtime.a5a29c200afbdca4.js": "af48b0a1341f4c1e5beca68043a04a31c5c96c7c",
+    "https://v2tazagroup.github.io/hderma/scripts.83d6fee10773d5b4.js": "ed3756d0d83c885adfb78a8d8158aa4f167d09b6",
+    "https://v2tazagroup.github.io/hderma/slick.653a4cbba6e1a2b3.woff": "af91c12f0f406a4f801aeb3b398768fe41d8f864",
+    "https://v2tazagroup.github.io/hderma/slick.6aa1ee46202fac6e.ttf": "3331eebdd4ba348ef25abe00c39ffbe867d46575",
+    "https://v2tazagroup.github.io/hderma/slick.f895cfdf693e6229.svg": "17f63c6f6131389462ba3d814b7ddf83344705f9",
+    "https://v2tazagroup.github.io/hderma/styles.86184e02b7b59500.css": "282671c77adcc1917cc7085580cb3418532b0e26"
   },
   "navigationUrls": [
     {

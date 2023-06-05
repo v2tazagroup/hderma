@@ -3,20 +3,20 @@
       <section class="pb-3">
         <div class="row">
           <div class="col-lg-8 offset-lg-2">
-            <div class="text-center mb-3">
+            <!-- <div class="text-center mb-3">
               <a href="#" class="badge text-secondary bg-gray-2  fs-15 py-1 lh-12 px-3 font-weight-500">
                 {{Baiviet.tag||'No Tag'}}
               </a>
-            </div>
+            </div> -->
             <h2 class="mb-2 fs-34 text-center">
               {{Baiviet.Title}}
             </h2>
             <ul class="list-inline lh-1 d-flex align-items-center justify-content-center mb-8 flex-wrap">
-              <li class="list-inline-item pr-3">
+              <!-- <li class="list-inline-item pr-3">
                 <span class="material-icons">account_circle</span>
               </li>
               <li class="list-inline-item pr-3 border-right border-2x">Tạo Bởi 
-                <a class="text-decoration-none" href="#">Admin</a></li>
+                <a class="text-decoration-none" href="#">Admin</a></li> -->
               <li class="list-inline-item pr-3">{{Baiviet.CreateAt|date:'dd/MM/yyyy'}}</li>
               <li class="list-inline-item pr-1"><span class="rounded-circle d-block"
                                                 style="width: 4px; height: 4px;background-color: #C4C4C4"></span>
@@ -35,7 +35,7 @@
               nice. We look our best in subdued colors, sophisticated cuts, and a general air of sleek
               understatement.
               I like the body. I like to design everything to do with the body.</p> -->
-              <div [innerHTML]="Baiviet.Baiviet"></div>
+              <div class="text-justify" [innerHTML]="Baiviet.Baiviet"></div>
           </div>
         </div>
       </section>
@@ -376,19 +376,15 @@
               <div class="col-sm-6 mb-4 mb-sm-0">
               </div>
               <div class="col-sm-6 d-flex justify-content-sm-end">
-                <label class="text-secondary font-weight-600 mr-4 mb-0">Share:</label>
+                <label class="text-secondary font-weight-600 mr-4 mb-0">Chia Sẽ : </label>
                 <ul class="list-inline mb-0 lh-1">
-                  <li class="list-inline-item mr-4"><a href="#" class="fs-18 lh-14 font-weight-normal"><i
-                class="fab fa-twitter"></i></a>
+                  <li class="list-inline-item mr-4"><a href="https://www.tiktok.com/@h.dermavietnam" class="fs-18 lh-14 font-weight-normal"><svg _ngcontent-ng-c2840633094="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height: 20px;"><path _ngcontent-ng-c2840633094="" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"></path></svg></a>
                   </li>
-                  <li class="list-inline-item mr-4"><a href="#" class="fs-18 lh-14 font-weight-normal"><i
+                  <li class="list-inline-item mr-4"><a href="https://www.facebook.com/hdermavietnam" class="fs-18 lh-14 font-weight-normal"><i
                 class="fab fa-facebook-f"></i></a>
                   </li>
-                  <li class="list-inline-item mr-4"><a href="#" class="fs-18 lh-14 font-weight-normal"><i
+                  <li class="list-inline-item mr-4"><a href="https://www.instagram.com/hdermavietnam/" class="fs-18 lh-14 font-weight-normal"><i
                 class="fab fa-instagram"></i></a>
-                  </li>
-                  <li class="list-inline-item"><a href="#" class="fs-18 lh-14 font-weight-normal"><i
-                class="fab fa-youtube"></i></a>
                   </li>
                 </ul>
               </div>
@@ -408,7 +404,12 @@
                 <div class="card border-0">
                   <a [routerLink]="[item.Slug]" 
                class="hover-shine card-img-top">
-               <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+               <ng-container *ngIf="Checkundefined(item.Hinhanh.hinhchinh); else elseTemplate1">
+                <img src="{{Base+item.Hinhanh.hinhchinh.spath}}" />
+               </ng-container>
+               <ng-template #elseTemplate1>
+                <img src="https://hderma.vn/assets/image/logo.svg" />
+               </ng-template>
                   </a>
                   <div class="card-body px-0 pt-3 pb-0">
                     <h3 class="card-title mb-0 fs-16 font-weight-600 lh-16 mt-2">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/app/environment';
 import { BaivietService } from 'src/app/shared/service/baiviet.service';
 
 @Component({
@@ -15,14 +16,18 @@ export class BloglistComponent implements OnInit {
   currentPage = 1;
   totalItems = 1;
   PagiBaiviets: any[] = [];
+  Base = environment.BaseUrl;
   ngOnInit() {
     this._BaivietService.getBaiviets().subscribe((data)=>{
-      console.log(data);
       this.Baiviets = data.sort((a:any, b:any) => b.Ngaytao - a.Ngaytao);
-      this.PagiBaiviets = data.slice(0, this.itemsPerPage)
-      this.totalItems = data.length
+      this.Baiviets = this.Baiviets.filter((v:any)=>v.pid!='b5552de3-155c-4708-8e37-f0350cbc3a80');
+      this.PagiBaiviets = this.Baiviets .slice(0, this.itemsPerPage)
+      this.totalItems = this.Baiviets .length
+      console.log(this.Baiviets);
     })
-    this._BaivietService.getDanhmucs().subscribe((data)=>{this.Danhmucs = data})
+    this._BaivietService.getDanhmucs().subscribe((data)=>{
+      this.Danhmucs = data.filter((v:any)=>v.id!='b5552de3-155c-4708-8e37-f0350cbc3a80');
+    })
     if(history.state.navigationId!=1){location.reload()}
   }
   ChoosenDanhmuc(item:any)
@@ -37,6 +42,7 @@ export class BloglistComponent implements OnInit {
     {
       return v.Title.trim().toLowerCase().includes(filterValue)||v.Mota.trim().toLowerCase().includes(filterValue)
     })
+    this.totalItems  = this.PagiBaiviets.length
   }
   Soluong(data:any,begin:any,end:any)
   {

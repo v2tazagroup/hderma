@@ -1,13 +1,4 @@
 <header class="main-header navbar-light header-sticky header-sticky-smart">
-  <div class="topbar d-none d-xl-block border-bottom">
-    <a class="container container-xl d-flex justify-content-between align-items-center">
-      <ul class="list-inline text-secondary mb-0">
-        <li class="list-inline-item mr-5"><i class="fab fa-instagram mr-2"></i>100k Followers</li>
-        <li class="list-inline-item"><i class="fab fa-facebook mr-2"></i>300k Followers</li>
-      </ul>
-      <p class="mb-0 text-secondary">Miễn phí giao hàng cho đơn hàng trên 1.000.000vnd<span class="mx-1">|</span></p>
-    </a>
-  </div>
   <div class="sticky-area bg-white">
     <div class="container container-xl">
       <nav class="navbar navbar-expand-xl px-0 d-block">
@@ -17,12 +8,12 @@
               <ul class="navbar-nav hover-menu main-menu px-0 mx-xl-n5">
                 <div class="mx-auto flex-shrink-0 px-10 py-6 my-1">
                   <div class="d-flex mt-3 mt-xl-0 align-items-center w-100 justify-content-center"> <a
-                      class="navbar-brand mx-auto d-inline-block py-0" href="#"> <img src="assets/images/logo.svg"
+                      class="navbar-brand mx-auto d-inline-block py-0" href=""> <img src="assets/images/logo.svg"
                         alt="Glowing" style="width: 200px"></a></div>
                 </div>
                 <li aria-haspopup="true" aria-expanded="false"
                   class="nav-item dropdown-item-home dropdown py-2 py-xl-7 sticky-py-xl-6 px-0 px-xl-5">
-                  <a class="nav-link text-nowrap spac p-0" href="#">
+                  <a class="nav-link text-nowrap spac p-0" href="">
                     TRANG CHỦ
                   </a>
                 </li>
@@ -65,22 +56,35 @@
                 </a>
                 <ul class="navbar-nav flex-row justify-content-xl-end d-flex flex-wrap text-body py-0 navbar-right">
                   <li class="nav-item">
-                    <a class="nav-link pr-3 py-0" href="#" data-toggle="modal" data-target="#sign-in">
-                      <svg class="icon icon-user-light">
-                        <use xlink:href="#icon-user-light"></use>
-                      </svg>
-                    </a>
+                    <ng-container *ngIf="token; else elseTemplate">
+                      <div class="dropdown">
+                        <span data-toggle="dropdown" class="nav-link pr-3 py-0">
+                          <svg class="icon icon-user-light">
+                            <use xlink:href="#icon-user-light"></use>
+                          </svg>
+                        </span>
+                        <div class="dropdown-menu">
+                          <a href="thong-tin" class="dropdown-item">Thông Tin</a>
+                          <a href="don-hang"  class="dropdown-item">Đơn Hàng</a>
+                          <span class="dropdown-item" (click)="Dangxuat()">Đăng Xuất</span></div>
+                      </div>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      <a class="nav-link pr-3 py-0" href="dang-nhap">
+                        <svg class="icon icon-user-light">
+                          <use xlink:href="#icon-user-light"></use>
+                        </svg>
+                      </a>
+                    </ng-template>
                   </li>
 
                   <li class="nav-item">
                     <a class="nav-link position-relative px-4 menu-cart py-0 d-inline-flex align-items-center mr-n2"
                       href="#" data-canvas="true" data-canvas-options='{"container":".cart-canvas"}'>
-
                       <svg class="icon icon-shopping-bag-open-light">
                         <use xlink:href="#icon-shopping-bag-open-light"></use>
                       </svg>
                       <span class="mr-2 font-weight-bold fs-15">$0.00</span>
-
                     </a>
                   </li>
                 </ul>

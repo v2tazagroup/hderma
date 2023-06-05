@@ -39,6 +39,14 @@ export class TagsService {
       })
     );
   }
+  getTagsProducts() {
+    return this.http.get(this.urlApi + '/hderma-tags/products').pipe(
+      map((data: any) => {
+        this._tags.next(data);
+        return data;
+      })
+    );
+  }
   getTagDetail(id: string) {
     return this.http.get(this.urlApi + `/hderma-tags/${id}`).pipe(
       map((data: any) => {

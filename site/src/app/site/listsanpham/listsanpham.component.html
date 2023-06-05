@@ -83,23 +83,23 @@
         <div class="row" *ngIf="TypeView">
           <div class="media flex-column flex-md-row mb-7" *ngFor="let item of PagiSanphams">
             <a [routerLink]="[item.Slug]" class="position-relative mw-md-258">
-              <ng-container *ngIf="item.Hinhanh.Image; else elseTemplate">
-                <img *ngIf="item.Hinhanh.Image" src="{{(Base+item.Hinhanh.Image.spath)||''}}" alt="">
+              <ng-container *ngIf="item.Hinhanh.hinhthongtin; else elseTemplate">
+                <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
               </ng-container>
               <ng-template #elseTemplate>
-                <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+                <img src="https://hderma.vn/assets/image/logo.svg" />
               </ng-template>
               <div class="card-img-overlay p-3">
-                <span class="badge badge-primary">-20%</span>
+                <span class="badge badge-primary fs-16 font-weight-600" *ngIf="item.Giamgia!=0">-{{item.Giamgia*100}}%</span>
               </div>
             </a>
             <div class="media-body ml-md-6 mt-4">
               <a [routerLink]="[item.Slug]" class="card-body pt-4 text-left px-0">
                 <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
-                  <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
+                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1" *ngIf="item.Giamgia!=0">{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
+                  <span>{{(item.GiaSale | number:'1.0-0')||'0'}}đ</span>
                 </p>
-                <h2 class="card-title fs-15 font-weight-500 mb-2"><span>{{item.Tieude}}</span></h2>
+                <h2 class="card-title fs-15 font-weight-500 mb-2 tieude"><span>{{item.Tieude}}</span></h2>
               </a>
                 <div class="d-flex align-items-center flex-wrap">
                   <ul class="list-inline mb-0 lh-1">
@@ -114,10 +114,10 @@
               <p class="mb-7 py-2 mr-xl-8" [innerHTML]="item.Mota"></p>
               <div class="d-flex align-items-center flex-row">
                 <div class="mr-sm-4">
-                  <a href="#" class="btn btn-secondary bg-hover-primary border-hover-primary px-sm-7 px-3"><span
+                  <span (click)="addtocart(item)" class="btn btn-secondary bg-hover-primary border-hover-primary px-sm-7 px-3"><span
                     class="material-icons">
                     shopping_cart
-                  </span></a>
+                  </span></span>
                 </div>
               </div>
             </div>
@@ -129,30 +129,30 @@
             <div class="card border-0 product mb-6">
               <div class="position-relative">
                 <a [routerLink]="[item.Slug]">
-                  <ng-container *ngIf="item.Hinhanh.Image; else elseTemplate">
-                    <img *ngIf="item.Hinhanh.Image" src="{{(Base+item.Hinhanh.Image.spath)||''}}" alt="">
+                  <ng-container *ngIf="item.Hinhanh.hinhthongtin; else elseTemplate">
+                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
                   </ng-container>
                   <ng-template #elseTemplate>
-                    <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+                    <img src="https://hderma.vn/assets/image/logo.svg" />
                   </ng-template>
               </a>
                 <div class="card-img-overlay d-flex p-3 flex-column">
                   <div class="mb-auto d-flex justify-content-center">
                   </div>
                   <div class="text-center">
-                    <a href="#" class="shop-btn btn btn-secondary bg-hover-primary border-hover-primary lh-12"><span
+                    <span (click)="addtocart(item)" class="shop-btn btn btn-secondary bg-hover-primary border-hover-primary lh-12"><span
                         class="material-icons">
                         shopping_cart
-                      </span></a>
+                      </span></span>
                   </div>
                 </div>
               </div>
               <a [routerLink]="[item.Slug]" class="card-body pt-4 text-center px-0">
                 <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
-                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"></span>
+                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1"*ngIf="item.Giamgia!=0">{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
                   <span>{{(item.Gia | number:'1.0-0')||'0'}}đ</span>
                 </p>
-                <h2 class="card-title fs-15 font-weight-500 mb-2"><span>{{item.Tieude}}</span></h2>
+                <h2 class="card-title fs-15 font-weight-500 mb-2 tieude"><span>{{item.Tieude}}</span></h2>
                 <div class="d-flex align-items-center justify-content-center flex-wrap">
                   <ul class="list-inline mb-0 lh-1">
                     <li class="list-inline-item fs-12 text-primary mr-0"><i class="fas fa-star"></i></li>

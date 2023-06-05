@@ -46,16 +46,16 @@
                   <li class="mb-4" *ngFor="let item of Soluong(Baiviets,0,4)">
                     <div class="media align-items-center">
                       <a  [routerLink]="[item.Slug]" class="d-block w-60px mr-4">
-                        <ng-container *ngIf="item.Image; else elseTemplate">
-                          <img src="https://drive.google.com/uc?id={{ item.Image }}" />
+                        <ng-container *ngIf="item.Hinhanh.hinhchinh; else elseTemplate">
+                          <img src="{{Base+item.Hinhanh.hinhchinh.spath}}" />
                          </ng-container>
                          <ng-template #elseTemplate>
                           <img src="https://hderma.vn/assets/image/logo.svg" />
                          </ng-template>
                           </a>
                         <div class="media-body">
-                          <p class="fs-13 mb-0 text-uppercase letter-spacing-01 mb-1 font-weight-600">
-                           {{item.tag||'No tag'}}</p>
+                          <!-- <p class="fs-13 text-uppercase letter-spacing-01 mb-1 font-weight-600">
+                           {{item.tag||'No tag'}}</p> -->
                           <a class="font-weight-600 text-decoration-none" [routerLink]="[item.Slug]">{{item.Title}}</a>
                         </div>
                       </div>
@@ -112,9 +112,9 @@
                       </div>
                     </div>
                     <div class="card border-0 mb-8 hover-shine banner banner-05">
-                      <div class="card-img bg-img-cover-center" style="background-image: url('assets/images/sidebar-blog-01.jpg');"></div>
+                      <div class="card-img bg-img-cover-center" style="background-image: url('assets/trangchu/sidebar-blog-01.jpg');"></div>
                       <div class="card-img-overlay d-inline-flex flex-column px-7 px-xl-10 pt-5 pb-4 text-center z-index-3">
-                        <h3 class="card-title fs-30 lh-12 text-white text-uppercase">Be your kind of beauty</h3>
+                        <!-- <h3 class="card-title fs-30 lh-12 text-white text-uppercase">Be your kind of beauty</h3> -->
                         <div class="mt-auto">
                           <a [routerLink]="['/san-pham']" class="fs-16 font-weight-600 btn text-secondary hover-white bg-white bg-hover-secondary shadow-1">Về Cửa hàng</a>
                         </div>
@@ -123,40 +123,40 @@
                     <div class="card border-0 widget-instagram">
                       <div class="card-header bg-transparent border-0 p-0 d-flex justify-content-between">
                         <h3 class="card-title fs-20 mb-0">
-                          Instagram
+                          Facebook
                         </h3>
-                        <p class="text-primary text-uppercase mb-0">@HDERMA</p>
+                        <a href="https://www.facebook.com/hdermavietnam" class="text-primary text-uppercase mb-0">@HDERMA</a>
                       </div>
                       <div class="card-body px-0 pt-3 pb-0">
                         <div class="row mx-n1">
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-01.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-01.jpg" alt="Instagram">
                             </a>
                           </div>
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-02.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-02.jpg" alt="Instagram">
                             </a>
                           </div>
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-03.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-03.jpg" alt="Instagram">
                             </a>
                           </div>
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-04.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-04.jpg" alt="Instagram">
                             </a>
                           </div>
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-07.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-05.jpg" alt="Instagram">
                             </a>
                           </div>
                           <div class="col-6 col-md-4 item p-1">
                             <a href="#" class="d-block">
-                              <img src="assets/images/instagram-05.jpg" alt="Instagram">
+                              <img src="assets/trangchu/instagram-06.jpg" alt="Instagram">
                             </a>
                           </div>
                         </div>
@@ -165,42 +165,54 @@
                   </div>
                 </div>
                 <div class="col-lg-8 mb-11 mb-lg-0 order-lg-1">
-                  <div class="card border-0 mb-7" *ngFor="let item of PagiBaiviets">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col-md-6 pr-md-6">
-                        <a  [routerLink]="[item.Slug]"
-                           class="hover-shine d-block">
-                           <ng-container *ngIf="item.Image; else elseTemplate">
-                            <img src="https://drive.google.com/uc?id={{ item.Image }}" />
-                           </ng-container>
-                           <ng-template #elseTemplate>
-                            <img src="https://hderma.vn/assets/image/logo.svg" />
-                           </ng-template>
-                          <!-- <img src="assets/images/post-36.jpg"
-                                 alt="Which foundation formula is right for your skin?"> -->
-                        </a>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="card-body px-0 py-lg-0">
-                          <ul class="list-inline fs-13 text-uppercase letter-spacing-01 lh-1 font-weight-600">
-                            <li class="list-inline-item pr-3 border-right border-2x"> {{item.tag||'No tag'}}</li>
-                            <li class="list-inline-item pr-3">{{item.CreateAt|date:'dd/MM/yyyy'}}</li>
-                          </ul>
-                          <h3 class="card-title mb-2 fs-20">
-                            <a [routerLink]="[item.Slug]" >{{item.Title}}</a>
-                          </h3>
-                          <p class="card-text mb-4" [innerHTML]="item.Mota"></p>
-                          <a [routerLink]="[item.Slug]" 
-                               class="fs-16 font-weight-600 border-bottom d-inline-block border-hover-primary text-decoration-none">
-                            Xem Thêm
-                            <svg class="icon icon-arrow-right">
-                              <use xlink:href="#icon-arrow-right"></use>
-                            </svg>
+                  <ng-container *ngIf="totalItems>0; else elseTemplate">
+                    <div class="card border-0 mb-7" *ngFor="let item of PagiBaiviets">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-md-6 pr-md-6">
+                          <a  [routerLink]="[item.Slug]"
+                             class="hover-shine d-block">
+                             <ng-container *ngIf="item.Hinhanh.hinhchinh; else elseTemplate">
+                              <img src="{{Base+item.Hinhanh.hinhchinh.spath}}" />
+                             </ng-container>
+                             <ng-template #elseTemplate>
+                              <img src="https://hderma.vn/assets/image/logo.svg" />
+                             </ng-template>
+                            <!-- <img src="assets/images/post-36.jpg"
+                                   alt="Which foundation formula is right for your skin?"> -->
                           </a>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card-body px-0 py-lg-0">
+                            <ul class="list-inline fs-13 text-uppercase letter-spacing-01 lh-1 font-weight-600">
+                              <!-- <li class="list-inline-item pr-3 border-right border-2x"> {{item.tag||'No tag'}}</li> -->
+                              <li class="list-inline-item pr-3">{{item.CreateAt|date:'dd/MM/yyyy'}}</li>
+                            </ul>
+                            <h3 class="card-title mb-2 fs-20">
+                              <a [routerLink]="[item.Slug]" >{{item.Title}}</a>
+                            </h3>
+                            <p class="card-text mb-4" [innerHTML]="item.Mota"></p>
+                            <a [routerLink]="[item.Slug]" 
+                                 class="fs-16 font-weight-600 border-bottom d-inline-block border-hover-primary text-decoration-none">
+                              Xem Thêm
+                              <svg class="icon icon-arrow-right">
+                                <use xlink:href="#icon-arrow-right"></use>
+                              </svg>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                    <div class="row justify-content-center">
+                      <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [nextText]="'>>'" [previousText]="'<<'"
+                        [lastText]="''" [maxSize]="5" [(ngModel)]="currentPage" name="currentPage"
+                        (pageChanged)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)"></pagination>
+                    </div>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                        Không tìm thấy dữ liệu
+                  </ng-template>
+                  
+
                   <!-- <div class="card border-0 mb-7">
                     <div class="row no-gutters align-items-center">
                       <div class="col-md-6 pr-md-6">
@@ -381,11 +393,7 @@
                       </div>
                     </div>
                   </div> -->
-                  <div class="row justify-content-center">
-                    <pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [nextText]="'>>'" [previousText]="'<<'"
-                      [lastText]="''" [maxSize]="5" [(ngModel)]="currentPage" name="currentPage"
-                      (pageChanged)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)"></pagination>
-                  </div>
+
                 </div>
               </div>
             </div>

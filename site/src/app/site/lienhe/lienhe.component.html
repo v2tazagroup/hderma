@@ -14,6 +14,63 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center mb-8 mb-lg-10">
+          <h2 class="mb-4">BẠN CÓ HẸN TƯ VẤN CÙNG H.DERMA?</h2>
+          <p class="fs-18 lh-155 mx-auto mb-0" style="max-width: 590px">
+            Bạn đang lo lắng về tình trạng da hiện tại hay cần một quy trình chăm sóc đúng cách, phù hợp? Hãy để lại lời nhắn để được trực tiếp chuyên gia của H.Derma tư vấn, lên phác đồ miễn phí và nhận nhiều thông tin ưu đãi dành riêng cho bạn!
+          </p>
+        </div>
+        <div class="col-12">
+          <div class="w-100 relative mt-5" style="height: 100vh;" *ngIf="items.length">
+            <iframe class="w-100 h-100 google-map z-10 relative" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div
+              class="bg-white p-7 rounded position-absolute" style="width: 450px;top: 10vh;right: 30px;z-index: 10;height: 80%;overflow: auto;">
+              <!-- <div class="lg:flex items-center lg:space-x-3 lg:space-y-0 space-y-3 w-100 text-sm relative z-10">
+                <div class="flex lg:w-2/5">
+                  <select name="" id="" class="p-3 border border-[#000000] w-100">
+                    <option value="">Hồ Chí Minh</option>
+                    <option value="">Đà Nẵng</option>
+                    <option value="">Nha Trang</option>
+                  </select>
+                </div>
+                <div class="lg:w-3/5">
+                  <input type="text" class="w-100 border border-[#000000] p-3" placeholder="Tên cửa hàng, khu vực"
+                    name="" id="">
+                </div>
+
+              </div> -->
+              <div class="boder-b border-gray-300 w-100 flex">
+                <h3>Tên Cửa Hàng</h3>
+                <!-- <input class="text-sm w-100 lg:p-3 py-3" type="text" placeholder="Tên cửa hàng"> -->
+              </div>
+              <div class="h-96 overflow-auto scroll">
+                <div class="d-flex flex-column justify-content-between pb-5 cursor-pointer" (click)="getiframe(item)"
+                  *ngFor="let item of items">
+                  <div class="text-sm d-flex flex-row align-items-center">
+                    <span class="material-icons text-[#434343] text-4xl">
+                      location_on
+                    </span>
+                    <h5 class="font-weight-bold mb-0">
+                      {{item.Title}}
+                    </h5>
+                  </div>
+                  <p class="text-gray-400">{{item.Des}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.805876760608!2d106.70407027495817!3d10.826162889325609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529b6f6449bbd%3A0xd11143d480f7225!2zQ8O0bmcgdHkgVE5ISCBExrDhu6NjIE3hu7kgcGjhuqltIEgtRGVybWE!5e0!3m2!1svi!2s!4v1684391981171!5m2!1svi!2s"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <section class="pt-9">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-8 mb-lg-10">
           <h2 class="mb-4">GỬI THƯ CHO H.DERMA</h2>
           <p class="fs-18 lh-155 mx-auto mb-0" style="max-width: 590px">
             Hãy gửi thông tin phản hồi đến H.Derma để nhận tư vấn từ chuyên gia và
@@ -25,7 +82,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <section class="py-lg-13 py-10">
     <div class="container">
       <div class="row">
@@ -47,10 +104,12 @@
             </div>
             <div class="custom-control custom-checkbox mb-6">
               <input type="checkbox" class="custom-control-input" id="customCheck2">
-              <label class="custom-control-label custom-control-label-02 text-body" for="customCheck2"> Lưu tên, email của tôi cho lần nhận xét tiếp theo
+              <label class="custom-control-label custom-control-label-02 text-body" for="customCheck2"> Lưu tên, email
+                của tôi cho lần nhận xét tiếp theo
               </label>
             </div>
-            <button type="submit" class="btn btn-secondary px-7 bg-hover-primary border-hover-primary">GỬI TIN NHẮN</button>
+            <button type="submit" class="btn btn-secondary px-7 bg-hover-primary border-hover-primary">GỬI TIN
+              NHẮN</button>
           </form>
         </div>
       </div>

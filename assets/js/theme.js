@@ -1448,7 +1448,7 @@
     APP.dashboard = {
         init: function () {
             this.chartjs();
-            this.initSelectPicker();
+            //this.initSelectPicker();
             this.dropdownMenuLeft();
             this.activeSidebarMenu();
         },

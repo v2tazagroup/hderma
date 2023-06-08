@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1686213675438,
+  "timestamp": 1686217858094,
   "index": "https://v2tazagroup.github.io/hderma/index.html",
   "assetGroups": [
     {
@@ -29,7 +29,7 @@
         "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js",
         "https://v2tazagroup.github.io/hderma/runtime.e7e8c9ec0689df18.js",
         "https://v2tazagroup.github.io/hderma/scripts.83d6fee10773d5b4.js",
-        "https://v2tazagroup.github.io/hderma/styles.50cf670332426cdc.css"
+        "https://v2tazagroup.github.io/hderma/styles.2dded3d76f18f9cc.css"
       ],
       "patterns": []
     },
@@ -3864,7 +3864,7 @@
     "https://v2tazagroup.github.io/hderma/assets/worker-basic.min.js": "30eaca2ce1ab52ea140bc24e7b9ba25ee0884907",
     "https://v2tazagroup.github.io/hderma/common.c40a5449008d38cd.js": "e9534ef86880568a4d6867188315cbbcbbaaf60e",
     "https://v2tazagroup.github.io/hderma/favicon.ico": "ad9ab36b31a9ad2a4ab2935267ef52118a42f514",
-    "https://v2tazagroup.github.io/hderma/index.html": "840e83cf0e862acab19bbf43a156fd25bd4825cc",
+    "https://v2tazagroup.github.io/hderma/index.html": "863cc593f60c8324ce75784a0dfafc859792ab05",
     "https://v2tazagroup.github.io/hderma/main.471568472d077068.js": "fe7f8c01ea3d9158bc6bfe304ddd6c223a03eae3",
     "https://v2tazagroup.github.io/hderma/manifest.webmanifest": "ebd23c7b62a8da9bfa8330749b4ec5daf75feb2f",
     "https://v2tazagroup.github.io/hderma/polyfills.a0ff503120812595.js": "e6d94c48d9bd2572f6afc050605883b5624efd13",
@@ -3873,7 +3873,7 @@
     "https://v2tazagroup.github.io/hderma/slick.653a4cbba6e1a2b3.woff": "af91c12f0f406a4f801aeb3b398768fe41d8f864",
     "https://v2tazagroup.github.io/hderma/slick.6aa1ee46202fac6e.ttf": "3331eebdd4ba348ef25abe00c39ffbe867d46575",
     "https://v2tazagroup.github.io/hderma/slick.f895cfdf693e6229.svg": "17f63c6f6131389462ba3d814b7ddf83344705f9",
-    "https://v2tazagroup.github.io/hderma/styles.50cf670332426cdc.css": "65139f71a6e5732273a21ff168452cc0cd8a3e7c"
+    "https://v2tazagroup.github.io/hderma/styles.2dded3d76f18f9cc.css": "b9c3749c29594547adff1ba913ba78e5d745ca3c"
   },
   "navigationUrls": [
     {

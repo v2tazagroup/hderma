@@ -124,7 +124,7 @@
           </li>
           <li class="row mb-2">
             <span class="d-block col-4 text-secondary font-weight-600 fs-14">Loại Sản Phẩm:</span>
-            <span class="d-block col-8 ">Makeup, Skincare</span>
+            <span class="d-block col-8 ">{{Sanpham.Danhmuc.Title}}</span>
           </li>
           <!-- <li class="row mb-2">
             <span class="d-block col-4 text-secondary font-weight-600 fs-14">Chia sẻ ngay:</span>
@@ -184,7 +184,7 @@
                   <button class="btn lh-2 fs-18 py-1 px-6 shadow-none w-100 collapse-parent border text-primary"
                     data-toggle="false" data-target="#detail-collapse-01" aria-expanded="true"
                     aria-controls="detail-collapse-01">
-                    Product Detail
+                    Thông Tin Sản Phẩm
                   </button>
                 </h5>
               </div>
@@ -198,7 +198,7 @@
                         <img src="{{GetImage(Sanpham.Hinhanh.hinhchinh.spath)}}" alt="">
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 text-justify">
                         <div [innerHTML]="Sanpham.Noidung.Thongtin"></div>
                       <!-- <div class="row">
                         <div class="col-6 col-md-3 text-center mb-6">
@@ -248,7 +248,7 @@
                     class="btn lh-2 fs-18 py-1 px-6 shadow-none w-100 collapse-parent border collapsed text-primary"
                     data-toggle="collapse" data-target="#ingredients-collapse-01" aria-expanded="false"
                     aria-controls="ingredients-collapse-01">
-                    Ingredients
+                    Thành Phần
                   </button>
                 </h5>
               </div>
@@ -273,7 +273,7 @@
     (beforeChange)="beforeChange($event)">
     <div ngxSlickItem class="col-lg-3 col-sm-6 mb-5 slide"
       *ngFor="let item of SPTuongtu">
-      <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
+      <a class="card border-0 product" [routerLink]="['/san-pham/'+item.Slug]">
         <div class="position-relative">
           <img src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}">
         </div>

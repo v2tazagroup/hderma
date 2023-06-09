@@ -128,5 +128,17 @@ export class ListsanphamComponent implements OnInit {
     this.itemCart.Tieude = data.Tieude,
     this.cartService.addToCart(this.itemCart);
   }
+  SortDesc()
+  {
+    this.PagiSanphams = this.PagiSanphams.sort((a, b) => a.Gia - b.Gia);
+  }
+  SortAsc()
+  {
+    this.PagiSanphams = this.PagiSanphams.sort((a, b) => b.Gia - a.Gia);
+  }
+  Random()
+  {
+    this.PagiSanphams = this.PagiSanphams.sort((a, b) => (a.Gia*Math.floor(Math.random() * 10) + 1) - (b.Gia*Math.floor(Math.random() * 10) + 1));
+  }
 
 }

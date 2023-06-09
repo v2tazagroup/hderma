@@ -1,4 +1,7 @@
 @import 'node_modules/angular-notifier/styles';
+body {
+    font-family: 'Quicksand', sans-serif !important;
+}
 .tieude {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -32,3 +35,16 @@
 .footer p {
     margin-bottom: 0!important
 }
+.slick-dots li button:before {
+    font-size: 15px !important;
+}
+.slick-prev:before, .slick-next:before {
+    font-size: 40px !important;
+}
+.slick-arrow.slick-prev {
+    left: 20px !important;
+  }
+
+.slick-arrow.slick-next {
+    right: 40px !important;
+  }

@@ -6,50 +6,25 @@
         <div class="row no-gutters">
           <div class="col-lg-6 mb-8 mb-lg-0 pr-xl-2">
             <h3 class="fs-24 mb-6">Đăng Nhập</h3>
-            <form
-              novalidate=""
-              class="form-control-01 ng-untouched ng-pristine ng-valid"
-            >
+            <form novalidate="" class="form-control-01">
               <div class="form-group mb-4">
-                <label for="exampleInputEmail1"
-                  class="sr-only"
-                  >Email</label
-                ><input
-                  type="text"
-                  id="exampleInputEmail1"
-                  name="email"
-                  placeholder="Số Điện Thoại"
-                  class="form-control border-0 ng-untouched ng-pristine ng-valid"
-                />
+                <label for="exampleInputEmail1">Số Điện Thoại</label><input type="text" [(ngModel)]="User.SDT" id="exampleInputEmail1"
+                  name="email" placeholder="Số Điện Thoại"
+                  class="form-control border-0" />
               </div>
               <div class="form-group mb-3">
-                <label for="exampleInputPassword1"
-                  class="sr-only"
-                  >Mật Khẩu</label
-                ><input type="password"
-                  id="exampleInputPassword1"
-                  placeholder="Mật Khẩu"
-                  name="password"
-                  class="form-control border-0 ng-untouched ng-pristine ng-valid"
-                />
+                <label for="exampleInputPassword1">Mật Khẩu</label><input type="password"
+                  id="exampleInputPassword1" [(ngModel)]="User.password" placeholder="Mật Khẩu" name="password"
+                  class="form-control border-0" />
               </div>
-              <a href="#"
-                class="d-inline-block fs-15 lh-12 mb-5"
-                >Quên Mật Khẩu</a
-              ><button type="submit"
-                class="btn btn-primary btn-block mb-3"
-              >
+              <a href="#" class="d-inline-block fs-15 lh-12 mb-5">Quên Mật Khẩu</a>
+              <button type="submit"
+                class="btn btn-primary btn-block mb-3" (click)="Dangnhap(User)">
                 Đăng Nhập
               </button>
               <div class="custom-control custom-checkbox mb-7">
-                <input
-                  type="checkbox"
-                  id="customCheck1"
-                  name="remember"
-                  class="custom-control-input"
-                /><label for="customCheck1" class="custom-control-label fs-15"
-                  >Ghi Nhớ</label
-                >
+                <input type="checkbox" id="customCheck1" name="remember" class="custom-control-input" /><label
+                  for="customCheck1" class="custom-control-label fs-15">Ghi Nhớ</label>
               </div>
             </form>
           </div>

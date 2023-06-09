@@ -26,9 +26,9 @@
             Phân loại
           </a>
           <div class="dropdown-menu custom-dropdown-item" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Giá từ cao đến thấp</a>
-            <a class="dropdown-item" href="#">Giá thấp đến cao</a>
-            <a class="dropdown-item" href="#">Ngẫu nhiên</a>
+            <span class="dropdown-item" (click)="SortDesc()">Giá từ cao đến thấp</span>
+            <span class="dropdown-item" (click)="SortAsc()">Giá thấp đến cao</span>
+            <span class="dropdown-item" (click)="Random()">Ngẫu nhiên</span>
           </div>
         </div>
       </div>
@@ -164,6 +164,7 @@
                   <!-- <span class="card-text fs-14 font-weight-400 pl-2 lh-1">2947 reviews</span> -->
                 </div>
             </a>
+            <a [href]="'/san-pham/'[item.Slug]" class="text-center text-primary">Xem Ngay</a>
             </div>
           </div>
         </div>

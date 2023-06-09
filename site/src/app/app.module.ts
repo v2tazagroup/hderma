@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { BlogchitietComponent } from './site/blogchitiet/blogchitiet.component';
 import { BloglistComponent } from './site/bloglist/bloglist.component';
@@ -24,11 +24,13 @@ import { DangnhapComponent } from './site/dangnhap/dangnhap.component';
 import { DangkyComponent } from './site/dangky/dangky.component';
 import { GiohangComponent } from './site/giohang/giohang.component';
 import { ThongtinComponent } from './site/thongtin/thongtin.component';
-import { DonhangComponent } from './admin/donhang/donhang.component';
 import { ThanhtoanComponent } from './site/thanhtoan/thanhtoan.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NotifierModule } from 'angular-notifier';
 import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.component';
+import { UsersInterceptor } from './admin/users.interceptor';
+import { AuthModule } from './admin/auth/auth.module';
+import { DonhangComponent } from './site/donhang/donhang.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,10 @@ import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.
     MainComponent,
     TrangchuComponent,
     Giohang_miniComponent,
-    GiohangComponent
+    GiohangComponent,
+    DangnhapComponent,
+    DangkyComponent,
+    ThongtinComponent
   ],
   imports: [
     NotifierModule,
@@ -91,6 +96,7 @@ import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    AuthModule,
     ReactiveFormsModule,
     SlickCarouselModule,
     PaginationModule.forRoot(),
@@ -105,6 +111,7 @@ import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.
               { path: 'san-pham', component: ListsanphamComponent },
               { path: 'san-pham/:slug', component: SanphamchitietComponent },
               { path: 'bai-viet', component: BloglistComponent },
+              { path: 'bai-viet/danh-muc/:slug', component: BloglistComponent },
               { path: 'bai-viet/:slug', component: BlogchitietComponent },
               { path: 've-chung-toi', component: VechungtoiComponent },
               { path: 'lien-he', component: LienheComponent },
@@ -136,7 +143,10 @@ import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.
     })
   ],
   exports: [RouterModule],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: UsersInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

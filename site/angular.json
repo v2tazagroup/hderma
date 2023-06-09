@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-           "baseHref": "https://v2tazagroup.github.io/hderma/",
+           //"baseHref": "https://v2tazagroup.github.io/hderma/",
             "outputPath": "dist/site",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -32,7 +32,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              // "@angular/material/prebuilt-themes/indigo-pink.css",
+              //"@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss"

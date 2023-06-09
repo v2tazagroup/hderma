@@ -1,0 +1,102 @@
+<div class="mw-500 mx-auto">
+<div class="card mb-3 mx-auto">
+    <div class="card-header">Thông Tin</div>
+    <div class="card-body">
+ <div class="input-group mb-3">
+   <input type="text" class="form-control" [(ngModel)]="CUser.SDT" [ngModelOptions]="{standalone: true}" placeholder="Số Điện Thoại">
+ </div>         
+ <div class="input-group mb-3">
+    <input matInput type="text" class="form-control"[(ngModel)]="CUser.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+ </div>         
+ <div class="input-group mb-3">
+    <input matInput type="text" class="form-control" [(ngModel)]="CUser.Hoten" [ngModelOptions]="{standalone: true}" placeholder="Họ Tên">
+ </div>         
+    </div>
+    <div class="card-footer">
+        <div>
+            <button type="submit" value="Login" class="btn btn-primary btn-sm">Cập Nhật</button>
+        </div>
+    </div>
+</div>
+<div class="card mb-3 mx-auto">
+    <div class="card-header  d-flex justify-content-between">
+      <span>Địa Chỉ</span>
+        <span class="material-icons" data-toggle="modal" data-target="#exampleModal">
+        add_circle
+        </span> 
+    </div>
+    <div class="card-body row">
+      <div *ngFor="let item of CUser.Diachi">
+        {{item.Diachi}}-{{item.Tinh}}-{{item.Quan}}-{{item.Phuong}}
+      </div>
+    </div>
+</div>
+<div class="card mb-3 mx-auto">
+    <div class="card-header">Đổi Mật Khẩu</div>
+    <div class="card-body">
+<div class="w-full p-4">
+    <p class="text-2xl text-blue-500 font-bold">Thay đổi password</p>
+    <div class="flex flex-col pt-4">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="Data.oldpass" [ngModelOptions]="{standalone: true}" placeholder="Mật Khẩu Hiện Tại">
+          </div>  
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="Data.newpass" [ngModelOptions]="{standalone: true}" placeholder="Mật Khẩu Mới">
+          </div>    
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="Data.newpass2" [ngModelOptions]="{standalone: true}" placeholder="Nhập Lại Mật Khẩu Mới">
+          </div>      
+        <div>
+          <button class="btn btn-primary btn-sm" (click)="ChangePass(Data)">Cập Nhật</button>
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+    
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm Địa Chỉ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex row">
+        <div class="form-group col-lg-6">
+          <label>Địa Chỉ</label>
+          <div class="input-group mb-3">
+            <input matInput type="text" class="form-control" [(ngModel)]="ChosenDiachi" [ngModelOptions]="{standalone: true}" placeholder="Địa Chỉ">
+         </div> 
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Tỉnh/Thành Phố</label>
+          <select class="form-control"  [(ngModel)]="ChosenTinh" (change)="onTinhChange($event)" >
+            <option [value]="item.name" *ngFor="let item of filterTinh">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Quận/ Huyện</label>
+          <select class="form-control"  [(ngModel)]="ChosenQuan" (change)="onQuanChange($event)" >
+            <option [value]="item.name" *ngFor="let item of filterQuan">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group col-lg-6">
+          <label>Phường/ Xã</label>
+          <select class="form-control"  [(ngModel)]="ChosenPhuong">
+            <option [value]="item.name" *ngFor="let item of filterPhuong">{{item.name}}</option>
+          </select>
+        </div>       
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>

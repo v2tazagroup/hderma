@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class GiohangService {
   private _cartItems: BehaviorSubject<any | null> = new BehaviorSubject(null);
   private _total: BehaviorSubject<any | null> = new BehaviorSubject(null);
+  private _soluong: BehaviorSubject<any | null> = new BehaviorSubject(null);
   private cartItems: any[] = [];
   constructor(private localStorageService: LocalStorageService) {}
   get cartItems$(): Observable<any[]> {
@@ -14,6 +15,9 @@ export class GiohangService {
   }
   get total$(): Observable<any> {
     return this._total.asObservable();
+  }
+  get soluong$(): Observable<any> {
+    return this._soluong.asObservable();
   }
   addToCart(item: any): void {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]   
@@ -27,6 +31,8 @@ export class GiohangService {
     this.localStorageService.setItem('giohang',this.cartItems)
     const total = this.cartItems.reduce((total, item) => total + (item.Gia * item.soluong), 0);
     this._total.next(total);
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
   }
 
   removeFromCart(itemId: number): void {
@@ -39,13 +45,15 @@ export class GiohangService {
     this.localStorageService.setItem('giohang',this.cartItems)
     const total = this.cartItems.reduce((total, item) => total + (item.Gia * item.soluong), 0);
     this._total.next(total);
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
   }
 
-  updateQuantity(itemId: number, soluong: number): void {
+  updateQuantity(itemId: number, Upadatesoluong: number): void {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
     const item = this.cartItems.find(i => i.id === itemId);
     if (item) {
-      item.soluong = soluong;
+      item.soluong = Upadatesoluong;
     }
     const index = this.cartItems.findIndex(v => v.id === itemId);
     this.cartItems[index] = { ...this.cartItems[index], ...item};
@@ -53,15 +61,35 @@ export class GiohangService {
     this.localStorageService.setItem('giohang',this.cartItems)
     const total = this.cartItems.reduce((total, item) => total + (item.Gia * item.soluong), 0);
     this._total.next(total);
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
+  }
+  ChangeSoluong(itemId: number, Upadatesoluong: number): void {
+    this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
+    const item = this.cartItems.find(i => i.id === itemId);
+    if (item) {
+      item.soluong += Upadatesoluong;
+    }
+    const index = this.cartItems.findIndex(v => v.id === itemId);
+    this.cartItems[index] = { ...this.cartItems[index], ...item};
+    this._cartItems.next(this.cartItems);
+    this.localStorageService.setItem('giohang',this.cartItems)
+    const total = this.cartItems.reduce((total, item) => total + (item.Gia * item.soluong), 0);
+    this._total.next(total);
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
   }
   getCartItems() {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
     this._cartItems.next(this.cartItems);
-
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
   }
   calculateTotal() {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
     const total = this.cartItems.reduce((total, item) => total + (item.Gia * item.soluong), 0);
     this._total.next(total);
+    const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
+    this._soluong.next(soluong);
   }
 }

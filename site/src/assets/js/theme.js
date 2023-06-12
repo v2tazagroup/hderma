@@ -757,12 +757,12 @@
                     var $imageLinks = $('[data-gallery-id="' + galleryId + '"]');
                     $imageLinks.each(function () {
                         var src = $(this).attr('href');
-                        if (items_src.indexOf(src) < 0) {
-                            items_src.push(src);
+                        // if (items_src.indexOf(src) < 0) {
+                        //     items_src.push(src);
                             items.push({
                                 src: src
                             });
-                        }
+                        // }
                     });
                     mfpConfig.items = items;
                     mfpConfig.gallery = {
@@ -1448,7 +1448,7 @@
     APP.dashboard = {
         init: function () {
             this.chartjs();
-            this.initSelectPicker();
+            // this.initSelectPicker();
             this.dropdownMenuLeft();
             this.activeSidebarMenu();
         },

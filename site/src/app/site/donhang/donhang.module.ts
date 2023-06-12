@@ -6,6 +6,6 @@ import { DonhangComponent } from './donhang.component';
   imports: [
     CommonModule
   ],
-  declarations: [DonhangComponent]
+  declarations: []
 })
 export class DonhangModule { }

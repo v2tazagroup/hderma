@@ -10,6 +10,8 @@ import { GiohangService } from 'src/app/shared/giohang.service';
 })
 export class HeaderComponent implements OnInit {
   total: number=0;
+  soluong: number=0;
+  cartItems: any[]=[];
   token = localStorage.getItem('HdermaToken') || null;
   constructor(
     private cartService: GiohangService,
@@ -19,9 +21,9 @@ export class HeaderComponent implements OnInit {
     ) {
    this.cartService.calculateTotal();
    this.cartService.total$.subscribe(data=>this.total = data)
-  }
-  ngOnInit() {
-  }
+   this.cartService.getCartItems();
+   this.cartService.soluong$.subscribe(data=> this.soluong = data)}
+  ngOnInit() {}
   Dangxuat() {
     this._authService.Dangxuat().subscribe((res) => {
       if (res == true) {

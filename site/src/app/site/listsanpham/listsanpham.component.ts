@@ -126,6 +126,7 @@ export class ListsanphamComponent implements OnInit {
     this.itemCart.GiaSale = data.GiaSale,
     this.itemCart.Hinhanh = data.Hinhanh.hinhchinh.spath,
     this.itemCart.Tieude = data.Tieude,
+    this.itemCart.Slug = data.Slug,
     this.cartService.addToCart(this.itemCart);
   }
   SortDesc()

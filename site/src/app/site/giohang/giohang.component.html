@@ -17,40 +17,35 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="position-relative">
+          <tr class="position-relative" *ngFor="let item of cartItems">
             <th scope="row" class="w-xl-695 pl-xl-5 py-4">
               <div class="media align-items-center">
                 <div class="ml-3 mr-4">
-                  <img class="mw-75px" src="assets/phuc-hoi-chuyen-sau_1685412625474.jpg" />
+                  <img class="mw-75px" [src]="item.Hinhanh" />
                 </div>
                 <div class="media-body w-128px">
-                  <p class="font-weight-500 mb-1 text-secondary">
-                    Mặt nạ tảo biển phục hồi sáng da T.201 H.Derma Algae Extract
-                    Hydrating Mask
-                  </p>
+                  <p class="font-weight-500 mb-1 text-secondary">{{item.Tieude}}</p>
                   <p class="card-text font-weight-bold fs-14 mb-1 text-secondary">
-                    <span
-                      class="fs-13 font-weight-500 text-decoration-through text-body pr-1">300,000đ</span><span>290000</span>
+                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">{{(item.Gia| number:'1.0-0')||'0'}}đ</span><span>{{(item.GiaSale| number:'1.0-0')||'0'}}đ</span>
                   </p>
                 </div>
               </div>
             </th>
             <td class="align-middle">
-              <div class="input-group position-relative w-128px">
-                <a href="#" class="down position-absolute pos-fixed-left-center pl-2 z-index-2"><i
-                    class="far fa-minus"></i></a><input name="number[]" type="number" required=""
-                  class="form-control form-control-sm px-6 fs-16 text-center input-quality border-0 h-35px" /><a
-                  href="#" class="up position-absolute pos-fixed-right-center pr-2 z-index-2"><i
-                    class="far fa-plus"></i></a>
+              <div class="input-group  position-relative w-128px">
+                <span (click)="decrementQuantity(item)" class="down position-absolute pos-fixed-left-center pl-2 z-index-2"><i class="far fa-minus"></i></span>
+                <input type="number"  [ngModelOptions]="{standalone: true}" class="form-control form-control-sm px-6 fs-16 text-center input-quality border-0 h-35px" (keydown)="onKeyDown($event)" (change)="UpadateQuantity(item,item.soluong)" [(ngModel)]="item.soluong" [value]="item.soluong"/>
+                <span (click)="incrementQuantity(item)" class="up position-absolute pos-fixed-right-center pr-2 z-index-2"><i class="far fa-plus"></i>
+                </span>
               </div>
             </td>
             <td class="align-middle">
               <p class="mb-0 text-secondary font-weight-bold mr-xl-11">
-                300,000đ
+                {{(item.GiaSale*item.soluong| number:'1.0-0')||'0'}}đ
               </p>
             </td>
-            <td class="align-middle text-right pr-5">
-              <a href="#" class="d-block"><i class="fal fa-times text-body"></i></a>
+            <td class="align-middle text-right pr-5" (click)="removeFromCart(item.id)">
+              <span class="d-block"><i class="fal fa-times text-body"></i></span>
             </td>
           </tr>
         </tbody>
@@ -71,21 +66,20 @@
         <div class="card border-0" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1)">
           <div class="card-body px-6 pt-5">
             <div class="d-flex align-items-center mb-2">
-              <span>Tổng:</span><span class="d-block ml-auto text-secondary font-weight-bold">$99.00</span>
+              <span>Tổng:</span><span class="d-block ml-auto text-secondary font-weight-bold">{{ (total| number:'1.0-0')||'0'}}đ</span>
             </div>
             <div class="d-flex align-items-center">
-              <span>Phí vận chuyển:</span><span class="d-block ml-auto text-secondary font-weight-bold">$0</span>
+              <span>Phí vận chuyển:</span><span class="d-block ml-auto text-secondary font-weight-bold">0</span>
             </div>
           </div>
           <div class="card-footer bg-transparent px-0 pb-4 mx-6">
             <div class="d-flex align-items-center font-weight-bold mb-3">
               <span class="text-secondary">Tổng Cộng:</span><span
-                class="d-block ml-auto text-secondary fs-24 font-weight-bold">$99.00</span>
+                class="d-block ml-auto text-secondary fs-24 font-weight-bold">{{ (total| number:'1.0-0')||'0'}}đ</span>
             </div>
-            <button type="submit" value="Check Out"
-              class="btn btn-secondary btn-block bg-hover-primary border-hover-primary">
+            <a [href]="'thanh-toan'"  class="btn btn-secondary btn-block bg-hover-primary border-hover-primary">
               Thanh Toán
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -110,9 +110,9 @@ export interface KhachhangVttech {
   }
   export const TTDonhang =
   [
-    {id:1,Tieude:"Đơn Mới"},
-    {id:2,Tieude:"Đã Gửi Hàng"},
-    {id:3,Tieude:"Đã Nhận"},
-    {id:4,Tieude:"Hủy Đơn"},
+    {id:1,Tieude:"Đơn Mới",style:"alert-info"},
+    {id:2,Tieude:"Đã Gửi Hàng",style:"alert-warning"},
+    {id:3,Tieude:"Đã Nhận",style:"alert-success"},
+    {id:4,Tieude:"Hủy Đơn",style:"alert-danger"},
   ]
   

@@ -47,27 +47,30 @@
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Họ Tên</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="Họ Tên" class="form-control border-0">
+                <input type="text" name="firstname" placeholder="Họ Tên" class="form-control border-0" [(ngModel)]="Khachhang.Hoten">
               </div>
             </div>
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Email</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="Email" class="form-control border-0">
+                <input type="text" name="firstname" placeholder="Email" class="form-control border-0" [(ngModel)]="Khachhang.email">
               </div>
             </div>
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Số Điện Thoại</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="SDT" class="form-control border-0">
+                <input type="text" name="firstname" placeholder="SDT" class="form-control border-0" [(ngModel)]="Khachhang.SDT">
               </div>
             </div>
             <div class="mb-3">
-              <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Địa Chỉ</label>
+              <div class="d-flex flex-row justify-content-between">
+                <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Địa Chỉ</label>
+                <span class="material-icons" data-toggle="modal" data-target="#exampleModal"> add_circle </span>
+              </div>
               <div class="mb-md-0 mb-4">
                   <div *ngFor="let item of CUser.Diachi">
                     <input type="radio" name="radioOption" [(ngModel)]="DiachiGH" [value]="item">
-                    <label> <span *ngIf="item.active" class="badge badge-pill badge-success">Mặc Định</span> {{item.Diachi+','}}{{item.Tinh+','}}{{item.Quan+','}}{{item.Phuong}}</label>
+                    <label>{{item.Diachi+','}}{{item.Tinh+','}}{{item.Quan+','}}{{item.Phuong}}</label>
                   </div>
               </div>
             </div>
@@ -75,14 +78,13 @@
               <label for="exampleFormControlTextarea1">Ghi Chú</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <span class="material-icons" data-toggle="modal" data-target="#exampleModal"> add_circle </span>
             <!-- <div class="custom-control custom-checkbox mt-6 mb-5">
               <input type="checkbox" name="customCheck6" checked="" id="customCheck5" class="custom-control-input">
               <label for="customCheck5" class="custom-control-label custom-control-label-secondary text-secondary">
                 <span class="text-body">Địa chỉ thanh toán giống với địa chỉ giao hàng</span>
               </label>
             </div> -->
-            <button (click)="Dathang()" class="btn btn-secondary bg-hover-primary border-hover-primary px-7 mt-6" >Đặt Hàng</button>
+            <button (click)="DatHang(Khachhang)" class="btn btn-secondary bg-hover-primary border-hover-primary px-7 mt-6" >Đặt Hàng</button>
           </div>
         </div>
       </form>

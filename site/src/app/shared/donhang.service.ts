@@ -17,20 +17,22 @@ import {
 export class DonhangService {
   // private urlApi = 'http://localhost:3000/hderma-donhang';
   private urlApi = environment.APIURL;
+  private _donhangs: BehaviorSubject<any | null> = new BehaviorSubject(null);
   private _donhang: BehaviorSubject<any | null> = new BehaviorSubject(null);
-  private _donhang1: BehaviorSubject<any | null> = new BehaviorSubject(null);
-  private _donhangchitiet: BehaviorSubject<any | null> = new BehaviorSubject(
-    null
-  );
+  private _donhangchitiets: BehaviorSubject<any | null> = new BehaviorSubject(null);
+  private _donhangchitiet: BehaviorSubject<any | null> = new BehaviorSubject(null);
 
+  get donhangs$(): Observable<any[]> {
+    return this._donhangs.asObservable();
+  }
   get donhang$(): Observable<any[]> {
     return this._donhang.asObservable();
   }
-  get donhang1$(): Observable<any[]> {
-    return this._donhang1.asObservable();
-  }
   get donhangchitiet$(): Observable<any[]> {
     return this._donhangchitiet.asObservable();
+  }
+  get donhangchitiets$(): Observable<any[]> {
+    return this._donhangchitiets.asObservable();
   }
   constructor(private http: HttpClient) {}
   createDiem(data: any): Observable<any> {
@@ -42,23 +44,30 @@ export class DonhangService {
        )
   }
   postDonhang(data: any) {
-    return this.donhang$.pipe(
-      take(1),
-      switchMap((donhangs) =>
-        this.http.post(this.urlApi, data).pipe(
+    return this.http.post(this.urlApi+ `/hderma-donhang`, data).pipe(
           map((donhang) => {
-            this._donhang.next([donhang, ...donhangs]);
+            this._donhang.next(donhang);
             return donhang;
-          })
-        )
-      )
-    );
+          }))
   }
-  getDonhang(): Observable<any> {
+  // postDonhang(data: any) {
+  //   return this.donhang$.pipe(
+  //     take(1),
+  //     switchMap((donhangs) =>
+  //       this.http.post(this.urlApi, data).pipe(
+  //         map((donhang) => {
+  //           this._donhang.next([donhang, ...donhangs]);
+  //           return donhang;
+  //         })
+  //       )
+  //     )
+  //   );
+  // }
+  getDonhangs(): Observable<any> {
     return this.http.get(this.urlApi + `/hderma-donhang`).pipe(
       map((donhangs) => {
         console.log(donhangs);
-        this._donhang.next(donhangs);
+        this._donhangs.next(donhangs);
         return donhangs;
       })
     );
@@ -72,9 +81,9 @@ export class DonhangService {
   }
   getOneDonhang(id:any) {
     return this.http.get(this.urlApi + `/hderma-donhang/${id}`).pipe(
-      map((donhang1) => {
-        this._donhang1.next(donhang1);
-        return donhang1;
+      map((donhang) => {
+        this._donhang.next(donhang);
+        return donhang;
       })
     );
   }
@@ -82,40 +91,32 @@ export class DonhangService {
     return this.http.get(this.urlApi + `/hderma-donhang/user/${idKH}`).pipe(
       map((donhangs) => {
         console.log(donhangs);
-        this._donhang.next(donhangs);
+        this._donhangs.next(donhangs);
         return donhangs;
       })
     );
   }
-  getAllDonhangChitiet(id: string): Observable<any> {
+  getAllDonhangChitiet(): Observable<any> {
     return this.http.get<any>(this.urlApi + `/hderma-donhangchitiet`).pipe(
-      map((donhangchitiet) => {
-        this._donhangchitiet.next(donhangchitiet);
-
-        return donhangchitiet;
+      map((donhangchitiets) => {
+        this._donhangchitiets.next(donhangchitiets);
+        return donhangchitiets;
       }),
-      switchMap((donhangchitiet) => {
-        if (!donhangchitiet) {
-          return throwError('Could not found course with id of ' + id + '!');
-        }
-
-        return of(donhangchitiet);
-      })
     );
   }
   getDonhangchitiet(id: string): Observable<any> {
-    return this.http.get<any>(this.urlApi + `/${id}`).pipe(
+    return this.http.get<any>(this.urlApi + `/hderma-donhangchitiet/${id}`).pipe(
       map((donhangchitiet) => {
         this._donhangchitiet.next(donhangchitiet);
-
         return donhangchitiet;
       }),
-      switchMap((donhangchitiet) => {
-        if (!donhangchitiet) {
-          return throwError('Could not found course with id of ' + id + '!');
-        }
-
-        return of(donhangchitiet);
+    );
+  }
+  postdonhangchitiet(data: any) {
+    return this.http.post(this.urlApi + `/hderma-donhangchitiet`, data).pipe(
+      map((donhang) => {
+        this._donhangchitiet.next(donhang);
+        return donhang;
       })
     );
   }

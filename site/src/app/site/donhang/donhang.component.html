@@ -11,7 +11,7 @@
             <input type="text" placeholder="Tìm Kiếm" class="form-control bg-input border-0">
           </div>
           <div class="col-md-2 col-6">
-            <select [(ngModel)]="selectedOption" (ngModelChange)="onSelectionChange($event)">
+            <select class="form-control" [(ngModel)]="selectedOption" (ngModelChange)="onSelectionChange($event)">
               <option *ngFor="let option of TTDonhang" [value]="option.id">{{ option.Tieude }}</option>
             </select>
           </div>
@@ -31,14 +31,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of FDonhangs; let i = index" [routerLink]="item.id">
-                <td>{{item.MaDonHang}}</td>
-                <td>{{item.Hoten}}</td>
-                <td>{{item.Email}}</td>
-                <td class="text-right">{{(item.Tong| number:'1.0-0')||'0'}}đ</td>
-                <td><span class="badge rounded-pill {{Findbyid(item.Trangthai, TTDonhang,'style')}} text-capitalize fs-12"> {{Findbyid(item.Trangthai, TTDonhang,'Tieude')}}</span></td>
-                <td>{{item.Ngaytao|date:'dd/MM/yyyy'}}</td>
-              </tr>
+              <ng-container *ngIf="FDonhangs.length>0; else elseTemplate">
+                <tr *ngFor="let item of FDonhangs; let i = index" [routerLink]="item.id">
+                  <td>{{item.MaDonHang}}</td>
+                  <td>{{item.Hoten}}</td>
+                  <td>{{item.Email}}</td>
+                  <td class="text-right">{{(item.Tong| number:'1.0-0')||'0'}}đ</td>
+                  <td><span class="badge rounded-pill {{Findbyid(item.Trangthai, TTDonhang,'style')}} text-capitalize fs-12"> {{Findbyid(item.Trangthai, TTDonhang,'Tieude')}}</span></td>
+                  <td>{{item.Ngaytao|date:'dd/MM/yyyy'}}</td>
+                </tr>      
+              </ng-container>
+              <ng-template #elseTemplate>
+                <tr>
+                  <td colspan="6">Không Tìm Thấy Đơn Hàng</td>
+                </tr>  
+              </ng-template>
+              
             </tbody>
           </table>
         </div>

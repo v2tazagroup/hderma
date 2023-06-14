@@ -3,7 +3,7 @@
     <div class="card-header">Thông Tin</div>
     <div class="card-body">
  <div class="input-group mb-3">
-   <input type="text" class="form-control" [(ngModel)]="CUser.SDT" [ngModelOptions]="{standalone: true}" placeholder="Số Điện Thoại">
+   <input type="text" class="form-control" disabled [(ngModel)]="CUser.SDT" [ngModelOptions]="{standalone: true}" placeholder="Số Điện Thoại">
  </div>         
  <div class="input-group mb-3">
     <input matInput type="text" class="form-control"[(ngModel)]="CUser.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
@@ -14,7 +14,7 @@
     </div>
     <div class="card-footer">
         <div>
-            <button type="submit" value="Login" class="btn btn-primary btn-sm">Cập Nhật</button>
+            <button value="Login" class="btn btn-primary btn-sm" (click)="UpdateProfile(CUser)">Cập Nhật</button>
         </div>
     </div>
 </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ThemDiachi()">Lưu</button>
       </div>
     </div>
   </div>

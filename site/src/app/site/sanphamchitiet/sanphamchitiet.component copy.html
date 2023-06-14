@@ -6,31 +6,64 @@
           <div class="slick-slider slider-for mx-0 pl-xl-5"
             data-slick-options='{"slidesToShow": 1,"vertical":true, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-nav","responsive":[{"breakpoint": 1200,"settings": {"vertical": false}}]}'>
                    
-            <div class="box px-0">
+            <!-- <div class="box px-0">
               <div class="card p-0 rounded-0 border-0">
-                  <img (click)="open(Sanpham,'hinh1')" src="{{GetImage(Sanpham.Hinhanh.hinh1.spath)}}" alt="product gallery" class="w-100">
+                <a href="{{GetImage(Sanpham.Hinhanh.hinh2.spath)}}" class="card-img" data-gtf-mfp="true" data-gallery-id="02">
+                  <img src="{{GetImage(Sanpham.Hinhanh.hinh2.spath)}}" alt="product gallery" class="w-100">
+                </a>
               </div>
             </div>
             <div class="box px-0">
               <div class="card p-0 rounded-0 border-0">
-                  <img (click)="open(Sanpham,'hinh2')" src="{{GetImage(Sanpham.Hinhanh.hinh2.spath)}}" alt="product gallery" class="w-100">
+                <a href="{{GetImage(Sanpham.Hinhanh.hinh3.spath)}}" class="card-img" data-gtf-mfp="true" data-gallery-id="02">
+                  <img src="{{GetImage(Sanpham.Hinhanh.hinh3.spath)}}" alt="product gallery" class="w-100">
+                </a>
               </div>
             </div>
             <div class="box px-0">
               <div class="card p-0 rounded-0 border-0">
-                  <img (click)="open(Sanpham,'hinh3')" src="{{GetImage(Sanpham.Hinhanh.hinh3.spath)}}" alt="product gallery" class="w-100">
+                <a href="{{GetImage(Sanpham.Hinhanh.hinh4.spath)}}" class="card-img" data-gtf-mfp="true" data-gallery-id="02">
+                  <img src="{{GetImage(Sanpham.Hinhanh.hinh4.spath)}}" alt="product gallery" class="w-100">
+                </a>
               </div>
-            </div>
-            <div class="box px-0">
+            </div> -->
+            <div class="box px-0" *ngFor="let image of album; let i=index">
               <div class="card p-0 rounded-0 border-0">
-                  <img (click)="open(Sanpham,'hinh4')" src="{{GetImage(Sanpham.Hinhanh.hinh4.spath)}}" alt="product gallery" class="w-100">
+                <img [src]="GetImage(image.thumb)" (click)="open(i)" class="w-100"/>
+                <!-- <a href="{{GetImage(Sanpham.Hinhanh.hinh1.spath)}}" class="card-img"  data-gtf-mfp="true" data-gallery-id="02">
+                  <img src="{{GetImage(Sanpham.Hinhanh.hinh1.spath)}}" alt="product gallery" class="w-100">
+                </a> -->
               </div>
             </div>
+
           </div>
-          <div class="slick-slider slider-nav mx-n1 mx-xl-0"
+
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+            (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+            (beforeChange)="beforeChange($event)">
+            <div ngxSlickItem *ngFor="let item of Bailienquan" class="slide">
+              <div class="card border-0">
+                <a [routerLink]="[item.Slug]" class="hover-shine card-img-top">
+                  <ng-container *ngIf="Checkundefined(item.Hinhanh.hinhchinh); else elseTemplate1">
+                    <img src="{{Base+item.Hinhanh.hinhchinh.spath}}" />
+                  </ng-container>
+                  <ng-template #elseTemplate1>
+                    <img src="https://hderma.vn/assets/image/logo.svg" />
+                  </ng-template>
+                </a>
+                <div class="card-body px-0 pt-3 pb-0">
+                  <h3 class="card-title mb-0 fs-16 font-weight-600 lh-16 mt-2">
+                    <a [routerLink]="[item.Slug]">{{item.Title}}</a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+
+      <!-- <div class="slick-slider slider-nav mx-n1 mx-xl-0"
             data-slick-options='{"slidesToShow": 4,"vertical":true, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-for","focusOnSelect": true,"responsive":[{"breakpoint": 1200,"settings": {"vertical": false}}]}'>
-            <div class="box px-1 px-xl-0 py-4 pt-xl-0">
-              <img src="{{GetImage(Sanpham.Hinhanh.hinh1.spath)}}" class="w-100" alt="product gallery">
+            <div class="box px-1 px-xl-0 py-4 pt-xl-0" *ngFor="let image of album; let i=index">
+              <img src="{{GetImage(image.thumb)}}" class="w-100" alt="product gallery">
             </div>
             <div class="box px-1 px-xl-0 py-4 pt-xl-0">
               <img src="{{GetImage(Sanpham.Hinhanh.hinh2.spath)}}" class="w-100" alt="product gallery">
@@ -40,7 +73,7 @@
             </div>
             <div class="box px-1 px-xl-0 py-4 pt-xl-0">
               <img src="{{GetImage(Sanpham.Hinhanh.hinh4.spath)}}" class="w-100" alt="product gallery">
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -188,7 +221,7 @@
                     <div class="col-lg-6 mb-lg-0 mb-7">
                       <div class="hover-shine pr-xl-13">
                         <!-- <img src="{{(Base+Sanpham.Hinhanh.ContentImage.spath)||''}}" alt=""> -->
-                        <img (click)="open(Sanpham,'hinhchinh')" src="{{GetImage(Sanpham.Hinhanh.hinhchinh.spath)}}" alt="">
+                        <img src="{{GetImage(Sanpham.Hinhanh.hinhchinh.spath)}}" alt="">
                       </div>
                     </div>
                     <div class="col-lg-6 text-justify">

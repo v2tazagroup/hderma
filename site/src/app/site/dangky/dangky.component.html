@@ -2,17 +2,17 @@
   <div class="container">
     <h2 class="fs-sm-40 mb-10 text-center">Đăng Ký</h2>
     <div class="mw-500 mx-auto">
-      <form class="form-control-01"><input name="first-name" type="text" placeholder="First name" required=""
-          class="form-control mb-3 border-0"><input name="last-name" type="text" placeholder="Last name" required=""
-          class="form-control mb-3 border-0"><input name="email" type="email" placeholder="Your email" required=""
-          class="form-control mb-3 border-0"><input name="password" type="password" placeholder="Password" required=""
-          class="form-control border-0">
+      <form class="form-control-01">
+        <input name="first-name" type="text" placeholder="Họ Tên" [(ngModel)]="User.Hoten" [ngModelOptions]="{standalone: true}" class="form-control mb-3 border-0">
+        <input name="last-name" type="text" placeholder="Số Điện Thoại" [(ngModel)]="User.SDT" [ngModelOptions]="{standalone: true}" class="form-control mb-3 border-0">
+        <input name="email" type="email" placeholder="Email" [(ngModel)]="User.email" [ngModelOptions]="{standalone: true}" class="form-control mb-3 border-0">
+        <input name="password" type="password" placeholder="Mật Khẩu" [(ngModel)]="User.password" [ngModelOptions]="{standalone: true}"  class="form-control border-0">
         <div class="custom-control custom-checkbox mt-4 mb-5 mr-xl-6"><input name="agree" type="checkbox"
             id="termsOfUse1" class="custom-control-input"><label for="termsOfUse1"
             class="custom-control-label text-secondary"> Có, tôi đồng ý với <a href="#"
               class="text-decoration-underline">Chính sách quyền riêng tư</a> và <a href="#"
               class="text-decoration-underline">Điều khoản sử dụng của</a> Hderma </label></div><button type="submit"
-          value="Login" class="btn btn-primary btn-block">Đăng Ký</button>
+          value="Login" class="btn btn-primary btn-block" (click)="Dangky(User)">Đăng Ký</button>
       </form>
     </div>
   </div>

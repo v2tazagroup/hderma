@@ -84,7 +84,7 @@
           <div class="media flex-column flex-md-row mb-7" *ngFor="let item of PagiSanphams">
             <a [routerLink]="[item.Slug]" class="position-relative mw-md-258">
               <ng-container *ngIf="item.Hinhanh.hinhthongtin; else elseTemplate">
-                <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
               </ng-container>
               <ng-template #elseTemplate>
                 <img src="https://hderma.vn/assets/image/logo.svg" />
@@ -130,7 +130,7 @@
               <div class="position-relative">
                 <a [routerLink]="[item.Slug]">
                   <ng-container *ngIf="item.Hinhanh.hinhthongtin; else elseTemplate">
-                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                   </ng-container>
                   <ng-template #elseTemplate>
                     <img src="https://hderma.vn/assets/image/logo.svg" />

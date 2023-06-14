@@ -34,8 +34,7 @@ export class GiohangService {
     const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
     this._soluong.next(soluong);
   }
-
-  removeFromCart(itemId: number): void {
+removeFromCart(itemId: number): void {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
     const index = this.cartItems.findIndex(i => i.id === itemId);
     if (index !== -1) {
@@ -48,7 +47,13 @@ export class GiohangService {
     const soluong = this.cartItems.reduce((soluong, item) => soluong + item.soluong, 0);
     this._soluong.next(soluong);
   }
-
+EmptyCart(): void {
+    this.cartItems = []
+    this._cartItems.next(this.cartItems);
+    this.localStorageService.setItem('giohang',this.cartItems)
+    this._total.next(0);
+    this._soluong.next(0);
+  }
   updateQuantity(itemId: number, Upadatesoluong: number): void {
     this.cartItems = this.localStorageService.getItem('giohang')?this.localStorageService.getItem('giohang'):[]
     const item = this.cartItems.find(i => i.id === itemId);

@@ -6,7 +6,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   styleUrls: ['./lienhe.component.scss']
 })
 export class LienheComponent implements OnInit {
-  
+  isShowMap:boolean = true
   items = [
     {
       Title: 'Quận 10',
@@ -48,6 +48,7 @@ export class LienheComponent implements OnInit {
     if(history.state.navigationId!=1){location.reload()}
   }
   getiframe(item: any) {
+    this.isShowMap =false
     let link = `https://www.google.com/maps/embed?pb=${item.Iframe}`
     document.querySelector('.google-map')?.setAttribute('src', link)
   }

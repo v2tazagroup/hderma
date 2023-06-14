@@ -31,8 +31,9 @@ import { Giohang_miniComponent } from './site/giohang/giohang_mini/giohang_mini.
 import { UsersInterceptor } from './admin/users.interceptor';
 import { AuthModule } from './admin/auth/auth.module';
 import { DonhangComponent } from './site/donhang/donhang.component';
-import { LightboxComponent, LightboxModule } from 'ngx-acuw';
 import { DonhangChitietComponent } from './site/donhang/donhang-chitiet/donhang-chitiet.component';
+import { CamonComponent } from './site/thanhtoan/camon/camon.component';
+import { LightboxModule } from 'ngx-lightbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { DonhangChitietComponent } from './site/donhang/donhang-chitiet/donhang-
     ThongtinComponent,
     ThanhtoanComponent,
     DonhangComponent,
-    DonhangChitietComponent
+    DonhangChitietComponent,
+    CamonComponent
   ],
   // entryComponents: [LightboxComponent],
   imports: [
@@ -132,6 +134,7 @@ import { DonhangChitietComponent } from './site/donhang/donhang-chitiet/donhang-
               { path: 'thong-tin', component: ThongtinComponent },
               { path: 'don-hang', component: DonhangComponent },
               { path: 'don-hang/:id', component: DonhangChitietComponent },
+              { path: 'cam-on', component: CamonComponent },
             ]
           },
           {

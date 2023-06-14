@@ -94,4 +94,19 @@ export class ThongtinComponent implements OnInit {
       });
     }
   }
+  UpdateProfile(data:any) {
+    if (data.SDT==''||data.SDT==undefined) {
+      this._notifierService.notify('error', `Vui lòng nhập SDT`);
+    }
+    else if (data.email==''||data.email==undefined) {
+      this._notifierService.notify('error', `Vui lòng nhập Email`);
+    }
+    else if (data.Hoten==''||data.Hoten==undefined) {
+      this._notifierService.notify('error', `Vui lòng nhập ho và tên`);
+    }
+    else this._usersService.updateOneUser(data).subscribe((data) => {
+      this._notifierService.notify('success', `Cập Nhật Thành Công`);
+        }
+      );
+  }
 }

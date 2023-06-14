@@ -4,6 +4,8 @@ import { UsersService } from 'src/app/admin/users.service';
 import { GiohangService } from 'src/app/shared/giohang.service';
 import { DiaChiInit } from './diachi';
 import { MD5 } from 'crypto-js';
+import { DonhangService } from 'src/app/shared/donhang.service';
+import { NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-thanhtoan',
   templateUrl: './thanhtoan.component.html',
@@ -26,17 +28,25 @@ export class ThanhtoanComponent implements OnInit {
   Phuong:any[]=[]
   Diachi:any
   DiachiGH:any
+  Thanksdata:any
   Khachhang:any={Diachi:{id:0}};
+  DonhangChitiet:any={};
   phoneRegex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
   constructor(
     private cartService: GiohangService,
     private _NotifierService: NotifierService,
     private _usersService:UsersService,
+    private _DonhangService:DonhangService,
+    private _router: Router,
     ) {
     this.cartService.getCartItems();
     this.cartService.cartItems$.subscribe((data)=>
     {
       this.cartItems = data
+      if(data.length==0)
+      {
+      this._router.navigate(['/san-pham']);
+      }
     }
     )
     this.cartService.calculateTotal(); 
@@ -93,72 +103,67 @@ export class ThanhtoanComponent implements OnInit {
     // this.CUser.Diachi[index].active = true
     else
     {
-      Khachhang.Diachi = this.DiachiGH      
+    Khachhang.Diachi = this.DiachiGH      
     if (this.cartItems.length > 0) {
       const today = new Date().getTime().toString()
       const md5Hash = MD5(today).toString();
       const MaDonHang = md5Hash.slice(0, 8);
       Khachhang.MaDonHang = `DH${MaDonHang}`;
-      this._checkoutService
-        .postdonhang(Khachhang)
-        .subscribe((res) => {
+      this._DonhangService.postDonhang(Khachhang)
+        .subscribe((res:any) => {
           if (res) {
+            console.log(res);      
             this.Thanksdata = res;
-            let idDH: any;
-            this._checkoutService.donhang$.subscribe((donhang) => {
-              idDH = donhang.id;
-              this.ListUser.forEach((v) => {
-                let Link;
-                let Message='';
-                if(v.Role=="admin")
-                {
-                  Message = `(ADMIN) Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
-                  Link = `/admin/donhang/${donhang.id}`
-                }
-                else if(v.Role=="parent"){
-                  Message = `(REF) Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
-                  Link = `/profile/referral/${donhang.idKH}/donhang/${donhang.id}`
-                }
-                else {
-                  Message = `Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
-                  Link = `/profile/donhang/${donhang.id}`
-                }
-                const newNoti = {idUser:v.id,Type:"donhang.create",Message:Message,Link:Link}            
-                this._accountNotificationsService.createNotify(newNoti).subscribe((data)=>
-                  {
-                  const dulieu = {idUser:data.idUser,Title:Message,Link:data.Link}
-                  this._accountNotificationsService.PushNotify(dulieu).subscribe()
-                  });
-              });
-            });
-            this.carts.forEach((x) => {
-              this.DonhangChitiet.idDH = idDH;
+            //Code Push Noti
+            // this._checkoutService.donhang$.subscribe((donhang) => {
+            //   idDH = res.id;
+            //   this.ListUser.forEach((v) => {
+            //     let Link;
+            //     let Message='';
+            //     if(v.Role=="admin")
+            //     {
+            //       Message = `(ADMIN) Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
+            //       Link = `/admin/donhang/${donhang.id}`
+            //     }
+            //     else if(v.Role=="parent"){
+            //       Message = `(REF) Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
+            //       Link = `/profile/referral/${donhang.idKH}/donhang/${donhang.id}`
+            //     }
+            //     else {
+            //       Message = `Đơn Mới : ${donhang.Hoten} - ${donhang.MaDonHang}`
+            //       Link = `/profile/donhang/${donhang.id}`
+            //     }
+            //     const newNoti = {idUser:v.id,Type:"donhang.create",Message:Message,Link:Link}            
+            //     this._accountNotificationsService.createNotify(newNoti).subscribe((data)=>
+            //       {
+            //       const dulieu = {idUser:data.idUser,Title:Message,Link:data.Link}
+            //       this._accountNotificationsService.PushNotify(dulieu).subscribe()
+            //       });
+            //   });
+            // });
+            // {
+            //   "soluong": 7,
+            //   "id": "7df7038f-2613-4201-9cd6-fdc1b6e17e82",
+            //   "Gia": 450000,
+            //   "GiaSale": 450000,
+            //   "Hinhanh": "assets/1_1686044175922.jpg",
+            //   "Tieude": "Kem chống nắng dưỡng sáng da D.400 H.Derma Broad Spectrum Sunscreen Skin",
+            //   "Slug": "kem-chong-nang-duong-sang-da-D.400-H.Derma-Broad-Spectrum-Sunscreen-Skin"
+            // }
+            this.cartItems.forEach((x) => {
+              this.DonhangChitiet.idDH = res.id;
               this.DonhangChitiet.idSP = x.id;
-              this.DonhangChitiet.Soluong = x.cartNum;
+              this.DonhangChitiet.Soluong = x.soluong;
               this.DonhangChitiet.Dongia = x.GiaSale;
               this.DonhangChitiet.idGioithieu = x.idGioithieu;
-              this._checkoutService
-                .postdonhangchitiet(this.DonhangChitiet)
-                .subscribe((res) => {
-                  this.Thanksdata.chitiet=res;
-                  this.cartService.removeCart(x).subscribe();
-                  if (this.carts.length == 0) {
-
-                    // const dialogRef = this._dialog.open(templateRef);
-                    // this.interval = setInterval(() => {
-                    //   this.countDown--;
-                    //   if (this.countDown === 0) {
-                    //     clearInterval(this.interval);
-                    //     dialogRef.close();
-                    //     this._router.navigate(['profile/donhang']);
-                    //   }
-                    // }, 1000);
-
+              this._DonhangService.postdonhangchitiet(this.DonhangChitiet).subscribe((res1) => {
+                  this.cartService.removeFromCart(x.id);
+                  if (this.cartItems.length == 0) {
                     this._NotifierService.notify('success', `Đặt hàng thành công`);
-                    if(this.token!=null)
-                    {
-                    this._router.navigate(['profile/donhang']);
-                     }
+                    if(this.CUser.id!=null)
+                      {
+                      this._router.navigate(['/don-hang/'+this.Thanksdata.id]);
+                      }
                     else
                     {        
                       const extras: NavigationExtras = {
@@ -166,7 +171,7 @@ export class ThanhtoanComponent implements OnInit {
                           data: this.Thanksdata
                         }
                       };
-                    this._router.navigate(['camon'],extras);
+                    this._router.navigate(['/cam-on'],extras);
                     }
                   }
                 });

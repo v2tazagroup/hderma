@@ -24,26 +24,13 @@
             <iframe class="w-100 h-100 google-map z-10 relative" style="border:0;" allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div
-              class="bg-white p-7 rounded position-absolute" style="width: 310px;top: 10vh;right: 30px;z-index: 10;height: 80%;overflow: auto;">
-              <!-- <div class="lg:flex items-center lg:space-x-3 lg:space-y-0 space-y-3 w-100 text-sm relative z-10">
-                <div class="flex lg:w-2/5">
-                  <select name="" id="" class="p-3 border border-[#000000] w-100">
-                    <option value="">Hồ Chí Minh</option>
-                    <option value="">Đà Nẵng</option>
-                    <option value="">Nha Trang</option>
-                  </select>
-                </div>
-                <div class="lg:w-3/5">
-                  <input type="text" class="w-100 border border-[#000000] p-3" placeholder="Tên cửa hàng, khu vực"
-                    name="" id="">
-                </div>
-
-              </div> -->
-              <div class="boder-b border-gray-300 w-100 flex">
-                <h3>Tên Cửa Hàng</h3>
+              class="bg-white p-3 rounded position-absolute" [style.height.%]="isShowMap ? 80 : null"  style="width: 310px;top: 10vh;right: 30px;z-index: 10;overflow: auto;">
+              <div class="d-flex flex-row justify-content-between align-items-center">
+                <h4>Tên Cửa Hàng</h4>
+                <span class="material-icons" (click)="isShowMap=!isShowMap">manage_search</span>
                 <!-- <input class="text-sm w-100 lg:p-3 py-3" type="text" placeholder="Tên cửa hàng"> -->
               </div>
-              <div class="h-96 overflow-auto scroll">
+              <div class="h-96 overflow-auto scroll" *ngIf="isShowMap">
                 <div class="d-flex flex-column justify-content-between pb-5 cursor-pointer" (click)="getiframe(item)"
                   *ngFor="let item of items">
                   <div class="text-sm d-flex flex-row align-items-center">

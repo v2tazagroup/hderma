@@ -1480,9 +1480,9 @@
 
         },
 
-        initSelectPicker: function () {
-            $('select').selectpicker();
-        },
+        // initSelectPicker: function () {
+        //     $('select').selectpicker();
+        // },
         dropdownMenuLeft: function () {
             var $multiEls = $('.has-children .sidebar-item');
             $(".has-children").collapse({toggle: false});

@@ -1,0 +1,13 @@
+<div class="text-center mt-5">
+    <ng-container *ngIf="state$ | async as state">
+        <div class="d-flex flex-row justify-content-center">
+            <span class="material-icons text-primary">check_circle</span>  
+            <span class="mx-2"> Bạn đã đặt thành công đơn hàng </span>  
+            <span class="text-primary text-bold"> {{state.MaDonHang}} </span>
+        </div>
+    </ng-container>
+    <div class="d-flex flex-row justify-content-center mt-3">
+        <button class="btn btn-primary btn-sm mr-3" [routerLink]="['/trang-chu']">Trang Chủ</button>
+        <button class="btn btn-primary btn-sm" [routerLink]="['/san-pham']">Sản Phẩm</button>
+</div>
+</div>

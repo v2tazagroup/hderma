@@ -26,8 +26,7 @@
               <div class="card-body px-6 pt-5">
                 <div class="d-flex align-items-center mb-2">
                   <span>Tổng:</span>
-                  <span class="d-block ml-auto text-secondary font-weight-bold">{{ (total|
-                                        number:'1.0-0')||'0'}}đ</span>
+                  <span class="d-block ml-auto text-secondary font-weight-bold">{{ (total|number:'1.0-0')||'0'}}đ</span>
                 </div>
                 <div class="d-flex align-items-center">
                   <span>Phí Vận Chuyển:</span>
@@ -47,19 +46,19 @@
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Họ Tên</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="Họ Tên" class="form-control border-0" [(ngModel)]="Khachhang.Hoten">
+                <input type="text" placeholder="Họ Tên" class="form-control border-0" [(ngModel)]="Khachhang.Hoten" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Email</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="Email" class="form-control border-0" [(ngModel)]="Khachhang.email">
+                <input type="text" placeholder="Email" class="form-control border-0" [(ngModel)]="Khachhang.email" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="mb-3">
               <label class="mb-2 fs-13 letter-spacing-01 font-weight-600 text-uppercase">Số Điện Thoại</label>
               <div class="mb-md-0 mb-4">
-                <input type="text" name="firstname" placeholder="SDT" class="form-control border-0" [(ngModel)]="Khachhang.SDT">
+                <input type="text" placeholder="SDT" class="form-control border-0" [(ngModel)]="Khachhang.SDT" [ngModelOptions]="{standalone: true}">
               </div>
             </div>
             <div class="mb-3">

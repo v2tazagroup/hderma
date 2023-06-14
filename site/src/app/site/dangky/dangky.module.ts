@@ -6,6 +6,6 @@ import { DangkyComponent } from './dangky.component';
   imports: [
     CommonModule
   ],
-  declarations: [DangkyComponent]
+  declarations: []
 })
 export class DangkyModule { }

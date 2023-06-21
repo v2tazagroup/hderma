@@ -34,10 +34,10 @@ import { DonhangComponent } from './site/donhang/donhang.component';
 import { DonhangChitietComponent } from './site/donhang/donhang-chitiet/donhang-chitiet.component';
 import { CamonComponent } from './site/thanhtoan/camon/camon.component';
 import { LightboxModule } from 'ngx-lightbox';
+import { NhanhapiComponent } from './site/nhanhapi/nhanhapi.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SanphamchitietComponent,
     ListsanphamComponent,
     HeaderComponent,
     FooterComponent,
@@ -55,7 +55,8 @@ import { LightboxModule } from 'ngx-lightbox';
     ThanhtoanComponent,
     DonhangComponent,
     DonhangChitietComponent,
-    CamonComponent
+    CamonComponent,
+    NhanhapiComponent
   ],
   // entryComponents: [LightboxComponent],
   imports: [
@@ -117,8 +118,9 @@ import { LightboxModule } from 'ngx-lightbox';
             path: '', component: MainComponent,
             children: [
               { path: '', component: TrangchuComponent },
-              { path: 'san-pham', component: ListsanphamComponent },
-              { path: 'san-pham/:slug', component: SanphamchitietComponent },
+              // { path: 'san-pham', component: ListsanphamComponent },
+              { path: 'san-pham', loadChildren: () => import('./site/sanpham/sanpham.module').then(m => m.SanphamModule)},
+              // { path: 'san-pham/:slug', component: SanphamchitietComponent },
               { path: 'bai-viet', component: BloglistComponent },
               { path: 'bai-viet/danh-muc/:slug', component: BloglistComponent },
               { path: 'bai-viet/:slug', component: BlogchitietComponent },
@@ -135,6 +137,7 @@ import { LightboxModule } from 'ngx-lightbox';
               { path: 'don-hang', component: DonhangComponent },
               { path: 'don-hang/:id', component: DonhangChitietComponent },
               { path: 'cam-on', component: CamonComponent },
+              { path: 'nhanh-api', component: NhanhapiComponent },
             ]
           },
           {

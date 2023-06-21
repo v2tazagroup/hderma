@@ -8,11 +8,11 @@ import { SanphamService } from 'src/app/shared/sanpham.service';
 import { GetImage } from 'src/app/shared/shared.utils';
 import { TagsService } from 'src/app/shared/tags.service';
 @Component({
-  selector: 'app-sanphamchitiet',
-  templateUrl: './sanphamchitiet.component.html',
-  styleUrls: ['./sanphamchitiet.component.css']
+  selector: 'app-sanpham-chitiet',
+  templateUrl: './sanpham-chitiet.component.html',
+  styleUrls: ['./sanpham-chitiet.component.scss']
 })
-export class SanphamchitietComponent implements OnInit { 
+export class SanphamChitietComponent implements OnInit {
   Base = environment.BaseUrl;
   Sanpham:any={
     Hinhanh:{

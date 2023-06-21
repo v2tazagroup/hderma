@@ -6,14 +6,12 @@ import { GetImage } from 'src/app/shared/shared.utils';
 import { environment } from 'src/app/environment';
 import { GiohangService } from 'src/app/shared/giohang.service';
 import { NotifierService } from 'angular-notifier';
-
 @Component({
-  selector: 'app-listsanpham',
-  templateUrl: './listsanpham.component.html',
-  styleUrls: ['./listsanpham.component.css']
+  selector: 'app-sanpham',
+  templateUrl: './sanpham.component.html',
+  styleUrls: ['./sanpham.component.scss']
 })
-export class ListsanphamComponent implements OnInit {
-
+export class SanphamComponent implements OnInit {
   constructor(
     private _TrangchuService: TrangchuService,
     private _tagService: TagsService,
@@ -146,3 +144,4 @@ export class ListsanphamComponent implements OnInit {
   }
 
 }
+

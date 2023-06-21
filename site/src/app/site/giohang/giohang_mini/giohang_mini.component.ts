@@ -18,6 +18,9 @@ export class Giohang_miniComponent implements OnInit {
     this.cartService.cartItems$.subscribe((data)=>
     {
       this.cartItems = data
+      this.cartItems.forEach(v => {
+        v.Giamgia = ((v.Gia - v.GiaSale)/v.Gia).toFixed(2)
+      });
     }
     )
     this.cartService.calculateTotal(); 

@@ -26,7 +26,7 @@
                 <div class="media-body w-128px">
                   <p class="font-weight-500 mb-1 text-secondary">{{item.Tieude}}</p>
                   <p class="card-text font-weight-bold fs-14 mb-1 text-secondary">
-                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1">{{(item.Gia| number:'1.0-0')||'0'}}đ</span><span>{{(item.GiaSale| number:'1.0-0')||'0'}}đ</span>
+                  <span class="fs-13 font-weight-500 text-decoration-through text-body pr-1" *ngIf="item.Giamgia!=0">{{(item.Gia| number:'1.0-0')||'0'}}đ</span><span>{{(item.GiaSale| number:'1.0-0')||'0'}}đ</span>
                   </p>
                 </div>
               </div>
@@ -52,7 +52,7 @@
       </table>
     </form>
     <div class="row">
-      <div class="col-lg-6 pt-2">
+      <!-- <div class="col-lg-6 pt-2">
         <h4 class="fs-24 mb-3">Phiếu giảm giá</h4>
         <p>Nhập mã phiếu giảm giá nếu bạn có.</p>
         <form novalidate="" class="ng-untouched ng-pristine ng-valid">
@@ -61,7 +61,7 @@
             Phiếu giảm giá
           </button>
         </form>
-      </div>
+      </div> -->
       <div class="col-lg-6 pt-lg-0 pt-11">
         <div class="card border-0" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1)">
           <div class="card-body px-6 pt-5">

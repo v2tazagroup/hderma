@@ -74,6 +74,7 @@ export class DonhangService {
     return this.http.get(this.urlApi + `/hderma-donhang/${id}`).pipe(
       map((donhang1) => {
         this._donhang1.next(donhang1);
+        console.log(donhang1); 
         return donhang1;
       })
     );

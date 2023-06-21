@@ -6,6 +6,8 @@ import { DiaChiInit } from './diachi';
 import { MD5 } from 'crypto-js';
 import { DonhangService } from 'src/app/shared/donhang.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { CauhinhchungService } from 'src/app/shared/cauhinhchung.service';
+import { EmailService } from 'src/app/shared/email.service';
 @Component({
   selector: 'app-thanhtoan',
   templateUrl: './thanhtoan.component.html',
@@ -31,28 +33,36 @@ export class ThanhtoanComponent implements OnInit {
   Thanksdata:any
   Khachhang:any={Diachi:{id:0}};
   DonhangChitiet:any={};
+  CFemail:any={};
   phoneRegex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
   constructor(
     private cartService: GiohangService,
     private _NotifierService: NotifierService,
     private _usersService:UsersService,
     private _DonhangService:DonhangService,
+    private _CauhinhchungService:CauhinhchungService,
     private _router: Router,
+    private _EmailService: EmailService,
     ) {
     this.cartService.getCartItems();
     this.cartService.cartItems$.subscribe((data)=>
     {
       this.cartItems = data
-      if(data.length==0)
-      {
-      this._router.navigate(['/san-pham']);
-      }
+      // if(data.length==0)
+      // {
+      // this._router.navigate(['/san-pham']);
+      // }
     }
     )
     this.cartService.calculateTotal(); 
     this.cartService.total$.subscribe((data)=>this.total = data)
   }
   ngOnInit() {
+    this._CauhinhchungService.getAll().subscribe(data=>
+      {
+        this.CFemail = data.find(v=>v.Slug=='cau-hinh-email')
+        this.CFemail = JSON.parse(this.CFemail.Content)      
+      })
     this._usersService.getProfile().subscribe((data)=>{
       if(data){
         this.CUser = data;
@@ -160,6 +170,13 @@ export class ThanhtoanComponent implements OnInit {
                   this.cartService.removeFromCart(x.id);
                   if (this.cartItems.length == 0) {
                     this._NotifierService.notify('success', `Đặt hàng thành công`);
+                    this._DonhangService.getOneDonhang(this.Thanksdata.id).subscribe((data2:any)=>  
+                    {
+                       delete data2.Donhangchitiets
+                        const dulieu = {cfemail:this.CFemail,data:data2}
+                          this._EmailService.SenderEmail(dulieu).subscribe((data)=>{                            
+                            this._NotifierService.notify("success","Đã Gửi Email Xác Nhận")
+                          })  
                     if(this.CUser.id!=null)
                       {
                       this._router.navigate(['/don-hang/'+this.Thanksdata.id]);
@@ -173,19 +190,17 @@ export class ThanhtoanComponent implements OnInit {
                       };
                     this._router.navigate(['/cam-on'],extras);
                     }
-                  }
-                });
-
+                
+                  })
+                }
+              })
             });
           }
         });
     } else {
       this._NotifierService.notify('error', `Bạn chưa có đơn hàng`);
     }
-    }
-
-    console.log(Khachhang);
-    
+    }    
   }
   displayFn(data: any): string {
     return data && data.name ? data.name : '';

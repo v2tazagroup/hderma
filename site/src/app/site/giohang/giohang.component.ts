@@ -18,6 +18,9 @@ export class GiohangComponent implements OnInit {
     this.cartService.getCartItems();
     this.cartService.cartItems$.subscribe((data) => {
       this.cartItems = data
+      this.cartItems.forEach(v => {
+        v.Giamgia = ((v.Gia - v.GiaSale)/v.Gia).toFixed(2)
+      });
       console.log(data);
     }
     )

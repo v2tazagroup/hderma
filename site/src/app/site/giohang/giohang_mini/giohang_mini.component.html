@@ -24,7 +24,7 @@
             <div class="media-body d-flex">
               <div class="cart-price pr-6">
                 <p class="fs-14 font-weight-bold text-secondary mb-1"><span
-                    class="font-weight-500 fs-13 text-line-through text-body mr-1">{{(item.Gia| number:'1.0-0')||'0'}}đ</span>{{(item.GiaSale| number:'1.0-0')||'0'}}đ
+                    class="font-weight-500 fs-13 text-line-through text-body mr-1" *ngIf="item.Giamgia!=0">{{(item.Gia| number:'1.0-0')||'0'}}đ</span>{{(item.GiaSale| number:'1.0-0')||'0'}}đ
                 </p>
                 <a [href]="'/san-pham/'+item.Slug" class="text-secondary">{{item.Tieude}}</a>
               </div>

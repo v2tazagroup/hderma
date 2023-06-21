@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/admin/users.service';
 import { DiaChiInit } from '../thanhtoan/diachi';
 import { NotifierService } from 'angular-notifier';
+import { UsersService } from 'src/app/admin/users.service';
 @Component({
   selector: 'app-thongtin',
   templateUrl: './thongtin.component.html',

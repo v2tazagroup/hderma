@@ -95,7 +95,7 @@ export class ThemetintucComponent implements OnInit {
     },
     entity_encoding: 'raw',
     file_picker_types: 'image media',
-    file_picker_callback: function (cb:any, value:any, meta: any) {
+    file_picker_callback: function (cb, value, meta: any) {
       if (meta.filetype == 'media') {
         const input: any = document.createElement('input');
         input.setAttribute('type', 'file');
@@ -150,7 +150,7 @@ export class ThemetintucComponent implements OnInit {
         input.click();
       }
     },
-    init_instance_callback: function (editor:any) {},
+    init_instance_callback: function (editor) {},
   };
   constructor(
     private _baivietService: BaivietService,
@@ -236,15 +236,24 @@ export class ThemetintucComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((paramsId) => {
-      this.id = paramsId['slug'];
-      this.data = {};
-
-      if (this.id) {
-        this._baivietService.getBaivietDetail(this.id).subscribe();
+      const slug = paramsId['slug'];
+      const id = paramsId['id'];
+      if(id){
+        this.data = {
+          Title: 'KHOÁ TRIỆT LÔNG CÔNG NGHỆ CAO',
+          Mota: '<div class="rounded-2xl bg-indigo-900 px-10 py-5 relative space-y-5">\n<div class="text-white text-lg text-justify relative">\n<p class="text-lg">Khi chất lượng cuộc sống dần được n&acirc;ng l&ecirc;n, con người ng&agrave;y c&agrave;ng quan t&acirc;m, chăm ch&uacute;t cho bản th&acirc;n nhiều hơn. Sẽ l&agrave; một điểm trừ nếu để vi-&ocirc;-l&ocirc;ng mặc sức ph&aacute;t triển tr&ecirc;n cơ thể hoặc mọc ở một số vị tr&iacute; kh&ocirc;ng cần thiết. Đặc biệt, phụ nữ rậm l&ocirc;ng thường gặp trở ngại lớn về mặt thẩm mỹ v&agrave; t&acirc;m l&yacute; g&acirc;y ảnh hưởng lớn đến giao tiếp, chất lượng cuộc sống. Kh&oacute;a học triệt l&ocirc;ng tại Timona Academy sẽ gi&uacute;p bạn chuy&ecirc;n nghiệp hơn trong quy tr&igrave;nh triệt l&ocirc;ng chuẩn Spa.</p>\n</div>\n</div>',
+          Baiviet: [],
+          Theme: 4,
+          Slug: '',
+          pid:id
+        };
+       }
+      else {
+        this._baivietService.getBaivietDetail(slug).subscribe();
         this._baivietService.baiviet$.subscribe((res) => {
           if (res) {
+            console.log(res);
             this.data = res;
-            
           }
         });
       }

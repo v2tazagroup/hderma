@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/app/environment';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { NotifierService } from 'angular-notifier';
 import { DanhmucProductService } from '../../danhmuc-product/danhmuc-product.service';
 import { TagsService } from '../../tags/tags.service';
 import { SanphamService } from '../sanpham.service';
+import { environment } from 'src/app/environment';
 @Component({
   selector: 'tazagroup-detailsanpham',
   templateUrl: './detailsanpham.component.html',
@@ -15,7 +15,7 @@ import { SanphamService } from '../sanpham.service';
 })
 export class DetailsanphamComponent implements OnInit {
   APITINYMCE!: string;
-  product: any;
+  product: any={};
   selectedFiles?: FileList;
   slug!: string;
   danhmucs: any = [];
@@ -110,28 +110,6 @@ export class DetailsanphamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.product = {
-      Tieude: '',
-      Mota: ' ',
-      Thanhphan: '',
-      Huongdan: '',
-      idDM: '',
-      Khoiluong: '',
-      Thuonghieu: '',
-      Code: '',
-      Slug: '',
-      SKU: '',
-      Tags: [],
-      ListImage: {},
-      ContentImage: '',
-      GiaSale: 0,
-      Gia: 0,
-      Image: '',
-      Type: '',
-      Thongtin: '',
-      Ordering: 0,
-      Trangthai: 0,
-    };
     this._sanphamService.getDanhmucs().subscribe();
     this._sanphamService.danhmucs$.subscribe((res) => {
       if (res) {
@@ -149,20 +127,24 @@ export class DetailsanphamComponent implements OnInit {
     this.ListImage = this.product.ListImage;
     this.route.params.subscribe((paramsId) => {
       this.slug = paramsId['slug'];
-      if(this.slug=='themsanphammoi')
+      const idDM = paramsId['id'];
+      console.log(idDM);
+      if(idDM)
       {
         this.product = {
           Tieude: '',
           Mota: ' ',
+          Noidung:{Thongtin:'',Sudung:'',Thanhphan:''},
           Thanhphan: '',
           Huongdan: '',
-          idDM: '',
+          idDM: idDM,
           Khoiluong: '',
           Thuonghieu: '',
           Code: '',
           Slug: '',
           SKU: '',
           Tags: [],
+          Hinhanh:{ContentImage:'',Image:''},
           ListImage: {},
           ContentImage: '',
           GiaSale: 0,
@@ -174,7 +156,8 @@ export class DetailsanphamComponent implements OnInit {
           Trangthai: 0,
         };
       }
-      else {
+      else
+       {
         this._sanphamService.getProductDetail(this.slug).subscribe();
         this._sanphamService.product$.subscribe((res) => {
           if (res) {
@@ -221,6 +204,24 @@ export class DetailsanphamComponent implements OnInit {
     });
   }
 
+  Uploadfile(event: any, type: any,alt:any) {
+    event.target as HTMLInputElement;
+    const file: any = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file)
+    formData.append('alt', alt)
+    formData.append('idDrive', "0AKQL50NKsue5Uk9PVA");
+    formData.append('parents', "['1_3htpPNQTxMi2sDQZes2WGWXPNwRxDYv']");   
+    this._sanphamService.uploadDriver(formData).subscribe((res) => {
+      if (res) {
+        this.product.Hinhanh[type]=res 
+        console.log(res);
+        console.log(this.product);
+        
+      }
+    });
+  }
+
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
     console.log(this.selectedFiles);
@@ -229,7 +230,7 @@ export class DetailsanphamComponent implements OnInit {
     delete this.product.ListImage[i];
   }
   removeSimpleImage(value:any) {
-    this.product[value] = '';
+    this.product.Hinhanh[value] = '';
   }
   uploadListImage() {
     if (this.selectedFiles) {
@@ -274,11 +275,10 @@ export class DetailsanphamComponent implements OnInit {
   }
 
   updateSanpham() {
-    console.log(this.product);
-    console.log(this.product.idDM);
     delete this.product.Danhmuc
     const Tags = this.tagsLoaiSpData.concat(this.tagsTinhtrangData);
     this.product.Tags = Tags;
+    console.log(this.product);
     this._sanphamService.updateProduct(this.product).subscribe((data:any)=>
     {this._notifierService.notify('success','Cập nhật thành công')});
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
-import { UsersService } from 'src/app/admin/users.service';
 import { GiohangService } from 'src/app/shared/giohang.service';
 import { DiaChiInit } from './diachi';
 import { MD5 } from 'crypto-js';
@@ -8,6 +7,7 @@ import { DonhangService } from 'src/app/shared/donhang.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { CauhinhchungService } from 'src/app/shared/cauhinhchung.service';
 import { EmailService } from 'src/app/shared/email.service';
+import { UsersService } from 'src/app/admin/users.service';
 @Component({
   selector: 'app-thanhtoan',
   templateUrl: './thanhtoan.component.html',

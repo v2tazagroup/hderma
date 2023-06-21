@@ -10,8 +10,8 @@ import {
 } from '@angular/router';
 import { Observable, map, of, switchMap, take } from 'rxjs';
 import { AuthService } from '../auth.service';
-import { UsersService } from '../../users.service';
 import { NotifierService } from 'angular-notifier';
+import { UsersService } from '../../users.service';
 @Injectable({
   providedIn: 'root',
 })

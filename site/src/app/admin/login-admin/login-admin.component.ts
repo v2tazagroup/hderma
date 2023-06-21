@@ -160,7 +160,7 @@ export class LoginAdminComponent implements OnInit {
         }
         else
         {
-          const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/';
+          const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/';          
           this._router.navigateByUrl(redirectURL);
         }
       });

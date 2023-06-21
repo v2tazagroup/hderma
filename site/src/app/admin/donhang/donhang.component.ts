@@ -21,9 +21,11 @@ import { LinkService } from '../product/link.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { TTDonhang } from 'src/app/shared/datatype'
+
 import { NotifierService } from 'angular-notifier';
 import { TichdiemService } from '../tichdiem/tichdiem.service';
+import { ApinhanhService } from '../../shared/apinhanh.service';
+import { TTDonhang } from 'src/app/shared/datatype';
 @Component({
   selector: 'tazagroup-donhang',
   templateUrl: './donhang.component.html',
@@ -44,10 +46,7 @@ export class DonhangComponent implements OnInit {
   displayedColumns: string[] = [
     'MaDonHang',
     'Hoten',
-    'SDT',
     'Diachi',
-    'Ghichu',
-    'Ngaytao',
     'Trangthai',
   ];
   TTDonhang: any[] = TTDonhang;
@@ -94,8 +93,21 @@ export class DonhangComponent implements OnInit {
     private _notifierService: NotifierService,
     private _tichdiemService: TichdiemService,
     private dialog: MatDialog,
+    private _ApinhanhService: ApinhanhService,
   ) { }
   ngOnInit(): void {
+    const dulieu ={
+     version:"2.0",
+     appId:"73573",
+     accessToken:"F5HexET9LgTYMgbconJwy55eB8KshP6O6sa5OsDy3JT5g0sup3EpfwzyKM80Px5qE4WRioUo5R6RVacQPup3IfgeWUOJz0P8ZDBwHuTMpgoI4pjVe5U6NLAwMbxt1didlREk3PQn1LmaRQUqjGzxtEGYmSbnHHhG8hrCC9oOoeanXXVTdDWE",
+     params:"{\"page\":1}",
+     businessId:"151467"
+    }
+    this._ApinhanhService.getSanpham(dulieu).subscribe((data)=>
+    {
+      console.log(data);
+      
+    })
     this._sanphamService.getProduct().subscribe();
     this._sanphamService.products$.subscribe(
       (res: any) => (this.products = res)
@@ -134,6 +146,9 @@ export class DonhangComponent implements OnInit {
     });
   }
   selectTrangthai(item: any, trangthai:number) {
+    console.log(item);
+    console.log(trangthai);
+    
     if(trangthai==3)
     {
       this.customer_diem.idUser = item.idKH

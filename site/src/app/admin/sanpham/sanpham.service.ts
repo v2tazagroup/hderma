@@ -81,14 +81,27 @@ export class SanphamService {
     );
   }
   uploadDriver(file: any): Observable<any> {
-    return this.http.post(this.urlApi + '/upload/filehderma', file).pipe(
+    console.log(file);
+    
+    return this.http.post(this.urlApi + '/upload/server?folder=hderma', file).pipe(
       map((data: any) => {
         if (data) {
+          console.log(data);
+          
           return data;
         }
       })
     );
   }
+  // uploadDriver(file: any): Observable<any> {
+  //   return this.http.post(this.urlApi + '/upload/filehderma', file).pipe(
+  //     map((data: any) => {
+  //       if (data) {
+  //         return data;
+  //       }
+  //     })
+  //   );
+  // }
 
   private _danhmucs: BehaviorSubject<any[] | null> = new BehaviorSubject<any[] | null>(null);
   get danhmucs$(): Observable<any[] | null> {
@@ -102,8 +115,6 @@ export class SanphamService {
     return this.http.get(this.urlApi + '/hderma-danhmuc-product').pipe(
       map((data: any) => {
       data.forEach((v:any) => {
-        console.log(v.Products);
-        console.log(v);
           if(v.Products==null)
           {
             v.Products = v.children = []

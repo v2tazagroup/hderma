@@ -15,16 +15,16 @@ import { SanphamService } from './sanpham.service';
 })
 export class SanphamComponent implements OnInit {
   themes: any;
-  danhmuc: any;
+  danhmuc: any[]=[];
   theme: any;
   selectedFiles?: FileList;
   percentage = 0;
   selectTheme: any;
   DanhmucList!: any;
+  Filterdanhmuc:any[]=[];
   temp!: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   private _transformer = (node: any, level: number) => {
     return {
       expandable: !!node.children,
@@ -61,16 +61,23 @@ export class SanphamComponent implements OnInit {
     this._sanphamService.getProduct().subscribe();
     this._sanphamService.danhmucs$.subscribe((res) => {
       if (res) {
-        this.danhmuc = res;
-        this.danhmuc.sort((a: any, b: any) => {
+        console.log(res); 
+        this.Filterdanhmuc = this.danhmuc = res.sort((a: any, b: any) => {
           return a.Ordering - b.Ordering;
         });
-        this.dataSource1.data = res
+        this.dataSource1.data = this.Filterdanhmuc
         this.treeControl.expandAll();
       }
     });
-
-
+  }
+  applyFilter(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    if (value.length > 2) {
+      this.Filterdanhmuc = this.danhmuc.filter((v) => {
+     return  v.Hoten.toLowerCase().includes(value)||v.SDT.toLowerCase().includes(value)
+       }
+      )
+    }
   }
   OpenThemDanhmuc(item: any, templateRef: TemplateRef<any>) {
     this.temp = item;
@@ -85,6 +92,17 @@ export class SanphamComponent implements OnInit {
     //   this._baivietService.deleteBaiviet(x.id).subscribe()
 
     // })
+  }
+  UpdateField(data:any,field:any,value:any) {
+    data[field]=value
+    
+    console.log(data);
+    console.log(field);
+    console.log(value);
+    this._sanphamService.updateProduct(data).subscribe((res) => console.log(res));
+    // this.danhmuc.forEach((x: any) => {
+    //   this._sanphamService.postDanhmuc(x).subscribe((res) => console.log(res));
+    // });
   }
   onSave() {
     this.DanhmucList.pid = this.temp.id;

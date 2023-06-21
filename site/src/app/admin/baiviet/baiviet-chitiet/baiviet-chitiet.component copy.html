@@ -1,0 +1,199 @@
+<mat-drawer-container class="example-container w-full h-full" autosize>
+    <mat-drawer #drawer mode="side" position="end">
+        <div class="!flex flex-col space-y-6 bg-white p-3">
+            <button type="button" mat-icon-button (click)="drawer.toggle()">
+                <span class="material-icons">
+                    arrow_forward
+                </span>
+            </button>
+            <editor [apiKey]="APITINYMCE" [(ngModel)]="temp" [ngModelOptions]="{standalone: true}"
+                (ngModelChange)="onChange($event)" [init]="configTiny"></editor>
+            <div class="flex">
+                <button mat-raised-button color="primary" (click)="onUpdate()">Cập nhật</button>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="!flex flex-col flex-auto min-w-0 relative bg-white !h-[90vh]">
+        <div class="relative flex flex-col h-full w-full overflow-auto">
+            <form>
+                <!-- <button (click)="changeLinkImage()" class="ml-10">getlink</button> -->
+                <div class="flex flex-col space-y-3 p-4 blog tintuc-sukien">
+                    <div class="relative w-full bg-white border border-gray-200 rounded-lg shadow">
+                        <span class="bg-blue-200 text-xs font-medium text-blue-800 text-center p-0.5 leading-none rounded-full px-2 dark:bg-blue-900 dark:text-blue-200 absolute -translate-y-1/2 translate-x-1/2 right-1/2">Tiêu đề - SEO</span>
+                        <div class="grid grid-cols-3 gap-4 p-3">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Tiêu Đề</mat-label>
+                                <input [(ngModel)]="data.Title" [ngModelOptions]="{standalone: true}" matInput type="text"
+                                    class="w-full" placeholder="Tiêu Đề" />
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Slug</mat-label>
+                                <input [(ngModel)]="data.Slug" [ngModelOptions]="{standalone: true}" matInput type="text"
+                                    class="w-full" placeholder="Slug" />
+                            </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Loại bài viết</mat-label>
+                                    <mat-select [(ngModel)]="data.Loaibaiviet" [ngModelOptions]="{standalone: true}">
+                                        <mat-option value="0"></mat-option>
+                                        <mat-option value="1">Nổi bật trên trang chủ</mat-option>
+                                        <mat-option value="2">Tin nổi bật</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                        </div>
+                        <div class="grid grid-cols-4 gap-4 p-3">                            
+                        <div class="w-full">
+                          <mat-form-field appearance="outline" class="flex w-full">
+                              <mat-label>Title Seo</mat-label>
+                              <input [(ngModel)]="data.TitleSeo" [ngModelOptions]="{standalone: true}" matInput
+                                  type="text" class="w-full" placeholder="Title Seo" />
+                          </mat-form-field>
+                      </div>
+                      <div class="w-full">
+                          <mat-form-field appearance="outline" class="flex w-full">
+                              <mat-label>Des Seo</mat-label>
+                              <input [(ngModel)]="data.DesSeo" [ngModelOptions]="{standalone: true}" matInput
+                                  type="text" class="w-full" placeholder="Des Seo" />
+                          </mat-form-field>
+                      </div>
+                      <div class="w-full">
+                          <mat-form-field appearance="outline" class="flex w-full">
+                              <mat-label>KeywordSeo</mat-label>
+                              <input [(ngModel)]="data.KeywordSeo" [ngModelOptions]="{standalone: true}" matInput
+                                  type="text" class="w-full" placeholder="KeywordSeo" />
+                          </mat-form-field>
+                      </div>
+                      <div class="w-full">
+                          <mat-form-field appearance="outline" class="flex w-full">
+                              <mat-label>RobotsSeo</mat-label>
+                              <input [(ngModel)]="data.RobotsSeo" [ngModelOptions]="{standalone: true}" matInput
+                                  type="text" class="w-full" placeholder="RobotsSeo" />
+                          </mat-form-field>
+                      </div>
+                    </div>
+                    </div>
+                    
+
+                    <div class="relative w-full bg-white border border-gray-200 rounded-lg shadow">
+                        <span class="bg-blue-200 text-xs font-medium text-blue-800 text-center p-0.5 leading-none rounded-full px-2 dark:bg-blue-900 dark:text-blue-200 absolute -translate-y-1/2 translate-x-1/2 right-1/2">Hình Ảnh</span>
+                          <div class="grid grid-cols-3 gap-4 p-3">
+                           <div class="flex flex-col space-y-2 p-4 shadow">
+                            <div class="font-bold text-center">Hình Thumbnail</div>
+                            <ng-container *ngIf="data.Image; else elseTemplate">
+                              <div class="relative">
+                                <img src="{{data.Image | checkimage}}">
+                                <span class="material-icons absolute right-[-10px] top-[-10px] cursor-pointer"
+                                (click)="removeSimpleImage('Image')">
+                                cancel
+                              </span>
+                              </div>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                              <div class="text-center">
+                                <img src="/assets/image/logo.svg" class="m-auto w-32" />
+                                <div>Chưa có hình ảnh</div>
+                              </div>
+                            </ng-template>
+                    
+                            <div class="space-y-3 text-center">
+                              <button mat-raised-button color="primary" (click)="fileInput1.click()">
+                                <span>Upload</span>
+                                <input #fileInput1 (change)="onFileBrowse($event, 99)" type="file" accept="image/*" class="hidden">
+                              </button>
+                              <div class="text-xs">Kích Thước File (800x800)px | Định dạng : .png,jpg | Dung Lượng File dưới 1MB </div>
+                            </div>
+                          </div>
+                        <div class="flex flex-col space-y-2 p-4 shadow">
+                            <div class="font-bold text-center">Hình Nổi Bật</div>
+                            <ng-container *ngIf="data.Imagenoibat; else elseTemplate">
+                              <div class="relative">
+                                <img src="https://drive.google.com/uc?id={{data.Imagenoibat}}">
+                                <span class="material-icons absolute right-[-10px] top-[-10px] cursor-pointer"
+                                (click)="removeSimpleImage('Image')">
+                                cancel
+                              </span>
+                              </div>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                              <div class="text-center">
+                                <img src="/assets/image/logo.svg" class="m-auto w-32" />
+                                <div>Chưa có hình ảnh</div>
+                              </div>
+                            </ng-template>
+                    
+                            <div class="space-y-3 text-center">
+                              <button mat-raised-button color="primary" (click)="fileInput1.click()">
+                                <span>Upload</span>
+                                <input #fileInput1 (change)="onFileBrowse($event, 98)" type="file" accept="image/*" class="hidden">
+                              </button>
+                              <div class="text-xs">Kích Thước File (800x800)px | Định dạng : .png,jpg | Dung Lượng File dưới 1MB </div>
+                            </div>
+                          </div>
+                        <div class="flex flex-col space-y-2 p-4 shadow">
+                            <div class="font-bold text-center">Hình Mobile</div>
+                            <ng-container *ngIf="data.ImageMobile; else elseTemplate">
+                              <div class="relative">
+                                <img src="https://drive.google.com/uc?id={{data.ImageMobile}}">
+                                <span class="material-icons absolute right-[-10px] top-[-10px] cursor-pointer"
+                                (click)="removeSimpleImage('Image')">
+                                cancel
+                              </span>
+                              </div>
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                              <div class="text-center">
+                                <img src="/assets/image/logo.svg" class="m-auto w-32" />
+                                <div>Chưa có hình ảnh</div>
+                              </div>
+                            </ng-template>
+                    
+                            <div class="space-y-3 text-center">
+                              <button mat-raised-button color="primary" (click)="fileInput1.click()">
+                                <span>Upload</span>
+                                <input #fileInput1 (change)="onFileBrowse($event, 97)" type="file" accept="image/*" class="hidden">
+                              </button>
+                              <div class="text-xs">Kích Thước File (800x800)px | Định dạng : .png,jpg | Dung Lượng File dưới 1MB </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="relative w-full bg-white border border-gray-200 rounded-lg shadow">
+                        <span class="bg-blue-200 text-xs font-medium text-blue-800 text-center p-0.5 leading-none rounded-full px-2 dark:bg-blue-900 dark:text-blue-200 absolute -translate-y-1/2 translate-x-1/2 right-1/2">Nội Dung</span>
+                        <div class="p-4 container mx-auto lg:flex mt-10  space-y-5 lg:space-y-0">
+                            <div class="lg:space-y-6 text-justify lg:pr-5">
+                                <div class="!text-4xl !italic !font-gb text-justify">
+                                    {{data.Title}}
+                                 </div>
+                                 <div [innerHTML]="data.Mota" class="border border-gray-300 rouded px-3 py-2" (click)="getValue(data.Mota, 99, 2);drawer.open()"></div>
+                                <div class=" items-center space-x-6 py-3 lg:flex hidden">
+                                    <span>Chia sẻ</span>
+                                    <div data-v-af4e5c6a="" data-v-ccb3772a=""
+                                        class="social-sharing flex items-center space-x-3"><a data-v-af4e5c6a=""
+                                            href="javascript:void(0)" class="share-network-facebook"><svg data-v-af4e5c6a=""
+                                                width="32" height="32" viewBox="0 0 32 32"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="social-icon">
+                                                <path data-v-af4e5c6a=""
+                                                    d="M26.6663 16.0636C26.6663 10.1353 21.8921 5.33203 15.9997 5.33203C10.1072 5.33203 5.33301 10.1353 5.33301 16.0636C5.33301 21.4294 9.20398 25.8865 14.3223 26.6654V19.1792H11.6126V16.0636H14.3223V13.7269C14.3223 11.044 15.9137 9.52946 18.3223 9.52946C19.5266 9.52946 20.7309 9.74582 20.7309 9.74582V12.3854H19.3975C18.0642 12.3854 17.6341 13.2076 17.6341 14.0731V16.0636H20.6018L20.1287 19.1792H17.6341V26.6654C22.7524 25.8865 26.6663 21.4294 26.6663 16.0636Z">
+                                                </path>
+                                            </svg></a> <a data-v-af4e5c6a="" href="javascript:void(0)"
+                                            class="share-network-twitter"><svg data-v-af4e5c6a="" width="32" height="32"
+                                                viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                class="social-icon">
+                                                <path data-v-af4e5c6a=""
+                                                    d="M25.5159 12.301C26.3509 11.6748 27.1024 10.9234 27.6868 10.0466C26.9354 10.3806 26.0587 10.6311 25.182 10.7146C26.1004 10.1719 26.7684 9.33692 27.1024 8.29321C26.2674 8.79419 25.3072 9.16993 24.347 9.37867C23.512 8.50195 22.3848 8.00098 21.1324 8.00098C18.711 8.00098 16.7488 9.96314 16.7488 12.3845C16.7488 12.7185 16.7906 13.0525 16.8741 13.3865C13.242 13.1778 9.98561 11.4243 7.8147 8.79419C7.43897 9.42042 7.23023 10.1719 7.23023 11.0068C7.23023 12.5098 7.9817 13.8457 9.19239 14.6389C8.48267 14.5972 7.77295 14.4302 7.18848 14.0962V14.138C7.18848 16.2671 8.69142 18.0205 10.6953 18.438C10.3613 18.5215 9.94386 18.605 9.56813 18.605C9.27589 18.605 9.0254 18.5633 8.73316 18.5215C9.27589 20.2749 10.9041 21.5274 12.8245 21.5691C11.3216 22.7381 9.44288 23.4478 7.39722 23.4478C7.02149 23.4478 6.6875 23.4061 6.35352 23.3643C8.27393 24.6168 10.5701 25.3265 13.075 25.3265C21.1324 25.3265 25.5159 18.6885 25.5159 12.8855C25.5159 12.6768 25.5159 12.5098 25.5159 12.301Z">
+                                                </path>
+                                            </svg></a></div>
+                                </div>
+                                <div [innerHTML]="data.Baiviet | safe:'html'"
+                                    class="space-y-3 lg:text-base text-sm text-justify"
+                                    (click)="getValue(data.Baiviet,0,0);drawer.open()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

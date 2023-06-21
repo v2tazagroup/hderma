@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/app/environment';
 import {
   BehaviorSubject,
   Observable,
@@ -13,7 +14,6 @@ import {
   catchError,
   ReplaySubject,
 } from 'rxjs';
-import { environment } from '../environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -88,6 +88,13 @@ changepass(data:any): Observable<any> {
                 return response;
         })
     );
+}
+Randompass(data:any): Observable<any> {
+  return this._httpClient.post(`${environment.APIURL}/hderma_auth/randompass`, data).pipe(
+     tap((response: any) => {
+             return response;
+     })
+ );
 }
 getProfile(): Observable<any> {
     return this._httpClient.get<any>(`${this.APIURL}/hderma_auth/profile`).pipe(

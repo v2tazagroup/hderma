@@ -56,7 +56,8 @@ import { NhanhapiComponent } from './site/nhanhapi/nhanhapi.component';
     DonhangComponent,
     DonhangChitietComponent,
     CamonComponent,
-    NhanhapiComponent
+    NhanhapiComponent,
+    SanphamchitietComponent
   ],
   // entryComponents: [LightboxComponent],
   imports: [

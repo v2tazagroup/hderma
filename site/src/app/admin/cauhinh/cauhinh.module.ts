@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DoiquaComponent } from './doiqua/doiqua.component';
 import { ChiendichChitietComponent } from './chiendich/chiendich-chitiet/chiendich-chitiet.component';
+import { CauhinhchungComponent } from './cauhinhchung/cauhinhchung.component';
+import { CauhinhChitietComponent } from './cauhinhchung/cauhinh-chitiet/cauhinh-chitiet.component';
+import { CauhinhapiComponent } from './cauhinhapi/cauhinhapi.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -58,6 +61,9 @@ const customNotifierOptions: NotifierOptions = {
     NhiemvuComponent,
     DoiquaComponent,
     ChiendichChitietComponent,
+    CauhinhchungComponent,
+    CauhinhChitietComponent,
+    CauhinhapiComponent
   ],
   imports: [
     CommonModule,
@@ -90,6 +96,26 @@ const customNotifierOptions: NotifierOptions = {
           {
             path: 'doiqua',
             component: DoiquaComponent,
+          },
+          {
+            path: 'cauhinhchung',
+            component: CauhinhchungComponent,
+            children:[
+              {
+                path: ':slug',
+                component: CauhinhChitietComponent,
+              }
+            ]
+          },
+          {
+            path: 'cauhinhapi',
+            component: CauhinhapiComponent,
+            // children:[
+            //   {
+            //     path: ':slug',
+            //     component: CauhinhChitietComponent,
+            //   }
+            // ]
           },
         ],
       },

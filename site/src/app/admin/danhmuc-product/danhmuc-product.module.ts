@@ -17,7 +17,6 @@ import { MaterialModule } from 'src/app/shared/material.module';
     HttpClientModule,
     EditorModule,
     NotifierModule,
-
     RouterModule.forChild([
       {
         path: '',

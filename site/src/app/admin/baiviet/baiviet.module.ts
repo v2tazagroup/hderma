@@ -9,7 +9,6 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ThemetintucComponent } from './themetintuc/themetintuc.component';
 import { BaivietChitietComponent } from './baiviet-chitiet/baiviet-chitiet.component';
 import { BaivietDanhmucComponent } from './baiviet-danhmuc/baiviet-danhmuc.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -23,9 +22,11 @@ import { BaivietDanhmucComponent } from './baiviet-danhmuc/baiviet-danhmuc.compo
         path: '',
         component: BaivietComponent,
         children: [
+          { path: 'baivet/:id', component: BaivietChitietComponent },
           // { path: 'themetintuc/:slug', component: ThemetintucComponent },
-          { path: 'themetintuc/:slug', component: BaivietChitietComponent },
-          { path: 'danhmuc/:slug', component: BaivietDanhmucComponent },
+          // { path: 'themetintuc/:slug', component: BaivietChitietComponent },
+          { path: 'danhmuc/:id', component: BaivietDanhmucComponent },
+          // { path: ':id/spmoi', component: BaivietChitietComponent },
         ],
       },
     ]),

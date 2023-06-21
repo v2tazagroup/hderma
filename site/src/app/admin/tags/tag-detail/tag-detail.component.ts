@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DanhmucService } from '../../danhmuc/danhmuc.service';
 import { TagsService } from '../tags.service';
+import { SanphamService } from '../../sanpham/sanpham.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'tazagroup-tag-detail',
@@ -9,7 +11,13 @@ import { TagsService } from '../tags.service';
   styleUrls: ['./tag-detail.component.scss'],
 })
 export class TagDetailComponent implements OnInit {
-  tag: any;
+  tag: any= {
+    Tieude: '',
+    Loaitag: 0,
+    Hinhanh:{spath:'',idDrive:''},
+    Image: '',
+    Ordering: 0,
+  };
   theme: any;
   selectedFiles?: FileList;
   percentage = 0;
@@ -18,7 +26,9 @@ export class TagDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _tagService: TagsService,
-    private _danhmucService: DanhmucService
+    private _danhmucService: DanhmucService,
+    private _sanphamService: SanphamService,
+    private _NotifierService: NotifierService
   ) {}
   nest = (items: any[], id = '', link = 'pid'): any => {
     if (items) {
@@ -41,6 +51,32 @@ export class TagDetailComponent implements OnInit {
       }
     });
   }
+
+
+removeSimpleImage(value:any) {
+    this.tag.Hinhanh = {};
+}  
+//app.ts
+  Uploadfile(event: any, type: any,alt:any) {
+    event.target as HTMLInputElement;
+    const file: any = event.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file)
+    formData.append('alt', alt)
+    formData.append('idDrive', "0AKQL50NKsue5Uk9PVA");
+    formData.append('parents', "['1_3htpPNQTxMi2sDQZes2WGWXPNwRxDYv']");
+    this._sanphamService.uploadDriver(formData).subscribe((res) => {
+      if (res) {        
+        this.tag.Hinhanh=res     
+        this._tagService.updateTag(this.tag).subscribe((res) => {
+           if (res) {
+            console.log(res);
+            this._NotifierService.notify('success','Upload thành công');
+          }
+        }); 
+      }
+    });
+  }
   onSubmit() {
     this._tagService.postTag(this.tag).subscribe();
   }
@@ -51,14 +87,7 @@ export class TagDetailComponent implements OnInit {
       }
     });
   }
-
   ngOnInit(): void {
-    this.tag = {
-      Tieude: '',
-      Loaitag: 0,
-      Image: '',
-      Ordering: 0,
-    };
     this.route.params.subscribe((paramsId) => {
       this.id = paramsId['id'];
       if (this.id) {
@@ -72,3 +101,4 @@ export class TagDetailComponent implements OnInit {
     });
   }
 }
+

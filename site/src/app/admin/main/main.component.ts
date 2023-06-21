@@ -16,11 +16,11 @@ export class MainComponent implements OnInit,AfterViewInit {
       Link:'baiviet',
 
     },
-    {
-      Title:'Danh mục',
-      Link:'danhmuc',
+    // {
+    //   Title:'Danh mục',
+    //   Link:'danhmuc',
 
-    },
+    // },
     // {
     //   Title:'Danh mục sản phẩm',
     //   Link:'danh-muc-san-pham',
@@ -46,18 +46,32 @@ export class MainComponent implements OnInit,AfterViewInit {
       Link:'donhang',
     },
     {
+      Title:'Khách Hàng',
+      Link:'khachhang',
+    },
+    {
       Title:'Comment',
       Link:'comment',
     },
+    // {
+    //   Title:'Hình Ảnh',
+    //   Link:'hinhanh',
+    // },
     {
       Title:'Cấu Hình',
       children: [
         {Title:'Hoa Hồng',Link:'cauhinh/hoahong'},
         {Title:'Chiến Dịch',Link:'cauhinh/chiendich'},
-        {Title:'Đổi Quà',Link:'cauhinh/doiqua'}
+        {Title:'Đổi Quà',Link:'cauhinh/doiqua'},
+        {Title:'Cấu Hình Chung',Link:'cauhinh/cauhinhchung'},
+        {Title:'Cấu Hình API',Link:'cauhinh/cauhinhapi'}
       ],
       Link:'#',
     },
+    {
+      Title:'Nhân Viên',
+      Link:'nhanvien',
+    }
   ]
   private _transformer = (node: any, level: number) => {
     return {

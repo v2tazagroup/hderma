@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container flex h-[100vh]" autosize>
+<!-- <mat-drawer-container class="example-container flex h-[100vh]" autosize>
   <mat-drawer #drawer mode="side" opened class="h-full">
     <div class="flex flex-col h-full shadow w-28">
         <div class="m-auto p-4" routerLink="/admin">
@@ -6,13 +6,13 @@
         </div>
         <mat-divider></mat-divider>
         <div class="h-full overflow-auto pb-5">
-          <!-- <div class="flex flex-col items-center justify-center cursor-pointer p-3" routerLink="{{ item.Link }}"
+          <div class="flex flex-col items-center justify-center cursor-pointer p-3" routerLink="{{ item.Link }}"
             routerLinkActive="bg-gray-200" *ngFor="let item of AdminMenu">
             <span class="material-icons"> widgets </span>
             <span class="text-sm text-center">
               {{ item.Title }}
             </span>
-          </div> -->
+          </div>
         </div>
       </div>
   </mat-drawer>
@@ -80,7 +80,6 @@
 
 
 <form class="mb-96">
-    <!-- <button (click)="changeLinkImage()" class="ml-10">getlink</button> -->
     <div class="blog overflow-hidden bg-[#FDFBF4] pb-10 tintuc-sukien">
         <div class=" bg-cover bg-center bg-no-repeat banner-image h-52 background lg:hidden block">
         </div>
@@ -108,7 +107,7 @@
             <div class="w-1/2">
                 <label for="">Hình Thumbnail</label>
                 <input (change)="onFileBrowse($event, 99)" type="file" accept="image/*">
-                <img src="{{data.Image}}" alt="">
+                <img src="{{data.Image | checkimage}}" alt="">
             </div>
             <div class="w-1/2">
                 <label for="">Hình Nổi bật</label>
@@ -146,7 +145,7 @@
                                 </path>
                             </svg></a></div>
                 </div>
-                <div [innerHTML]="data.Baiviet" class="space-y-3 lg:text-base text-sm text-justify"
+                <div [innerHTML]="data.Baiviet | safe:'html'" class="space-y-3 lg:text-base text-sm text-justify"
                     (click)="getValue(data.Baiviet,0,0)">
                 </div>
             </div>
@@ -164,4 +163,4 @@
 
     <editor [apiKey]="APITINYMCE" [(ngModel)]="temp" [ngModelOptions]="{standalone: true}"
         (ngModelChange)="onChange($event)" [init]="configTiny"></editor>
-</div>
+</div> -->

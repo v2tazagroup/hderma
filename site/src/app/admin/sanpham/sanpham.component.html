@@ -1,193 +1,83 @@
-<!-- <mat-drawer-container class="example-container w-full h-full" autosize>
-  <mat-drawer #drawer mode="side" opened class="h-full w-auto">
-    <div class="flex flex-col h-full shadow">
-        <div class="h-full overflow-auto pb-5 p-3">
-          <mat-tree [dataSource]="dataSource1" [treeControl]="treeControl">
-            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                <div class="flex items-center justify-between space-x-4 cursor-pointer w-full px-3 py-1 group"
-                    routerLink="{{ 'sanpham/'+node.Slug }}" routerLinkActive="bg-gray-200">
-                    <div class="flex items-center space-x-2">
-                        <span class="material-icons {{node.Trangthai == 1 ? 'text-yellow-500' : ''}}"
-                            (click)="updateTrangthai(node)">
-                            {{node.Trangthai == 1 ? 'star' : 'star_border'}}
-                        </span>
-                        <span class="">{{ node.Tieude }}</span>
-                    </div>
-                    <div class="hidden group-hover:flex items-center space-x-2">
-                        <span class="material-icons cursor-pointer text-blue-500"
-                            (click)="OpenThemDanhmuc(node,ThemDanhmucDialog)" title="Tạo danh mục con">
-                            note_add
-                        </span>
-                        <span class="material-icons text-blue-500" title="Chỉnh sửa">
-                            edit
-                        </span>
-                        <span class="material-icons cursor-pointer text-red-500" (click)="deleteDanhmuc(node.id)"
-                            title="Xoá">
-                            delete
-                        </span>
-                    </div>
-                </div>
-
-
-            </mat-tree-node>
-            <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-                <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.Title">
-                    <mat-icon class="mat-icon-rtl-mirror"  *ngIf="node.children.length>0">
-                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                    </mat-icon>
-                </button>
-                <div class="flex items-center space-x-4 justify-between cursor-pointer w-full group hover:bg-gray-200 px-3 py-1 rounded">
-                    <div class="flex items-center space-x-2" routerLink="{{ 'danhmuc/'+node.Slug }}" routerLinkActive="bg-gray-200">
-                        <span class="material-icons text-yellow-500"> collections_bookmark </span>
-                        <span class="">{{ node.Title }} </span>
-                    </div>
-                    <div class="items-center space-x-2 hidden group-hover:flex">
-
-                        <span class="material-icons cursor-pointer text-blue-500"
-                            (click)="OpenThemDanhmuc(node,ThemDanhmucDialog)" title="Tạo danh mục con"
-                            matTooltip="Tạo danh mục con">
-                            note_add
-                        </span>
-                        <span class="material-icons text-blue-500">
-                            edit
-                        </span>
-                        <span class="material-icons cursor-pointer text-red-500" (click)="deleteDanhmuc(node.id)">
-                            delete
-                        </span>
-                    </div>
-                </div>
-            </mat-tree-node>
-        </mat-tree>
-        </div>
-      </div>
-  </mat-drawer>
-  <mat-drawer-content class="!flex flex-col flex-auto min-w-0 relative">
-    <div class="relative items-center flex flex-row justify-between shadow bg-white py-2">
-      <div class="flex flex-row space-x-2">
-        <button type="button" mat-icon-button (click)="drawer.open()">
-          <span class="material-icons">
-            menu
-          </span>
-        </button>
-      </div>
-    </div>
-    <div class="relative flex flex-col h-full w-full overflow-auto">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container> -->
 <mat-drawer-container class="example-container w-full h-full" autosize>
-  <mat-drawer #drawer mode="side" opened class="!flex flex-col flex-auto min-w-0 relative h-full w-2/3" position="end">
+  <mat-drawer #drawer mode="side" class="!flex flex-col flex-auto min-w-0 relative h-full w-2/3" position="end">
     <div class="relative flex flex-col h-full w-full overflow-auto">
-      <div><span class="material-icons p-3 hover:bg-gray-200 rounded-full" (click)="drawer.toggle()">
+      <div>
+        <span class="material-icons p-3 hover:bg-gray-200 rounded-full" (click)="drawer.toggle()">
           cancel
-        </span></div>
+        </span>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </mat-drawer>
   <mat-drawer-content class="!flex flex-col flex-auto min-w-0 relative">
     <div class="flex flex-col h-full shadow">
-      <div class="flex flex-row">
-        <div class="px-3">
-          <div class="flex flex-row space-x-3 py-3 items-center min-h-[50px] justify-between">
-              <div class="flex rounded-md border-2 border-slate-100 w-full">
-                <input id="user" type="text"
-                  class="block w-full py-4 px-2 first-letter:w-full bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder="Tìm Kiếm" />
-                <div class="inline-flex items-center px-3">
-                  <span class="material-icons">search</span>
-                </div>
-              </div>
-            <span class="material-icons p-2 hover:bg-slate-200 rounded-lg" matTooltip="Tùy Chỉnh">
-              tune
-            </span>
-            <!-- <span class="material-icons p-2 hover:bg-slate-200 rounded-lg" matTooltip="Lấy Mẫu" *ngIf="Phanquyen|checkquyen:'CHTG-EX':'CanView'">
-              file_download
-            </span> -->
-            <span class="material-icons p-2 hover:bg-slate-200 rounded-lg" matTooltip="Upload File">
-              file_upload
-            </span>
-            <!-- <span [routerLink]="['datcauhoi']" class="material-icons p-2 hover:bg-slate-200 rounded-lg" matTooltip="Tạo mới" *ngIf="Phanquyen|checkquyen:'CHTG-AD':'CanView'">
-              add_circle
-            </span> -->
-            <span [routerLink]="['danhmuc/danhmucmoi']" class="material-icons p-2 hover:bg-slate-200 rounded-lg" matTooltip="Tạo mới" (click)="drawer.open()">
-              add_circle
-            </span>
-          </div>
-          <!-- <ng-container *ngIf="!IsSearch; else elseTemplate">
-            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-              <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [routerLink]="['view/'+node.id]"
-                [routerLinkActive]="'text-slate-50 bg-blue-200 rounded-lg px-3 w-full'">
-                <div class="flex flex-row justify-between">
-                  {{node.Tieude}}
-                </div>
-              </mat-tree-node>
-              <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <div class="mat-tree-node flex flex-row justify-between">
-                  <div class="flex flex-row items-center">
-                    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.Tieude">
-                      <mat-icon class="mat-icon-rtl-mirror">
-                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                      </mat-icon>
-                    </button>
-                    <span> {{node.Tieude}} </span>
+      <div class="relative border-b-2 flex flex-col">
+        <div class="flex flex-col p-3 items-center justify-between w-full">
+            <mat-form-field appearance="outline" class="w-full text-xs">
+                <mat-label>Tiêu Đề</mat-label>
+                <input matInput (keyup)="applyFilter($event)" class="w-full" placeholder="Mô Tả">
+                <span matPrefix class="material-icons mr-2">search</span>
+            </mat-form-field>
+            <div class="flex flex-row space-x-3 justify-start w-full">
+                  <div class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg">
+                      <span class="material-icons text-xl"
+                          matTooltip="Tùy Chỉnh">tune</span>
+                      <span class="text-sm">Cấu Hình</span>
                   </div>
-                  <div class="flex flex-row items-center space-x-2">
-                    <span class="ml-2 px-3 py-2 bg-slate-200 rounded-lg">{{node.Cauhoithuonggap.length}}</span>
+                  <div class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg">
+                      <span class="material-icons text-xl"
+                          matTooltip="Lấy Mẫu">file_download</span>
+                      <span class="text-sm">Download</span>
                   </div>
-                </div>
-                <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
-                  <ng-container matTreeNodeOutlet></ng-container>
-                </div>
-              </mat-nested-tree-node>
-              <mat-divider></mat-divider>
-            </mat-tree>
-          </ng-container>
-          <ng-template #elseTemplate>
-            <div class="flex flex-col odd:bg-slate-100 p-2 border-t border-b" *ngFor="let item of Query"
-            [routerLink]="['view/'+item.id, {outlets: { primary: null,header_icon: 'detail' }}]"
-            routerLinkActive="!bg-blue-400 !text-white">
-              <div class="flex flex-row">
-                <div class="font-bold">Danh Mục : {{item.Danhmuc}}</div>
-              </div>
-              <div class="flex flex-row flex-wrap">
-                <div class="font-bold">Câu Hỏi : </div>
-                <div [innerHTML]="item.Cauhoi|highlight:SearchTerm"></div>
-              </div>
-          </div>
-          </ng-template> -->
-    </div>
-      </div>
+                  <div class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg">
+                      <span class="material-icons text-xl"
+                          matTooltip="Upload File">file_upload</span>
+                      <span class="text-sm">Upload</span>
+                  </div>
+                  <div class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg">
+                      <span class="material-icons text-xl"
+                          matTooltip="Tạo mới">add_circle</span>
+                      <span class="text-sm">Thêm</span>
+                  </div>
+            </div>
+        </div>
+      </div>  
       <mat-tree [dataSource]="dataSource1" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
           <div
             class="flex items-center justify-between space-x-4 hover:bg-gray-200 rounded cursor-pointer w-full px-3 py-1"
             routerLinkActive="bg-gray-200">
-            <div class="flex items-center space-x-2" routerLink="{{ 'sanpham/'+node.Slug }}" (click)="drawer.open()">
+            <div class="flex items-center space-x-2 w-full" routerLink="{{ 'sanpham/'+node.Slug }}" (click)="drawer.open()">
               <span class="material-icons {{node.Trangthai == 1 ? 'text-yellow-500' : ''}}"
                 (click)="updateTrangthai(node)">
                 {{node.Trangthai == 1 ? 'star' : 'star_border'}}
               </span>
-              <span class="">{{ node.Tieude }}</span>
+              <ng-container *ngIf="node.Tieude; else elseTemplate">
+                <span>{{ node.Tieude }} </span>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <span class="text-red-500">Chưa Có Tiêu Đề </span>
+              </ng-template>
             </div>
-            <div>
-              <button mat-icon-button [matMenuTriggerFor]="sanpham">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #sanpham="matMenu">
-                <button mat-menu-item>
-                  <mat-icon  color="primary">edit</mat-icon>
-                  <span>Chỉnh Sửa</span>
-                </button>
-                <button mat-menu-item (click)="DeleteSanpham(node.id)">
-                  <mat-icon>delete</mat-icon>
-                  <span>Xóa Sản Phẩm</span>
-                </button>
-              </mat-menu>
+            <div class="flex flex-row space-x-4 text-xs">
+              <ng-container *ngIf="!node.Trangthai; else anhienTemplate">
+                <div class="flex flex-col text-center text-green-500" (click)="UpdateField(node,'Trangthai',1)">
+                  <span class="material-icons">visibility</span>
+                  <span class="text-gray-500">Hiện</span>
+                </div>
+              </ng-container>
+              <ng-template #anhienTemplate>
+                <div class="flex flex-col text-center text-red-500" (click)="UpdateField(node,'Trangthai',0)">
+                  <span class="material-icons">visibility_off</span>
+                  <span class="text-gray-500">Ẩn</span>
+                </div>
+              </ng-template>
+              <div class="flex flex-col text-center text-gray-500" (click)="DeleteSanpham(node.id)">
+                <span class="material-icons text-red-500">delete</span>
+                <span class="text-gray-500 text-xs">Xoá</span>
+              </div>
             </div>
           </div>
-
-
         </mat-tree-node>
         <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
           <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.Title">
@@ -200,26 +90,22 @@
             routerLinkActive="bg-gray-200">
             <div class="flex items-center space-x-2" routerLink="{{ 'danhmuc/'+node.Slug }}" (click)="drawer.open()">
               <span class="material-icons text-yellow-500"> collections_bookmark </span>
-              <span class="">{{ node.Title }} </span>
+              <ng-container *ngIf="node.Title; else elseTemplate">
+                <span>{{ node.Title }} </span>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <span class="text-red-500">Chưa Có Tiêu Đề </span>
+              </ng-template>
             </div>
-            <div>
-              <button mat-icon-button [matMenuTriggerFor]="danhmuc">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #danhmuc="matMenu">
-                <button mat-menu-item class="text-blue-500" routerLink="sanpham/themsanphammoi">
-                  <mat-icon>note_add</mat-icon>
-                  <span>Thêm Sản Phẩm</span>
-                </button>
-                <button mat-menu-item>
-                  <mat-icon  color="primary">edit</mat-icon>
-                  <span>Sửa Danh Mục</span>
-                </button>
-                <button mat-menu-item (click)="deleteDanhmuc(node.id)">
-                  <mat-icon>delete</mat-icon>
-                  <span>Xóa Danh Mục</span>
-                </button>
-              </mat-menu>
+            <div class="flex flex-row space-x-4 text-xs">
+              <div class="flex flex-col text-center text-gray-500" [routerLink]="[node.id+'/spmoi']" (click)="drawer.open()">
+                <span class="material-icons text-blue-500">add_circle</span>
+                <span class="text-gray-500 text-xs">Thêm</span>
+              </div>
+              <div class="flex flex-col text-center text-gray-500" (click)="deleteDanhmuc(node.id)">
+                <span class="material-icons text-red-500">delete</span>
+                <span class="text-gray-500 text-xs">Xoá</span>
+              </div>
             </div>
           </div>
         </mat-tree-node>

@@ -66,28 +66,14 @@ export class TagsService {
     );
   }
   updateTag(data: any) {
-    return this.tags$.pipe(
-      take(1),
-      switchMap((tags: any) =>
-        this.http.patch(this.urlApi + `/hderma-tags/${data.id}`, data).pipe(
-          map((tag) => {
-            // Find the index of the updated tag
-            const index = tags.findIndex((item: any) => item.id === data.id);
-
-            // Update the tag
-            if (index != -1) {
-              tags[index] = data;
-
-              this._tags.next(tags as any[]);
-            } else {
-              this._tags.next([tag]);
-            }
-            // Return the updated tag
-            return tag;
-          })
-        )
-      )
-    );
+     return this.http.patch<any>(this.urlApi + `/hderma-tags/${data.id}`, data).pipe(
+      map((tag) => {
+        console.log(tag);
+        
+        this._tag.next(tag);
+        return tag;
+      })
+    )
   }
   deleteTag(id: String) {
     return this.tags$.pipe(

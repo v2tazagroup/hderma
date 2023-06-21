@@ -19,7 +19,8 @@ import { TagsService } from './tags.service';
 export class TagsComponent implements OnInit {
   themes: any;
   tag: any;
-  tags!: any[];
+  tags: any[]=[];
+  Filtertags: any[]=[];
   theme: any;
   selectedFiles?: FileList;
   percentage = 0;
@@ -85,8 +86,6 @@ export class TagsComponent implements OnInit {
 
     // })
   }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   displayedColumns: string[] = [
     'Loaitag',
     'Tieude',
@@ -150,16 +149,22 @@ export class TagsComponent implements OnInit {
       Ordering: 0,
     };
   }
+  openDialog(teamplate: TemplateRef<any>): void {
+    const dialogRef = this.dialog.open(teamplate, {
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+      }
+    });
+  }
   ngOnInit(): void {
     this.resetForm();
     this._tagService.getTags().subscribe();
     this._tagService.tags$.subscribe((res) => {
       if (res) {
-        this.tags = res;
-        this.dataSource = new MatTableDataSource(res);
+        console.log(res); 
+        this.tags = this.Filtertags = res;
       }
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
   }
 }

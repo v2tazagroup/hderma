@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/shared/material.module';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { SanphamComponent } from './sanpham.component';
 import { DetailsanphamComponent } from './detailsanpham/detailsanpham.component';
 import { DetaildanhmucComponent } from './detaildanhmuc/detaildanhmuc.component';
-import { MaterialModule } from 'src/app/shared/material.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +23,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
         children: [
           { path: 'danhmuc/:slug', component: DetaildanhmucComponent },
           { path: 'sanpham/:slug', component: DetailsanphamComponent },
+          { path: ':id/spmoi', component: DetailsanphamComponent },
         ],
       },
     ]),

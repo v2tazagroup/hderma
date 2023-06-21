@@ -6,12 +6,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { MainComponent } from './main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HinhanhComponent } from '../hinhanh/hinhanh.component';
+import { PageComponent } from '../page/page.component';
+import { UsersComponent } from '../users/users.component';
+import { UsersDetailComponent } from '../users/users-detail/users-detail.component';
+import { KhachhangComponent } from '../khachhang/khachhang.component';
+import { KhachhangDetailComponent } from '../khachhang/khachhang-detail/khachhang-detail.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     EditorModule,
@@ -23,6 +30,10 @@ import { MaterialModule } from 'src/app/shared/material.module';
           {
             path: 'dashboard',
             component: DashboardComponent
+          },
+          {
+            path: 'hinhanh',
+            component: HinhanhComponent
           },
           {
             path: 'baiviet',
@@ -72,15 +83,38 @@ import { MaterialModule } from 'src/app/shared/material.module';
             loadChildren: () =>
               import('../cauhinh/cauhinh.module').then((m) => m.CauhinhModule),
           },
+          {
+            path: 'nhanvien',
+            component:UsersComponent,
+            children:[
+              {path:':id',component:UsersDetailComponent}
+            ]
+          },
+          {
+            path: 'khachhang',
+            component:KhachhangComponent,
+            children:[
+              {path:':id',component:KhachhangDetailComponent}
+            ]
+          },
+          {
+            path: 'page',
+            component:PageComponent
+          },
         ],
       },
     ]),
   ],
   providers: [],
   exports: [RouterModule],
-  declarations: [
-    MainComponent,
-    DashboardComponent
+  declarations: 
+  [
+  MainComponent,
+  DashboardComponent,
+  HinhanhComponent,
+  KhachhangComponent,
+  KhachhangDetailComponent,
+  UsersComponent
   ],
 })
 export class MainModule {}

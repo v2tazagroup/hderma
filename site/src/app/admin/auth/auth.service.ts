@@ -38,7 +38,7 @@ export class AuthService {
   get accessToken(): string {
     return localStorage.getItem('HdermaToken') ?? '';
   }
-  Dangnhap(user: any): Observable<any> {
+  Dangnhap(user:any): Observable<any> {
     if (this._authenticated) {
       return of([false, 'User Đã Đăng Nhập']);
     }

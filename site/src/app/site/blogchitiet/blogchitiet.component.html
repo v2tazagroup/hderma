@@ -59,7 +59,7 @@
               <div class="card border-0">
                 <a [routerLink]="[item.Slug]" class="hover-shine card-img-top">
                   <ng-container *ngIf="Checkundefined(item.Hinhanh.hinhchinh); else elseTemplate1">
-                    <img src="{{Base+item.Hinhanh.hinhchinh.spath}}" />
+                    <img src="{{GetImage(item.Hinhanh.hinhchinh.spath)}}" />
                   </ng-container>
                   <ng-template #elseTemplate1>
                     <img src="https://hderma.vn/assets/image/logo.svg" />

@@ -119,9 +119,9 @@ import { NhanhapiComponent } from './site/nhanhapi/nhanhapi.component';
             path: '', component: MainComponent,
             children: [
               { path: '', component: TrangchuComponent },
-              // { path: 'san-pham', component: ListsanphamComponent },
-              { path: 'san-pham', loadChildren: () => import('./site/sanpham/sanpham.module').then(m => m.SanphamModule)},
-              // { path: 'san-pham/:slug', component: SanphamchitietComponent },
+               { path: 'san-pham', component: ListsanphamComponent },
+             // { path: 'san-pham', loadChildren: () => import('./site/sanpham/sanpham.module').then(m => m.SanphamModule)},
+              { path: 'san-pham/:slug', component: SanphamchitietComponent },
               { path: 'bai-viet', component: BloglistComponent },
               { path: 'bai-viet/danh-muc/:slug', component: BloglistComponent },
               { path: 'bai-viet/:slug', component: BlogchitietComponent },

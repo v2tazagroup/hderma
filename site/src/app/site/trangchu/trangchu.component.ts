@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { BaivietService } from 'src/app/shared/service/baiviet.service';
 import { environment } from 'src/app/environment';
 import { TagsService } from 'src/app/shared/tags.service';
+import { GetImage } from 'src/app/shared/shared.utils';
 @Component({
   selector: 'app-trangchu',
   templateUrl: './trangchu.component.html',
@@ -16,7 +17,6 @@ export class TrangchuComponent implements OnInit {
     private _TagsService: TagsService,
     private location: Location
   ) { }
-  Base = environment.BaseUrl;
   Sanphams: any[] = []
   Baiviets: any[] = []
   SanphamsTags: any[] = []
@@ -78,6 +78,9 @@ export class TrangchuComponent implements OnInit {
       }
     ]
   };
+  GetImage(img: any) {
+    return GetImage(img);
+  }
   slide1Config =
     {
       "slidesToShow": 3,
@@ -90,10 +93,11 @@ export class TrangchuComponent implements OnInit {
       "cssEase": "ease-in-out",
       "speed": 600,
       "responsive": [{
-        "breakpoint": 1024, 
-        "settings": { "slidesToShow": 3 }}, 
-        { "breakpoint": 992, "settings": { "slidesToShow": 2 } }, 
-        { "breakpoint": 768, "settings": { "slidesToShow": 1 } }]
+        "breakpoint": 1024,
+        "settings": { "slidesToShow": 3 }
+      },
+      { "breakpoint": 992, "settings": { "slidesToShow": 2 } },
+      { "breakpoint": 768, "settings": { "slidesToShow": 1 } }]
     }
     ;
   addSlide() {

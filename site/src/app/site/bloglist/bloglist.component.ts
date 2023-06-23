@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/app/environment';
 import { BaivietService } from 'src/app/shared/service/baiviet.service';
+import { GetImage } from 'src/app/shared/shared.utils';
 
 @Component({
   selector: 'app-bloglist',
@@ -16,7 +17,6 @@ export class BloglistComponent implements OnInit {
   currentPage = 1;
   totalItems = 1;
   PagiBaiviets: any[] = [];
-  Base = environment.BaseUrl;
   ngOnInit() {
     this._BaivietService.getBaiviets().subscribe((data)=>{
       this.Baiviets = data.sort((a:any, b:any) => b.Ngaytao - a.Ngaytao);
@@ -55,5 +55,8 @@ export class BloglistComponent implements OnInit {
   }
   setPage(page: number) {
     this.currentPage = page;
+  }
+  GetImage(data: any) {
+    return GetImage(data)
   }
 }

@@ -177,7 +177,7 @@
                 *ngFor="let item of GetTags(Sanphams,['001','002','004','005'])">
                 <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                   <div class="position-relative">
-                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                   </div>
                   <div class="card-body px-0 pt-4 text-center">
                     <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
@@ -201,7 +201,7 @@
                 *ngFor="let item of GetTags(Sanphams,['T.610','003','T.606'])">
                 <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                   <div class="position-relative">
-                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                    <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                   </div>
                   <div class="card-body px-0 pt-4 text-center">
                     <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
@@ -226,7 +226,7 @@
               *ngFor="let item of GetTags(Sanphams,['D.350','T.201','D.502'])">
               <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                 <div class="position-relative">
-                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                 </div>
                 <div class="card-body px-0 pt-4 text-center">
                   <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
@@ -250,7 +250,7 @@
               *ngFor="let item of GetTags(Sanphams,['D.100','D.504','D.201','D.202'])">
               <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                 <div class="position-relative">
-                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                 </div>
                 <div class="card-body px-0 pt-4 text-center">
                   <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
@@ -382,7 +382,7 @@
               *ngFor="let item of Soluong(Sanphams,0,4)">
               <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                 <div class="position-relative">
-                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                 </div>
                 <div class="card-body px-0 pt-4 text-center">
                   <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">
@@ -406,7 +406,7 @@
               *ngFor="let item of Soluong(Sanphams,4,8)">
               <a class="card border-0 product" [routerLink]="['san-pham/'+item.Slug]">
                 <div class="position-relative">
-                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{(Base+item.Hinhanh.hinhthongtin.spath)||''}}" alt="">
+                  <img *ngIf="item.Hinhanh.hinhthongtin" src="{{GetImage(item.Hinhanh.hinhthongtin.spath)}}" alt="">
                 </div>
                 <div class="card-body px-0 pt-4 text-center">
                   <p class="card-text font-weight-bold fs-16 mb-1 text-secondary">

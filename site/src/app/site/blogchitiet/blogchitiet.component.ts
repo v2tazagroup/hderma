@@ -19,7 +19,9 @@ export class BlogchitietComponent implements OnInit {
     ) {}
   Baiviet:any
   Bailienquan:any
-  Base = environment.BaseUrl;
+  GetImage(data: any) {
+    return GetImage(data)
+  }
   ngOnInit() {
     if(history.state.navigationId!=1){location.reload()}
     this._ActivatedRoute.params.subscribe((paramsId) => {

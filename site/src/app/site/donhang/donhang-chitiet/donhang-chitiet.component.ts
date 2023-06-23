@@ -16,7 +16,6 @@ export class DonhangChitietComponent implements OnInit {
     private _ActivatedRoute:ActivatedRoute,
     ) {}
   Donhang:any
-  Base = environment.BaseUrl;
   total: number=0;
   ngOnInit() {
     if(history.state.navigationId!=1){location.reload()}

@@ -30,7 +30,6 @@ export class ListsanphamComponent implements OnInit {
   itemsPerPage = 12;
   currentPage = 1;
   totalItems = 1;
-  Base = environment.BaseUrl;
   TypeView:boolean=false
   itemCart:any={soluong:0};
   ngOnInit() {
@@ -53,8 +52,8 @@ export class ListsanphamComponent implements OnInit {
       }
     })
   }
-  GetImage(img: any) {
-    return environment.BaseUrl + img;
+  GetImage(data: any) {
+    return GetImage(data)
   }
   checkboxTags(item: any, i: any) {
     this.TagsTinhtrang[i].checked = !this.TagsTinhtrang[i].checked

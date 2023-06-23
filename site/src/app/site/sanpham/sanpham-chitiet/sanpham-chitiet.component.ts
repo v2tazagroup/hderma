@@ -13,7 +13,6 @@ import { TagsService } from 'src/app/shared/tags.service';
   styleUrls: ['./sanpham-chitiet.component.scss']
 })
 export class SanphamChitietComponent implements OnInit {
-  Base = environment.BaseUrl;
   Sanpham:any={
     Hinhanh:{
       ContentImage:{spath:''},
